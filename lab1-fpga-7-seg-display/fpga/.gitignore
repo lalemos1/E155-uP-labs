@@ -1,6 +1,6 @@
 # Lattice Radiant files
 *.html
-impl*/
+#impl*/
 *.xml
 .build_status
 .run_manager.ini
