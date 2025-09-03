@@ -1,0 +1,20 @@
+---------------------------------------------------
+Report for cell lab1_ll
+   Instance path: lab1_ll
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  LUT4	         37        100.0
+                               LUTGATE	         11        100.0
+                                LUTCCU	         26        100.0
+                                 IOBUF	         15        100.0
+                                PFUREG	         25        100.0
+SUB MODULES
+                                  cell	      count    LUT4 Usage(%)
+                     seven_seg_display	          1        18.9
+---------------------------------------------------
+Report for cell seven_seg_display
+   Instance path: lab1_ll/seven_seg_display
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  LUT4	          7        18.9
+                               LUTGATE	          7        63.6

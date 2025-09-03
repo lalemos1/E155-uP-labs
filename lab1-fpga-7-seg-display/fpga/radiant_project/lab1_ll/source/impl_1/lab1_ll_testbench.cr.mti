@@ -1,0 +1,8 @@
+C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/source/impl_1/lab1_ll.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/source/impl_1/lab1_ll.sv
+Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+-- Compiling module lab1_ll
+
+Top level modules:
+	lab1_ll
+
+} {} {}}

@@ -1,0 +1,1 @@
+FPGA makes sure the FPGA is working by blinking an LED as well as operates a 7-segment display. MCU makes sure the MCU is working by reading the blinking LED from the FPGA.

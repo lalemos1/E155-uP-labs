@@ -1,0 +1,386 @@
+
+pnmainc -log pnmain "lab1_ll_impl_1_map.tcl"
+map:  version Radiant Software (64-bit) 2024.2.0.3.0
+
+Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
+Copyright (c) 1995 AT&T Corp.   All rights reserved.
+Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
+Copyright (c) 2001 Agere Systems   All rights reserved.
+Copyright (c) 2002-2024 Lattice Semiconductor Corporation,  All rights reserved.
+
+Command line:   map -pdc C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/lab1_ll_pinassignments.pdc -i lab1_ll_impl_1_syn.udb -o lab1_ll_impl_1_map.udb -mp lab1_ll_impl_1.mrp -hierrpt -gui -msgset C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/promote.xml 
+
+Loading device for application GENERIC from file 'itpa08.nph' in environment: C:/lscc/radiant/2024.2/ispfpga.
+Package Status:                     Preliminary    Version 1.5.
+
+
+
+Design:  lab1_ll
+Family:  iCE40UP
+Device:  iCE40UP5K
+Package: SG48
+Performance Grade:  High-Performance_1.2V
+
+WARNING <1026001> - C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/lab1_ll_pinassignments.pdc (1) : No port matched &apos;led&apos;.
+WARNING <1027013> - No port matched 'led'.
+WARNING <1026001> - C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/lab1_ll_pinassignments.pdc (1) : Can&apos;t resolve object &apos;led&apos; in constraint &apos;ldc_set_location -site {42} [get_ports led]&apos;.
+WARNING <1011001> - Remove invalid constraint 'ldc_set_location -site {42} [get_ports led]'.
+Running general design DRC...
+
+
+
+
+Design Summary:
+   Number of slice registers:  25 out of  5280 (<1%)
+   Number of I/O registers:      0 out of   117 (0%)
+   Number of LUT4s:            37 out of  5280 (1%)
+      Number of logic LUT4s:              11
+      Number of ripple logic:             13 (26 LUT4s)
+   Number of IO sites used:   15 out of 39 (38%)
+      Number of IO sites used for general PIO: 15
+      Number of IO sites used for I3C: 0 out of 2 (0%)
+      (note: If I3C is not used, its site can be used as general PIO)
+      Number of IO sites used for PIO+I3C: 15 out of 36 (42%)
+      Number of IO sites used for OD+RGB IO buffers: 0 out of 3 (0%)
+      (note: If RGB LED drivers are not used, sites can be used as OD outputs,
+       see TN1288 iCE40 LED Driver Usage Guide)
+      Number of IO sites used for PIO+I3C+OD+RGB: 15 out of 39 (38%)
+   Number of DSPs:             0 out of 8 (0%)
+   Number of I2Cs:             0 out of 2 (0%)
+   Number of High Speed OSCs:  1 out of 1 (100%)
+   Number of Low Speed OSCs:   0 out of 1 (0%)
+   Number of RGB PWM:          0 out of 1 (0%)
+   Number of RGB Drivers:      0 out of 1 (0%)
+   Number of SCL FILTERs:      0 out of 2 (0%)
+   Number of SRAMs:            0 out of 4 (0%)
+   Number of WARMBOOTs:        0 out of 1 (0%)
+   Number of SPIs:             0 out of 2 (0%)
+   Number of EBRs:             0 out of 30 (0%)
+   Number of PLLs:             0 out of 1 (0%)
+   Number of Clocks:  1
+      Net clk: 13 loads, 13 rising, 0 falling (Driver: Pin hf_osc.osc_inst/CLKHF)
+   Number of Clock Enables:  1
+      Net VCC_net: 1 loads, 0 SLICEs
+   Number of LSRs:  1
+      Net n239: 13 loads, 13 SLICEs
+   Top 10 highest fanout non-clock nets:
+      Net n239: 13 loads
+      Net s_c_0: 8 loads
+      Net s_c_2: 8 loads
+      Net s_c_3: 8 loads
+      Net s_c_1: 7 loads
+      Net VCC_net: 3 loads
+      Net led0_p42_c_24: 2 loads
+      Net n292: 2 loads
+      Net n294: 2 loads
+      Net n677: 2 loads
+Running physical design DRC...
+
+ 
+
+
+   Number of warnings:  4
+   Number of criticals: 0
+   Number of errors:    0
+
+Constraint Summary:
+   Total number of constraints: 16
+   Total number of constraints dropped: 1
+   Dropped constraint is:
+     ldc_set_location -site {42} [get_ports led]
+
+
+Total CPU Time: 0 secs  
+Total REAL Time: 0 secs  
+Peak Memory Usage: 66 MB
+
+Checksum -- map: dad4acad6b5008c5d8d5acaf985c79a4b58a2b9
+Thank you for using Radiant. Total CPU/Elapsed time: 0 secs /0 secs 
+
+pnmainc -log pnmain "lab1_ll_impl_1_par.tcl"
+
+PAR: Place And Route Radiant Software (64-bit) 2024.2.0.3.0.
+PARed on: Wed Sep  3 01:25:00 2025
+
+Command Line: par -w -t 1 -cores 1 -hsp m -exp parPathBased=ON \
+	lab1_ll_impl_1_map.udb lab1_ll_impl_1_par.dir/5_1.udb 
+
+Loading lab1_ll_impl_1_map.udb ...
+Loading device for application GENERIC from file 'itpa08.nph' in environment: C:/lscc/radiant/2024.2/ispfpga.
+Package Status:                     Preliminary    Version 1.5.
+Performance Hardware Data Status:   Advanced       Version 1.0.
+
+
+
+Design:  lab1_ll
+Family:  iCE40UP
+Device:  iCE40UP5K
+Package: SG48
+Performance Grade:   High-Performance_1.2V
+
+Constraint Summary
+   Total number of constraints: 15
+   Total number of constraints dropped: 0
+
+Number of Signals: 92
+Number of Connections: 171
+Device utilization summary:
+
+   SLICE (est.)      20/2640          1% used
+     LUT             37/5280          1% used
+     REG             25/5280         <1% used
+   PIO               15/56           27% used
+                     15/36           41% bonded
+   IOLOGIC            0/56            0% used
+   DSP                0/8             0% used
+   I2C                0/2             0% used
+   HFOSC              1/1           100% used
+   LFOSC              0/1             0% used
+   LEDDA_IP           0/1             0% used
+   RGBA_DRV           0/1             0% used
+   FILTER             0/2             0% used
+   SRAM               0/4             0% used
+   WARMBOOT           0/1             0% used
+   SPI                0/2             0% used
+   EBR                0/30            0% used
+   PLL                0/1             0% used
+   RGBOUTBUF          0/3             0% used
+   I3C                0/2             0% used
+   OPENDRAIN          0/3             0% used
+
+Pin Constraint Summary:
+   14 out of 15 pins locked (93% locked).
+.
+........
+Finished Placer Phase 0 (HIER). CPU time: 0 secs , REAL time: 0 secs 
+
+
+................
+Finished Placer Phase 0 (AP).  CPU time: 0 secs , REAL time: 0 secs 
+
+Starting Placer Phase 1. CPU time: 0 secs , REAL time: 0 secs 
+..  ..
+....................
+
+Placer score = 13498.
+
+Device SLICE utilization summary after final SLICE packing:
+   SLICE             20/2640         <1% used
+
+Finished Placer Phase 1. CPU time: 4 secs , REAL time: 5 secs 
+
+Starting Placer Phase 2.
+.
+
+Placer score =  13498
+Finished Placer Phase 2.  CPU time: 4 secs , REAL time: 5 secs 
+
+
+------------------ Clock Report ------------------
+
+Global Clocks :
+  PRIMARY "clk" from comp "hf_osc.osc_inst" on site "HFOSC_R1C32", clk load = 13, ce load = 0, sr load = 0
+
+  PRIMARY  : 1 out of 8 (12%)
+
+--------------- End of Clock Report ---------------
+
+
+I/O Usage Summary (final):
+   15 out of 56 (26.8%) I/O sites used.
+   15 out of 36 (41.7%) bonded I/O sites used.
+   Number of I/O components: 15; differential: 0
+   Number of Vref pins used: 0
+
+I/O Bank Usage Summary:
++----------+---------------+------------+------------+------------+
+| I/O Bank | Usage         | Bank Vccio | Bank Vref1 | Bank Vref2 |
++----------+---------------+------------+------------+------------+
+| 0        | 8 / 14 ( 57%) | 3.3V       |            |            |
+| 1        | 7 / 14 ( 50%) | 3.3V       |            |            |
+| 2        | 0 / 8 (  0%)  | OFF        |            |            |
++----------+---------------+------------+------------+------------+
+
+Total Placer CPU time: 4 secs , REAL time: 5 secs 
+
+
+Checksum -- place: 4ebcea8ebedef528dd65a6266b744f6eba0478f2
+Writing design to file lab1_ll_impl_1_par.dir/5_1.udb ...
+
+
+Start NBR router at 01:25:05 09/03/25
+
+*****************************************************************
+Info: NBR allows conflicts(one node used by more than one signal)
+      in the earlier iterations. In each iteration, it tries to  
+      solve the conflicts while keeping the critical connections 
+      routed as short as possible. The routing process is said to
+      be completed when no conflicts exist and all connections   
+      are routed.                                                
+Note: NBR uses a different method to calculate timing slacks. The
+      worst slack and total negative slack may not be the same as
+      that in timing report. You should always run the timing    
+      tool to verify your design.                                
+*****************************************************************
+
+Starting routing resource preassignment
+Preassignment Summary:
+--------------------------------------------------------------------------------
+1 global clock signals routed
+63 connections routed (of 171 total) (36.84%)
+---------------------------------------------------------
+Clock routing summary:
+Primary clocks (1 used out of 8 available):
+#4  Signal "clk"
+       Clock   loads: 13    out of    13 routed (100.00%)
+---------------------------------------------------------
+--------------------------------------------------------------------------------
+Completed routing resource preassignment
+    TimerIf::skewscore 0
+
+Start NBR section for initial routing at 01:25:05 09/03/25
+Level 4, iteration 1
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing in Serial Mode ......
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+0(0.00%) conflict; 0(0.00%) untouched conn; 0 (nbr) score; 
+Estimated worst slack/total negative slack<setup>: 28.542ns/0.000ns; real time: 0 secs 
+
+Info: Initial congestion level at 75.00% usage is 0
+Info: Initial congestion area  at 75.00% usage is 0 (0.00%)
+
+Start NBR section for normal routing at 01:25:05 09/03/25
+Level 4, iteration 1
+0(0.00%) conflict; 0(0.00%) untouched conn; 0 (nbr) score; 
+Estimated worst slack/total negative slack<setup>: 28.542ns/0.000ns; real time: 0 secs 
+
+Start NBR section for setup/hold timing optimization with effort level 3 at 01:25:05 09/03/25
+Changing speed to m;   changing temperature to -40
+Changing speed to 6;   changing temperature to 100
+
+Start NBR section for post-routing at 01:25:05 09/03/25
+
+End NBR router with 0 unrouted connection(s)
+Changing speed to m;   changing temperature to -40
+Changing speed to 6;   changing temperature to 100
+
+Checksum -- route: ef9f82d4ba23ef6bdf4429b2ce4ec5fb312e9b60
+
+Total CPU time 0 secs 
+Total REAL time: 0 secs 
+Completely routed.
+End of route.  171 routed (100.00%); 0 unrouted.
+
+Writing design to file lab1_ll_impl_1_par.dir/5_1.udb ...
+
+
+PAR_SUMMARY::Run status = Completed
+PAR_SUMMARY::Number of unrouted conns = 0
+PAR_SUMMARY::Estimated worst slack<setup/<ns>> = 28.542
+PAR_SUMMARY::Timing score<setup/<ns>> = 0.000
+PAR_SUMMARY::Estimated worst slack<hold/<ns>> = 1.913
+PAR_SUMMARY::Timing score<hold/<ns>> = 0.000
+PAR_SUMMARY::Number of errors = 0
+
+Note: user must run 'timing' for timing closure signoff.
+
+Total CPU  Time: 5 secs 
+Total REAL Time: 6 secs 
+Peak Memory Usage: 127.98 MB
+
+
+par done!
+
+Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
+Copyright (c) 1995 AT&T Corp.   All rights reserved.
+Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
+Copyright (c) 2001 Agere Systems   All rights reserved.
+Copyright (c) 2002-2024 Lattice Semiconductor Corporation,  All rights reserved.
+Thank you for using Radiant. Total CPU/Elapsed time: 0 secs /6 secs 
+
+timing -sethld -v 10 -u 10 -endpoints 10 -nperend 1 -sp High-Performance_1.2V -hsp m   -pwrprd -html -rpt "lab1_ll_impl_1.twr" "lab1_ll_impl_1.udb" 
+timing -sethld -v 10 -u 10 -endpoints 10 -nperend 1 -sp High-Performance_1.2V -hsp m -pwrprd -html -rpt lab1_ll_impl_1.twr lab1_ll_impl_1.udb -gui -msgset C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/promote.xml
+Starting design reading...
+Loading device for application GENERIC from file 'itpa08.nph' in environment: C:/lscc/radiant/2024.2/ispfpga.
+Package Status:                     Preliminary    Version 1.5.
+Performance Hardware Data Status:   Advanced       Version 1.0.
+Loading udb::Database ...
+Design:  lab1_ll
+Family:  iCE40UP
+Device:  iCE40UP5K
+Package: SG48
+Performance Grade:   High-Performance_1.2V
+
+
+
+Successfully loading udb, 0.03 seconds
+
+Initializing timer
+Starting design annotation....
+High-Performance_1.2V
+
+Starting full timing analysis...
+Performance Hardware Data Status:   Advanced       Version 1.0.
+Connections ignored  13  counted  162  covered  97
+Changing speed to m;   changing temperature to -40
+
+STA Runtime and Peak Memory Usage :
+Total CPU Time: 0 secs 
+Total REAL Time: 0 secs 
+Peak Memory Usage: 103 MB
+
+ 0.622425s wall, 0.546875s user + 0.062500s system = 0.609375s CPU (97.9%)
+
+
+tmcheck -par "lab1_ll_impl_1.par"  
+
+pnmainc -log pnmain "lab1_ll_impl_1_bit.tcl"
+Loading lab1_ll_impl_1.udb ...
+Loading device for application GENERIC from file 'itpa08.nph' in environment: C:/lscc/radiant/2024.2/ispfpga.
+Package Status:                     Preliminary    Version 1.5.
+Performance Hardware Data Status:   Advanced       Version 1.0.
+
+
+
+Design:  lab1_ll
+Family:  iCE40UP
+Device:  iCE40UP5K
+Package: SG48
+Performance Grade:   High-Performance_1.2V
+
+Constraint Summary
+   Total number of constraints: 15
+   Total number of constraints dropped: 0
+
+Successfully loading design udb and device data from disks and to up-layer in CPU time: 0 secs , REAL time: 0 secs 
+
+
+
+BITGEN: Bitstream Generator Radiant Software (64-bit) 2024.2.0.3.0
+Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
+Copyright (c) 1995 AT&T Corp.   All rights reserved.
+Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
+Copyright (c) 2001 Agere Systems   All rights reserved.
+Copyright (c) 2002-2024 Lattice Semiconductor Corporation,  All rights reserved.
+
+
+Running DRC.
+DRC detected 0 errors and 0 warnings.
+
+Preference Summary:
++---------------------------------+---------------------------------+
+|  Preference                     |  Current Setting                |
++---------------------------------+---------------------------------+
+ *  Default setting.
+ ** The specified setting matches the default setting.
+
+
+Creating bit map...
+Saving bit stream in "C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/impl_1/lab1_ll_impl_1.bin".
+Bitstream generation complete!
+
+Total CPU Time: 0 secs 
+Total REAL Time: 6 secs 
+Peak Memory Usage: 117 MB
+
+Thank you for using Radiant. Total CPU/Elapsed time: 0 secs /6 secs 
