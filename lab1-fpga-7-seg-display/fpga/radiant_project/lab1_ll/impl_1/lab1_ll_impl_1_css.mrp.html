@@ -49,7 +49,7 @@ Package: SG48
 Performance Grade:  High-Performance_1.2V
 
 Mapper:    version Radiant Software (64-bit) 2024.2.0.3.0
-Mapped on: Wed Sep  3 01:24:51 2025
+Mapped on: Wed Sep  3 12:06:01 2025
 
 <A name="mrp_di"></A><B><U><big>Design Information</big></U></B>
 
@@ -61,11 +61,11 @@ Command line:   map -pdc C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga
 
 <A name="mrp_ds"></A><B><U><big>Design Summary</big></U></B>
 
-   Number of slice registers:  25 out of  5280 (&lt;1%)
+   Number of slice registers:  23 out of  5280 (&lt;1%)
    Number of I/O registers:      0 out of   117 (0%)
-   Number of LUT4s:            37 out of  5280 (1%)
+   Number of LUT4s:            35 out of  5280 (1%)
       Number of logic LUT4s:              11
-      Number of ripple logic:             13 (26 LUT4s)
+      Number of ripple logic:             12 (24 LUT4s)
    Number of IO sites used:   15 out of 39 (38%)
       Number of IO sites used for general PIO: 15
       Number of IO sites used for I3C: 0 out of 2 (0%)
@@ -88,40 +88,31 @@ Command line:   map -pdc C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga
    Number of EBRs:             0 out of 30 (0%)
    Number of PLLs:             0 out of 1 (0%)
    Number of Clocks:  1
-      Net clk: 13 loads, 13 rising, 0 falling (Driver: Pin
+      Net clk: 12 loads, 12 rising, 0 falling (Driver: Pin
      hf_osc.osc_inst/CLKHF)
    Number of Clock Enables:  1
       Net VCC_net: 1 loads, 0 SLICEs
    Number of LSRs:  1
-      Net n239: 13 loads, 13 SLICEs
+      Net n222: 12 loads, 12 SLICEs
    Top 10 highest fanout non-clock nets:
-      Net n239: 13 loads
+      Net n222: 12 loads
       Net s_c_0: 8 loads
+      Net s_c_1: 8 loads
       Net s_c_2: 8 loads
       Net s_c_3: 8 loads
-      Net s_c_1: 7 loads
       Net VCC_net: 3 loads
       Net led0_p42_c_24: 2 loads
-      Net n292: 2 loads
-      Net n294: 2 loads
-      Net n677: 2 loads
+      Net n261: 2 loads
+      Net n263: 2 loads
+      Net n624: 2 loads
 
-   Number of warnings:  4
+   Number of warnings:  0
    Number of criticals: 0
    Number of errors:    0
 
 <A name="mrp_dwe"></A><B><U><big>Design Errors/Criticals/Warnings</big></U></B>
 
-WARNING &lt;1026001&gt; - map: C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga
-     -7-seg-display/fpga/radiant_project/lab1_ll/lab1_ll_pinassignments.pdc (1)
-     : No port matched &apos;led&apos;.
-WARNING &lt;1027013&gt; - map: No port matched &apos;led&apos;.
-WARNING &lt;1026001&gt; - map: C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga
-     -7-seg-display/fpga/radiant_project/lab1_ll/lab1_ll_pinassignments.pdc (1)
-     : Can&apos;t resolve object &apos;led&apos; in constraint &apos;ldc_set_location -site {42}
-     [get_ports led]&apos;.
-WARNING &lt;1011001&gt; - map: Remove invalid constraint &apos;ldc_set_location -site {42}
-     [get_ports led]&apos;.
+   No error, critical, or warning presents.
 
 <A name="mrp_ioa"></A><B><U><big>IO (PIO) Attributes</big></U></B>
 
@@ -129,7 +120,7 @@ WARNING &lt;1011001&gt; - map: Remove invalid constraint &apos;ldc_set_location 
 | IO Name             | Direction | Levelmode |  IO   |  IO   | Special   |
 |                     |           |  IO_TYPE  |  REG  |  DDR  | IO Buffer |
 +---------------------+-----------+-----------+-------+-------+-----------+
-| reset               | INPUT     |           |       |       |           |
+| reset_p34           | INPUT     |           |       |       |           |
 +---------------------+-----------+-----------+-------+-------+-----------+
 | s[0]                | INPUT     |           |       |       |           |
 +---------------------+-----------+-----------+-------+-------+-----------+
@@ -181,16 +172,14 @@ Instance Name: hf_osc.osc_inst
 <A name="mrp_consum"></A><B><U><big>Constraint Summary</big></U></B>
 
    Total number of constraints: 16
-   Total number of constraints dropped: 1
-   Dropped constraint is:
-     ldc_set_location -site {42} [get_ports led]
+   Total number of constraints dropped: 0
 
 <A name="mrp_runtime"></A><B><U><big>Run Time and Memory Usage</big></U></B>
 
    Total CPU Time: 0 secs
    Total REAL Time: 0 secs
-   Peak Memory Usage: 66 MB
-Checksum -- map: dad4acad6b5008c5d8d5acaf985c79a4b58a2b9
+   Peak Memory Usage: 67 MB
+Checksum -- map: 93c5893f7dbea92c7686eb8d8fe953398c20551a
 Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
 Copyright (c) 1995
      AT&amp;T Corp.   All rights reserved.

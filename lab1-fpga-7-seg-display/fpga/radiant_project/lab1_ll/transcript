@@ -13,119 +13,16 @@
 # // of the Customer's facilities without the express written permission of SISW,
 # // and may not be used in any way not expressly authorized by SISW.
 # //
-# Load canceled
-# Loading project lab1_ll_testbench
-# Compile of lab1_ll.sv was successful.
-vsim -gui work.lab1_ll -L C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll -voptargs=+acc
-# vsim -gui work.lab1_ll -L C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll -voptargs="+acc" 
-# Start time: 00:04:41 on Sep 03,2025
+vsim work.lab1_ll
+# vsim work.lab1_ll 
+# Start time: 10:52:05 on Sep 03,2025
 # ** Note: (vsim-3812) Design is being optimized...
-# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
-# ** Error (suppressible): (vopt-19) Failed to access library 'C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll' at "C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll".
-# No such file or directory. (errno = ENOENT)
-# ** Error (suppressible): (vopt-19) Failed to access library 'C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll' at "C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll".
-# No such file or directory. (errno = ENOENT)
-# ** Error (suppressible): (vopt-19) Failed to access library 'C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll' at "C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll".
-# No such file or directory. (errno = ENOENT)
-# ** Warning: C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/source/impl_1/lab1_ll.sv(1): (vopt-2669) Unable to find library 'C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll'.
-# ** Error (suppressible): (vopt-19) Failed to access library 'C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll' at "C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll".
-# No such file or directory. (errno = ENOENT)
-# ** Error (suppressible): (vopt-19) Failed to access library 'C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll' at "C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll".
-# No such file or directory. (errno = ENOENT)
-# ** Error (suppressible): (vopt-19) Failed to access library 'C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll' at "C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll".
-# No such file or directory. (errno = ENOENT)
-# ** Warning: C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/source/impl_1/lab1_ll.sv(1): (vopt-2669) Unable to find library 'C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll'.
 # ** Error: C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/source/impl_1/lab1_ll.sv(14): Module 'seven_seg_display' is not defined.
 #  For instance 'seven_seg_display' at path 'lab1_ll'
 # ** Error: C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/source/impl_1/lab1_ll.sv(22): Module 'HSOSC' is not defined.
 #  For instance 'hf_osc' at path 'lab1_ll'
 # Optimization failed
-# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=8, Warnings=3.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=2, Warnings=0.
 # Error loading design
-# End time: 00:04:42 on Sep 03,2025, Elapsed time: 0:00:01
-# Errors: 8, Warnings: 8
-# reading C:/lscc/radiant/2024.2/questasim/win64/../modelsim.ini
-# Loading project lab1_ll_testbench
-# Compile of lab1_ll.sv was successful.
-vsim -gui -L C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll -voptargs=+acc work.lab1_ll
-# vsim -gui -L C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll -voptargs="+acc" work.lab1_ll 
-# Start time: 00:08:23 on Sep 03,2025
-# ** Note: (vsim-3812) Design is being optimized...
-# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
-# ** Error (suppressible): (vopt-19) Failed to access library 'C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll' at "C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll".
-# No such file or directory. (errno = ENOENT)
-# ** Error (suppressible): (vopt-19) Failed to access library 'C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll' at "C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll".
-# No such file or directory. (errno = ENOENT)
-# ** Error (suppressible): (vopt-19) Failed to access library 'C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll' at "C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll".
-# No such file or directory. (errno = ENOENT)
-# ** Warning: C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/source/impl_1/lab1_ll.sv(1): (vopt-2669) Unable to find library 'C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll'.
-# ** Error (suppressible): (vopt-19) Failed to access library 'C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll' at "C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll".
-# No such file or directory. (errno = ENOENT)
-# ** Error (suppressible): (vopt-19) Failed to access library 'C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll' at "C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll".
-# No such file or directory. (errno = ENOENT)
-# ** Error (suppressible): (vopt-19) Failed to access library 'C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll' at "C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll".
-# No such file or directory. (errno = ENOENT)
-# ** Warning: C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/source/impl_1/lab1_ll.sv(1): (vopt-2669) Unable to find library 'C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll'.
-# ** Error: C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/source/impl_1/lab1_ll.sv(14): Module 'seven_seg_display' is not defined.
-#  For instance 'seven_seg_display' at path 'lab1_ll'
-# ** Error: C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/source/impl_1/lab1_ll.sv(22): Module 'HSOSC' is not defined.
-#  For instance 'hf_osc' at path 'lab1_ll'
-# Optimization failed
-# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=8, Warnings=3.
-# Error loading design
-# End time: 00:08:23 on Sep 03,2025, Elapsed time: 0:00:00
-# Errors: 8, Warnings: 8
-# Compile of lab1_ll.sv was successful.
-vsim -gui -L iCE40UP -voptargs=+acc work.lab1_ll
-# vsim -gui -L iCE40UP -voptargs="+acc" work.lab1_ll 
-# Start time: 00:28:12 on Sep 03,2025
-# ** Note: (vsim-3812) Design is being optimized...
-# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
-# ** Error: C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/source/impl_1/lab1_ll.sv(14): Module 'seven_seg_display' is not defined.
-#  For instance 'seven_seg_display' at path 'lab1_ll'
-# Optimization failed
-# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=1, Warnings=1.
-# Error loading design
-# End time: 00:28:12 on Sep 03,2025, Elapsed time: 0:00:00
-# Errors: 1, Warnings: 3
-# reading C:/lscc/radiant/2024.2/questasim/win64/../modelsim.ini
-# Loading project lab1_ll_testbench
-# Compile of lab1_ll.sv was successful.
-# Compile of seven_seg_display.sv was successful.
-# 2 compiles, 0 failed with no errors.
-vsim -gui -L iCE40UP -voptargs=+acc work.lab1_ll
-# vsim -gui -L iCE40UP -voptargs="+acc" work.lab1_ll 
-# Start time: 00:32:43 on Sep 03,2025
-# ** Note: (vsim-3812) Design is being optimized...
-# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
-# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
-# Loading sv_std.std
-# Loading work.lab1_ll(fast)
-# Loading work.seven_seg_display(fast)
-# Loading iCE40UP.HSOSC(fast)
-add wave -position end  sim:/lab1_ll/s
-add wave -position end  sim:/lab1_ll/reset
-add wave -position end  sim:/lab1_ll/led0_p42
-add wave -position end  sim:/lab1_ll/led1_p38
-add wave -position end  sim:/lab1_ll/led2_p28
-add wave -position end  sim:/lab1_ll/seg
-add wave -position end  sim:/lab1_ll/clk
-add wave -position end  sim:/lab1_ll/counter
-force s 0000
-run 2000
-force s 0000
-force reset 1
-run 100
-force s 0001
-run 10000
-force reset 0
-run 100
-run 100000
-force reset 1
-run 100000
-run 100000
-run 10000000000000000
-# Break key hit
-# Simulation stop requested.
-# End time: 02:11:51 on Sep 03,2025, Elapsed time: 1:39:08
-# Errors: 0, Warnings: 8
+# End time: 10:52:06 on Sep 03,2025, Elapsed time: 0:00:01
+# Errors: 2, Warnings: 0

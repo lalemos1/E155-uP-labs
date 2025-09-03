@@ -1,8 +1,14 @@
 m255
 K4
 z2
-!s12c _opt
-Z0 !s99 nomlopt
+Z0 !s12c _opt
+Z1 !s99 nomlopt
+!s12c _opt2
+R1
+!s12c _opt1
+R1
+R0
+R1
 !s11f vlog 2024.2 2024.05, May 20 2024
 13
 !s112 1.1
@@ -10,68 +16,98 @@ Z0 !s99 nomlopt
 !i10e 25
 !i10f 100
 cModel Technology
-dC:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/source/impl_1
+Z2 dC:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/source/impl_1
 T_opt
-!s110 1756884764
-VPRCg8hoo9282RbeaEJKb53
+!s110 1756922959
+VN[e0Cf^HQM:hnCgJF1Eh=3
 04 7 4 work lab1_ll fast 0
-=1-089df44dd27b-68b7ef1b-386-51e8
-R0
+=1-00be43e56ed7-68b8844f-2a1-4074
+R1
 !s12f OEM25U2 
-!s12b OEM100
-!s124 OEM100
-!s135 nogc
-o-quiet -auto_acc_if_foreign -work work -L iCE40UP +acc
-Z1 tCvgOpt 0
+Z3 !s12b OEM100
+Z4 !s124 OEM100
+Z5 !s135 nogc
+Z6 o-quiet -auto_acc_if_foreign -work work -L iCE40UP +acc
+Z7 tCvgOpt 0
 n@_opt
-OL;O;2024.2;79
+Z8 OL;O;2024.2;79
+T_opt1
+!s110 1756920546
+VYhn7geVC15lS2HPaBLW;12
+Z9 04 17 4 work seven_seg_display fast 0
+=1-00be43e56ed7-68b87ae2-181-4500
+R1
+Z10 !s12f OEM25U1 
+R3
+R4
+R5
+o-quiet -auto_acc_if_foreign -work work -L iCE40UP
+R7
+n@_opt1
+R8
+R2
+T_opt2
+!s110 1756922093
+VSaXRdYEmcd_[RfLz:gM=N2
+R9
+=1-00be43e56ed7-68b880ed-263-7220
+R1
+R10
+R3
+R4
+R5
+R6
+R7
+n@_opt2
+R8
+R2
 vlab1_ll
 2C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/source/impl_1/lab1_ll.sv
-Z2 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-Z3 !s110 1756884741
+Z11 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z12 !s110 1756922067
 !i10b 1
-!s100 06`FN@ilGPda5E8G=NKk;2
-IN`jzPETGHnlG2dR7Y>dmS0
+!s100 HSAbQ7a[[KN9oKZR>IGgd2
+Ie^]hYA2>VA2A1`c7d`jdY0
 S1
-Z4 dC:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/Questa Simulation
-w1756882444
+Z13 dC:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/Questa Simulation
+w1756918085
 8C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/source/impl_1/lab1_ll.sv
 FC:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/source/impl_1/lab1_ll.sv
-!i122 0
+!i122 6
 L0 5 31
-Z5 VDg1SIo80bB@j0V0VzS_@n1
-Z6 OL;L;2024.2;79
+Z14 VDg1SIo80bB@j0V0VzS_@n1
+Z15 OL;L;2024.2;79
 r1
 !s85 0
 31
-Z7 !s108 1756884741.000000
+Z16 !s108 1756922067.000000
 !s107 C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/source/impl_1/lab1_ll.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/source/impl_1/lab1_ll.sv|
 !i113 0
-Z8 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-R1
+Z17 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R7
 vseven_seg_display
 2C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/source/impl_1/seven_seg_display.sv
-R2
-R3
+R11
+R12
 !i10b 1
-!s100 V5iZZXUGzSAPb0GoLI8IU2
-IGEZlQdZXg3]GfW7S5:C5E2
+!s100 8X_c:b0P43>=VCNcb3IA30
+IHSbiZR:]>EB=V@WC3ia_@2
 S1
-R4
-w1756881936
+R13
+w1756921821
 8C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/source/impl_1/seven_seg_display.sv
 FC:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/source/impl_1/seven_seg_display.sv
-!i122 1
+!i122 7
 L0 3 19
-R5
-R6
+R14
+R15
 r1
 !s85 0
 31
-R7
+R16
 !s107 C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/source/impl_1/seven_seg_display.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/source/impl_1/seven_seg_display.sv|
 !i113 0
-R8
-R1
+R17
+R7

@@ -48,7 +48,7 @@ Copyright (c) 1995 AT&T Corp.   All rights reserved.
 Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
 Copyright (c) 2001 Agere Systems   All rights reserved.
 Copyright (c) 2002-2024 Lattice Semiconductor Corporation,  All rights reserved.
-Wed Sep  3 01:12:19 2025
+Wed Sep  3 12:05:40 2025
 
 
 Command Line:  C:\lscc\radiant\2024.2\ispfpga\bin\nt64\synthesis.exe -f C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/impl_1/lab1_ll_impl_1_lattice.synproj -logfile lab1_ll_impl_1_lattice.srp -gui -msgset C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/promote.xml 
@@ -220,7 +220,6 @@ Top module name (Verilog, mixed language): lab1_ll
 INFO <35901018> - synthesis: c:/users/llemos/documents/github/e155-up-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/source/impl_1/lab1_ll.sv(5): compiling module lab1_ll. VERI-1018
 INFO <35901018> - synthesis: c:/users/llemos/documents/github/e155-up-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/source/impl_1/seven_seg_display.sv(3): compiling module seven_seg_display. VERI-1018
 INFO <35901018> - synthesis: C:/lscc/radiant/2024.2/ispfpga/../cae_library/synthesis/verilog/iCE40UP.v(756): compiling module HSOSC(CLKHF_DIV=2'b01). VERI-1018
-WARNING <35901209> - synthesis: c:/users/llemos/documents/github/e155-up-labs/lab1-fpga-7-seg-display/fpga/radiant_project/lab1_ll/source/impl_1/lab1_ll.sv(27): expression size 32 truncated to fit in target size 25. VERI-1209
 
 <A name="lse_parameter"></A><B><U><big>Parameter Setting</big></U></B>
 
@@ -234,14 +233,16 @@ WARNING <35901209> - synthesis: c:/users/llemos/documents/github/e155-up-labs/la
 
 
 
+WARNING <35935040> - synthesis: Register counter_17__i1 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - synthesis: Register counter_17__i2 clock is stuck at Zero. VDB-5040
 
 
 <A name="lse_area"></A><B><U><big>Area Report</big></U></B>
 
 ################### Begin Area Report (lab1_ll)######################
-Number of register bits => 25 of 5280 (0 % )
-CCU2 => 13
-FD1P3XZ => 25
+Number of register bits => 23 of 5280 (0 % )
+CCU2 => 12
+FD1P3XZ => 23
 HSOSC => 1
 IB => 5
 LUT4 => 10
@@ -261,16 +262,16 @@ Clock Enable Nets
 Number of Clock Enables: 0
 Highest fanout non-clock nets
 Top 10 highest fanout non-clock nets:
-  Net : n239, loads : 25
-  Net : n105[24], loads : 14
-  Net : n105[23], loads : 14
-  Net : n304, loads : 14
-  Net : n105[22], loads : 13
-  Net : n105[21], loads : 13
-  Net : n302, loads : 13
-  Net : n300, loads : 12
-  Net : n105[20], loads : 12
-  Net : n105[19], loads : 12
+  Net : n222, loads : 23
+  Net : n105[24], loads : 13
+  Net : n105[23], loads : 13
+  Net : n269, loads : 13
+  Net : n105[22], loads : 12
+  Net : n105[21], loads : 12
+  Net : n267, loads : 12
+  Net : n105[20], loads : 11
+  Net : n105[19], loads : 11
+  Net : n265, loads : 11
 ################### End Clock Report ##################
 
 
@@ -282,13 +283,13 @@ Constraint Summary:
   Total number of constraints dropped: 0
 ###################  End Constraint Report  ######################
 
-Peak Memory Usage: 92 MB
+Peak Memory Usage: 93 MB
 
 --------------------------------------------------------------
 Total CPU Time: 5 secs 
-Total REAL Time: 11 secs 
+Total REAL Time: 12 secs 
 --------------------------------------------------------------
-Checksum -- synthesis -- netlist: cab9b44dedbab91ff575614b48c4949cc97ba9
+Checksum -- synthesis -- netlist: 3fb3623d884361b359714d0146bf3bb2536ee0e9
 
 
 

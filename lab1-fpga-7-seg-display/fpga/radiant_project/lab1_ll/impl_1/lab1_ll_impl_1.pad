@@ -6,16 +6,16 @@ Performance Grade:      High-Performance_1.2V
 PACKAGE:          SG48
 Package Status:                     Preliminary    Version 1.5
 
-Wed Sep  3 01:25:05 2025
+Wed Sep  3 12:06:13 2025
 
 Pinout by Port Name:
 +-----------+----------+--------------+-------+------------------------------------------+
 | Port Name | Pin/Bank | Buffer Type  | Site  | Properties                               |
 +-----------+----------+--------------+-------+------------------------------------------+
-| led0_p42  | 43/0     | LVCMOS33_OUT | PR10A | DRIVE:8mA IO_TYPE:LVCMOS33 PULLMODE:NA   |
+| led0_p42  | 42/0     | LVCMOS33_OUT | PR9A  | DRIVE:8mA IO_TYPE:LVCMOS33 PULLMODE:NA   |
 | led1_p38  | 38/0     | LVCMOS33_OUT | PR9B  | DRIVE:8mA IO_TYPE:LVCMOS33 PULLMODE:NA   |
 | led2_p28  | 28/0     | LVCMOS33_OUT | PR18A | DRIVE:8mA IO_TYPE:LVCMOS33 PULLMODE:NA   |
-| reset     | 34/0     | LVCMOS33_IN  | PR14B | DRIVE:NA IO_TYPE:LVCMOS33 PULLMODE:100K  |
+| reset_p34 | 34/0     | LVCMOS33_IN  | PR14B | DRIVE:NA IO_TYPE:LVCMOS33 PULLMODE:100K  |
 | s[0]      | 37/0     | LVCMOS33_IN  | PR14A | DRIVE:NA IO_TYPE:LVCMOS33 PULLMODE:100K  |
 | s[1]      | 31/0     | LVCMOS33_IN  | PR17B | DRIVE:NA IO_TYPE:LVCMOS33 PULLMODE:100K  |
 | s[2]      | 35/0     | LVCMOS33_IN  | PR13B | DRIVE:NA IO_TYPE:LVCMOS33 PULLMODE:100K  |
@@ -65,7 +65,7 @@ Pinout by Pin Number:
 | 28/0     | led2_p28            | LOCATED    | LVCMOS33_OUT | PR18A |                  |
 | 31/0     | s[1]                | LOCATED    | LVCMOS33_IN  | PR17B |                  |
 | 32/0     | s[3]                | LOCATED    | LVCMOS33_IN  | PR17A |                  |
-| 34/0     | reset               | LOCATED    | LVCMOS33_IN  | PR14B |                  |
+| 34/0     | reset_p34           | LOCATED    | LVCMOS33_IN  | PR14B |                  |
 | 35/0     | s[2]                | LOCATED    | LVCMOS33_IN  | PR13B | GPLL_IN/PCLKT0_1 |
 | 36/0     |     unused, PULL:UP |            |              | PR10B |                  |
 | 37/0     | s[0]                | LOCATED    | LVCMOS33_IN  | PR14A | PCLKT0_0         |
@@ -73,8 +73,8 @@ Pinout by Pin Number:
 | 39/0     |                     |            |              | PR5A  | RGB0             |
 | 40/0     |                     |            |              | PR6A  | RGB1             |
 | 41/0     |                     |            |              | PR7A  | RGB2             |
-| 42/0     |     unused, PULL:UP |            |              | PR9A  |                  |
-| 43/0     | led0_p42            |            | LVCMOS33_OUT | PR10A |                  |
+| 42/0     | led0_p42            | LOCATED    | LVCMOS33_OUT | PR9A  |                  |
+| 43/0     |     unused, PULL:UP |            |              | PR10A |                  |
 | 44/2     |     unused, PULL:UP |            |              | PL7B  | PCLKT2_0         |
 | 45/2     |     unused, PULL:UP |            |              | PL8B  |                  |
 | 46/2     |     unused, PULL:UP |            |              | PL6A  |                  |
@@ -102,10 +102,10 @@ Pinout by Pin Number:
 
 Locate Constraints for each Pin: 
 
-ldc_set_location -site {43} [ get_ports {led0_p42} ]
+ldc_set_location -site {42} [ get_ports {led0_p42} ]
 ldc_set_location -site {38} [ get_ports {led1_p38} ]
 ldc_set_location -site {28} [ get_ports {led2_p28} ]
-ldc_set_location -site {34} [ get_ports {reset} ]
+ldc_set_location -site {34} [ get_ports {reset_p34} ]
 ldc_set_location -site {37} [ get_ports {s[0]} ]
 ldc_set_location -site {31} [ get_ports {s[1]} ]
 ldc_set_location -site {35} [ get_ports {s[2]} ]
@@ -124,5 +124,5 @@ ldc_set_location -site {18} [ get_ports {seg[6]} ]
 
 Copyright (c) 2002-2024 Lattice Semiconductor Corporation,  All rights reserved.
 
-Wed Sep  3 01:25:05 2025
+Wed Sep  3 12:06:13 2025
 
