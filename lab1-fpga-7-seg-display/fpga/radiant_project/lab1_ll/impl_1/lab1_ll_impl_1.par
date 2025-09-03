@@ -1,6 +1,6 @@
                          Lattice PAR Report File
 Radiant Software (64-bit) 2024.2.0.3.0
-Wed Sep  3 12:06:10 2025
+Wed Sep  3 14:53:04 2025
 
 Command Line: par -w -n 1 -t 1 -s 1 -cores 1 -hsp m -exp parPathBased=ON \
 	lab1_ll_impl_1_map.udb lab1_ll_impl_1.udb 
@@ -9,7 +9,7 @@ Command Line: par -w -n 1 -t 1 -s 1 -cores 1 -hsp m -exp parPathBased=ON \
 Level/       Number       Estimated       Timing       Estimated Worst    Timing          Run      Run
 Cost [udb]   Unrouted     Worst Slack     Score        Slack(hold)        Score(hold)     Time     Status
 ----------   --------     -----------     ------       ---------------    -----------     ----     ------
-5_1   *      0            29.651          0            1.913              0               04       Completed
+5_1   *      0            29.651          0            1.913              0               05       Completed
 
 * : Design saved.
 
@@ -18,7 +18,7 @@ Total (real) run time for 1-seed: 5 secs
 par done!
 
 PAR: Place And Route Radiant Software (64-bit) 2024.2.0.3.0.
-PARed on: Wed Sep  3 12:06:10 2025
+PARed on: Wed Sep  3 14:53:04 2025
 
 Command Line: par -w -t 1 -cores 1 -hsp m -exp parPathBased=ON \
 	lab1_ll_impl_1_map.udb lab1_ll_impl_1_par.dir/5_1.udb 
@@ -79,18 +79,18 @@ Starting Placer Phase 1. CPU time: 0 secs , REAL time: 0 secs
 ..  ..
 ....................
 
-Placer score = 13655.
+Placer score = 13514.
 
 Device SLICE utilization summary after final SLICE packing:
    SLICE             19/2640         <1% used
 
-Finished Placer Phase 1. CPU time: 3 secs , REAL time: 3 secs 
+Finished Placer Phase 1. CPU time: 3 secs , REAL time: 4 secs 
 
 Starting Placer Phase 2.
 .
 
-Placer score =  13607
-Finished Placer Phase 2.  CPU time: 3 secs , REAL time: 3 secs 
+Placer score =  13514
+Finished Placer Phase 2.  CPU time: 3 secs , REAL time: 4 secs 
 
 
 ------------------ Clock Report ------------------
@@ -118,14 +118,14 @@ I/O Bank Usage Summary:
 | 2        | 0 / 8 (  0%)  | OFF        |            |            |
 +----------+---------------+------------+------------+------------+
 
-Total Placer CPU time: 3 secs , REAL time: 3 secs 
+Total Placer CPU time: 3 secs , REAL time: 4 secs 
 
 
-Checksum -- place: bf4b3f95cb16c182c59a9636ce1be18510fc8e
+Checksum -- place: c9a5885c77a9e607cd8f2993eb5b8df84f532395
 Writing design to file lab1_ll_impl_1_par.dir/5_1.udb ...
 
 
-Start NBR router at 12:06:13 09/03/25
+Start NBR router at 14:53:08 09/03/25
 
 *****************************************************************
 Info: NBR allows conflicts(one node used by more than one signal)
@@ -154,7 +154,7 @@ Primary clocks (1 used out of 8 available):
 --------------------------------------------------------------------------------
 Completed routing resource preassignment
 
-Start NBR section for initial routing at 12:06:14 09/03/25
+Start NBR section for initial routing at 14:53:08 09/03/25
 Level 4, iteration 1
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Routing in Serial Mode ......
@@ -165,18 +165,18 @@ Estimated worst slack/total negative slack<setup>: 29.651ns/0.000ns; real time: 
 Info: Initial congestion level at 75.00% usage is 0
 Info: Initial congestion area  at 75.00% usage is 0 (0.00%)
 
-Start NBR section for normal routing at 12:06:14 09/03/25
+Start NBR section for normal routing at 14:53:08 09/03/25
 Level 4, iteration 1
 0(0.00%) conflict; 0(0.00%) untouched conn; 0 (nbr) score; 
 Estimated worst slack/total negative slack<setup>: 29.651ns/0.000ns; real time: 0 secs 
 
-Start NBR section for setup/hold timing optimization with effort level 3 at 12:06:14 09/03/25
+Start NBR section for setup/hold timing optimization with effort level 3 at 14:53:08 09/03/25
 
-Start NBR section for post-routing at 12:06:14 09/03/25
+Start NBR section for post-routing at 14:53:09 09/03/25
 
 End NBR router with 0 unrouted connection(s)
 
-Checksum -- route: 572f2191e271948f5d1d18f8f166c8851fa5ed20
+Checksum -- route: 59b9a48098da2511b4726a123e03e7034b5fa9ef
 
 Total CPU time 0 secs 
 Total REAL time: 0 secs 
@@ -201,7 +201,7 @@ Note: user must run 'timing' for timing closure signoff.
 
 Total CPU  Time: 4 secs 
 Total REAL Time: 5 secs 
-Peak Memory Usage: 127.13 MB
+Peak Memory Usage: 128.63 MB
 
 
 par done!
