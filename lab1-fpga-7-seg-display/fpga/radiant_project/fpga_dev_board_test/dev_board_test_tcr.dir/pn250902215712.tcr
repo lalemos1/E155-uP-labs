@@ -1,7 +1,0 @@
-#Start recording tcl command: 9/2/2025 20:38:24
-#Project Location: C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/fpga_dev_board_test; Project name: dev_board_test
-prj_open "C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab1-fpga-7-seg-display/fpga/radiant_project/fpga_dev_board_test/dev_board_test.rdf"
-prj_run PAR -impl impl_1
-prj_run Export -impl impl_1
-prj_close
-#Stop recording: 9/2/2025 21:57:12
