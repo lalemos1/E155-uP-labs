@@ -18,7 +18,7 @@ module lab1_ll( input   logic [3:0] s,
 	logic [24:0] counter;
 	logic [2:0] step;
 	assign step = 3'b100; // multiplying clock by 4
-  
+   
 	// Internal high-speed oscillator
 	HSOSC #(.CLKHF_DIV(2'b01)) // dividing clock by 1
 		 hf_osc (.CLKHFPU(1'b1), .CLKHFEN(1'b1), .CLKHF(clk));
