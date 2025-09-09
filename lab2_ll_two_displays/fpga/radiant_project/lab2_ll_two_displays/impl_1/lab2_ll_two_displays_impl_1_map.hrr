@@ -1,0 +1,10 @@
+---------------------------------------------------
+Report for cell clk_divider
+   Instance path: clk_divider
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  LUT4	        120        100.0
+                               LUTGATE	         52        100.0
+                                LUTCCU	         68        100.0
+                                 IOBUF	         35        100.0
+                                PFUREG	         33        100.0

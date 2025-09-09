@@ -16,3 +16,6 @@
 # Loading project lab2_ll_sim
 # reading C:/lscc/radiant/2024.2/questasim/win64/../modelsim.ini
 # Loading project lab2_ll_clk_divider_sim
+# Compile of clk_divider_testbench.sv failed with 3 errors.
+# Compile of clk_divider.sv was successful.
+# 2 compiles, 1 failed with 3 errors.

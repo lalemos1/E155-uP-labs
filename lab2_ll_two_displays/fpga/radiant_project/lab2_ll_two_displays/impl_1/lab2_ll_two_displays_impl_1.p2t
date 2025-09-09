@@ -1,0 +1,9 @@
+-w
+-gui
+-msgset "C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/radiant_project/lab2_ll_two_displays/promote.xml"
+-n 1
+-t 1
+-s 1
+-cores 1
+-hsp m
+-exp parPathBased=ON
