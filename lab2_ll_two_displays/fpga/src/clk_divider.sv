@@ -12,7 +12,6 @@ module clk_divider (
 	
 	assign divisor_shifted = divisor ? divisor - 32'd1 : 32'd0; // shifts divisor to align with clock counter & prevents overflow when divisor=0
 	always_ff @(posedge clk) begin
-	
 		if (reset == 0)  begin   // synchronous reset
 			  counter <= 0;
 			  clk_div <= 0;

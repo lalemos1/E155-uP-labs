@@ -1,0 +1,8 @@
+C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/clk_divider.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/clk_divider.sv
+Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+-- Compiling module clk_divider
+
+Top level modules:
+	clk_divider
+
+} {} {}}

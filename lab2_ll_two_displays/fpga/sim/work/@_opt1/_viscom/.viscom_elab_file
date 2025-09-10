@@ -1,0 +1,1 @@
+C:/lscc/radiant/2024.2/questasim/win64/VisualizerRls/bin/viscom.exe -nolock -quiet -jmem_size 393216 work.clk_divider_testbench(fast) -quiet -auto_acc_if_foreign -work work -allow_unnamed -o _opt1 -id 2-00be43eaeac0-68c1001b-227-3960 +__design_bin_path+C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/sim

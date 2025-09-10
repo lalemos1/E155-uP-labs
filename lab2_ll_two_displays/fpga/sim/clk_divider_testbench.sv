@@ -2,19 +2,20 @@
 // Tests the clk_divider that it properly divides the high speed oscillator
 // down by divisor*2.
 
-// Set timescale to 10 ps (if necessary)
-//`timescale 10ps / 1ps
-
-module clk_divider_testbench();
+module clk_divider_testbench;  // BUG: fails tv=32'b0 when it actually works
+	// DUT logic
 	logic        clk, reset; // input to DUT
 	logic [31:0] divisor;    // input to DUT
 	logic        clk_div;    // output from DUT
 	
-	//logic [31:0] expected_count;       // expected clock ticks before clk_div changes. Value derived from test vectors
+	// Testing logic unique to this DUT
+	logic [31:0] expected_count;       // expected clock ticks before clk_div changes. Value derived from test vectors
+	logic [31:0] clk_counter;          // counter of test clock
+	
+	// General testbench logic
 	logic [31:0] vectornum;            // index value of test vectors 
 	logic [31:0] errors;               // number of errors
 	logic [31:0] testvectors[10000:0]; // create space for 10,000 32-bit wide test vectors
-	logic [31:0] clk_counter;          // counter of test clock
 	
 	// Instantiate device under test
 	clk_divider DUT(
@@ -24,25 +25,29 @@ module clk_divider_testbench();
 		.clk_div    ( clk_div )     // output
 	);
 	
+	// Accounts for offset of divisor*2 in the implementation
+	assign expected_count = divisor<<1;
+	
 	// Generate test clock
 	always
 		begin
-			clk=1; #2083; clk=0; #2083; // generates ~48 MHz clock (assuming #1 = 10 ps)
+			clk=1; #5; clk=0; #5;
 		end
 	
 	// Begin test by loading vectors & pulsing reset
 	initial
 		begin
-			errors = 0; reset = 1; #22; reset = 0;
+			$readmemb("clk_divider_vectors.tv", testvectors);
+			vectornum = 0; errors = 0; reset = 0; #22; reset = 1;
 		end
 	
-	// Load test vectors
+	// Load next test vector
 	always @(posedge clk)
 		begin
 			#1; {divisor} = testvectors[vectornum]; // divisor is both the input and the expected value of the counter
 		end 
 	
-	// Clock counter
+	// Clock counter for checking against clk_div
 	always @(posedge clk) begin
 		if (reset == 0) clk_counter = 0;
 		else            clk_counter = clk_counter + 1;
@@ -50,10 +55,9 @@ module clk_divider_testbench();
 	
 	// Check divided clock against counts of the test clock
 	always @(posedge clk_div) begin
-		assert (clk_counter == divisor);
-			else begin
+		assert (clk_counter == expected_count) else begin
 				$display("Error: clk_div frequency incorrect.");
-				$display(" clk_counter = %b (%b expected)", clk_counter, divisor);
+				$display(" clk_counter = %b (%b expected)", clk_counter, expected_count);
 				errors = errors + 1;
 			end
 			
@@ -62,7 +66,7 @@ module clk_divider_testbench();
 		
 		// Check if simulation has ended
 		if (testvectors[vectornum] === 32'bx) begin
-				%display("%d tests completed with %d errors", vectornum, errors);
+				$display("%d tests completed with %d errors", vectornum, errors);
 				$stop;	// End the simulation
 			end
 	end

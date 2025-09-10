@@ -3,7 +3,7 @@
 
 
 module seven_seg_display( input   logic [3:0] s,
-					  output  logic [6:0] seg);
+					      output  logic [6:0] seg);
 					  
 	always_comb begin
 		case (s)
