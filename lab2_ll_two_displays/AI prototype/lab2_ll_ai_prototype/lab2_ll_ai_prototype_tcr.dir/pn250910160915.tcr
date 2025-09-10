@@ -1,0 +1,10 @@
+#Start recording tcl command: 9/10/2025 15:48:59
+#Project Location: C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/AI prototype/lab2_ll_ai_prototype; Project name: lab2_ll_ai_prototype
+prj_create -name "lab2_ll_ai_prototype" -impl "impl_1" -dev iCE40UP5K-SG48I -performance "High-Performance_1.2V" -synthesis "lse"
+prj_save 
+prj_add_source "C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/AI prototype/lab2_ll_ai_prototype/source/impl_1/prompt1.sv"
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_save 
+prj_close
+#Stop recording: 9/10/2025 16:09:15

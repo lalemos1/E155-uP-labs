@@ -1,0 +1,34 @@
+
+timing -sethld -v 10 -u 10 -endpoints 10 -nperend 1 -sp High-Performance_1.2V -hsp m   -pwrprd -html -rpt "lab2_ll_ai_prototype_impl_1.twr" "lab2_ll_ai_prototype_impl_1.udb" 
+timing -sethld -v 10 -u 10 -endpoints 10 -nperend 1 -sp High-Performance_1.2V -hsp m -pwrprd -html -rpt lab2_ll_ai_prototype_impl_1.twr lab2_ll_ai_prototype_impl_1.udb -gui -msgset C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/AI prototype/lab2_ll_ai_prototype/promote.xml
+Starting design reading...
+Loading device for application GENERIC from file 'itpa08.nph' in environment: C:/lscc/radiant/2024.2/ispfpga.
+Package Status:                     Preliminary    Version 1.5.
+Performance Hardware Data Status:   Advanced       Version 1.0.
+Loading udb::Database ...
+Design:  seven_segment_multiplexed
+Family:  iCE40UP
+Device:  iCE40UP5K
+Package: SG48
+Performance Grade:   High-Performance_1.2V
+
+
+
+Successfully loading udb, 0.03 seconds
+
+Initializing timer
+Starting design annotation....
+High-Performance_1.2V
+
+Starting full timing analysis...
+Performance Hardware Data Status:   Advanced       Version 1.0.
+Connections ignored  10  counted  133  covered  0
+Changing speed to m;   changing temperature to -40
+
+STA Runtime and Peak Memory Usage :
+Total CPU Time: 0 secs 
+Total REAL Time: 0 secs 
+Peak Memory Usage: 98 MB
+
+ 0.543456s wall, 0.484375s user + 0.031250s system = 0.515625s CPU (94.9%)
+

@@ -1,0 +1,10 @@
+---------------------------------------------------
+Report for cell seven_segment_multiplexed
+   Instance path: seven_segment_multiplexed
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  LUT4	         33        100.0
+                               LUTGATE	         15        100.0
+                                LUTCCU	         18        100.0
+                                 IOBUF	         19        100.0
+                                PFUREG	         17        100.0
