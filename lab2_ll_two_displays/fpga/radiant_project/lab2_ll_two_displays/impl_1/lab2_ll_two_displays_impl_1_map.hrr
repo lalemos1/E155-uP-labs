@@ -1,10 +1,46 @@
 ---------------------------------------------------
-Report for cell clk_divider
-   Instance path: clk_divider
+Report for cell lab2_ll_two_displays
+   Instance path: lab2_ll_two_displays
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  LUT4	        120        100.0
-                               LUTGATE	         52        100.0
-                                LUTCCU	         68        100.0
-                                 IOBUF	         35        100.0
+                                  LUT4	         66        100.0
+                               LUTGATE	         32        100.0
+                                LUTCCU	         34        100.0
+                                 IOBUF	         22        100.0
                                 PFUREG	         33        100.0
+SUB MODULES
+                                  cell	      count    LUT4 Usage(%)
+                                adder4	          1        10.6
+                           clk_divider	          1        71.2
+                    mux2(WIDTH=3'b100)	          1         6.1
+                     seven_seg_display	          1        10.6
+---------------------------------------------------
+Report for cell seven_seg_display
+   Instance path: lab2_ll_two_displays/seven_seg_display
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  LUT4	          7        10.6
+                               LUTGATE	          7        21.9
+---------------------------------------------------
+Report for cell clk_divider
+   Instance path: lab2_ll_two_displays/clk_divider
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  LUT4	         47        71.2
+                               LUTGATE	         13        40.6
+                                LUTCCU	         34        100.0
+                                PFUREG	         33        100.0
+---------------------------------------------------
+Report for cell mux2(WIDTH=3'b100)
+   Instance path: lab2_ll_two_displays/switch_mux
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  LUT4	          4         6.1
+                               LUTGATE	          4        12.5
+---------------------------------------------------
+Report for cell adder4
+   Instance path: lab2_ll_two_displays/led_cnt_adder
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  LUT4	          7        10.6
+                               LUTGATE	          7        21.9

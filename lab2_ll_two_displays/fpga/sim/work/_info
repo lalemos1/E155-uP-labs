@@ -3,13 +3,35 @@ K4
 z2
 Z0 !s12c _opt
 Z1 !s99 nomlopt
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
 Z2 !s12c _opt2
 R1
-R2
-R1
-R2
-R1
 Z3 !s12c _opt1
+R1
+R0
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R3
 R1
 R3
 R1
@@ -30,78 +52,128 @@ R1
 cModel Technology
 Z4 dC:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/sim
 T_opt
-!s110 1757481263
-VF?^0N1J=K9hk41ZFnTUjZ0
-04 12 4 work seven_seg_tb fast 0
-=1-00be43eaeac0-68c1092f-278-5310
+!s110 1757494828
+V86<m6[SjPce40R:O]XAGA3
+04 11 4 work lab_2_ll_tb fast 0
+=11-00be43eaeac0-68c13e2c-22-76b4
 R1
-Z5 !s12f OEM25U2 
-Z6 !s12b OEM100
-Z7 !s124 OEM100
-Z8 !s135 nogc
-Z9 o-quiet -auto_acc_if_foreign -work work +acc -L iCE40UP
-Z10 tCvgOpt 0
+!s12f OEM25U6 
+Z5 !s12b OEM100
+Z6 !s124 OEM100
+Z7 !s135 nogc
+Z8 o-quiet -auto_acc_if_foreign -work work +acc -L iCE40UP
+Z9 tCvgOpt 0
 n@_opt
-Z11 OL;O;2024.2;79
+Z10 OL;O;2024.2;79
 T_opt1
-!s110 1757478939
-VnTJV8l:D4_35j@SnlmDb:1
-Z12 04 21 4 work clk_divider_testbench fast 0
-=2-00be43eaeac0-68c1001b-227-3960
+!s110 1757486692
+VcL[gm84T5B<m?zVG_oko=1
+04 7 4 work mux2_tb fast 0
+=1-00be43eaeac0-68c11e64-d9-7618
 R1
-R5
-R6
-R7
-R8
-o-quiet -auto_acc_if_foreign -work work
-R10
-n@_opt1
-R11
-R4
-T_opt2
-!s110 1757479236
-VbLI>ggf^829Do@jgY`<j31
-R12
-=4-00be43eaeac0-68c10144-4-2e70
-R1
+Z11 !s12f OEM25U2 
 R5
 R6
 R7
 R8
 R9
+n@_opt1
 R10
-n@_opt2
-R11
 R4
-vclk_divider
-2C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/clk_divider.sv
-Z13 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-Z14 !s110 1757479231
+T_opt2
+!s110 1757487543
+VQbE<cN_[J`3XAT26ga;[?1
+04 9 4 work adder4_tb fast 0
+=1-00be43eaeac0-68c121b7-d2-42f0
+R1
+R11
+R5
+R6
+R7
+R8
+R9
+n@_opt2
+R10
+R4
+vadder4
+2C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/adder4.sv
+Z12 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z13 !s110 1757494650
 !i10b 1
-!s100 h>?W=GV4Xa=:NTYeMZl>_2
-IZBeWK>9h@oe25c6fZl:zA3
+!s100 RUUz1CT6h]Xd63i3lam`I2
+I?KNjMH7i;Gl:f>feigFj;3
 S1
 R4
-w1757476737
-8C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/clk_divider.sv
-FC:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/clk_divider.sv
-!i122 24
-L0 4 22
+Z14 w1757476345
+8C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/adder4.sv
+FC:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/adder4.sv
+!i122 89
+L0 4 7
 Z15 VDg1SIo80bB@j0V0VzS_@n1
 Z16 OL;L;2024.2;79
 r1
 !s85 0
 31
-Z17 !s108 1757479231.000000
+Z17 !s108 1757494650.000000
+!s107 C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/adder4.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/adder4.sv|
+!i113 0
+Z18 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R9
+vadder4_tb
+2C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/sim/adder4_tb.sv
+R12
+!s110 1757487524
+!i10b 1
+!s100 >3Kz=bzgR1<h<jBk65@?_0
+InD59LS]]9kVbJo]J`;MV02
+S1
+R4
+w1757487434
+8C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/sim/adder4_tb.sv
+FC:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/sim/adder4_tb.sv
+!i122 35
+L0 4 27
+R15
+R16
+r1
+!s85 0
+31
+!s108 1757487524.000000
+!s107 C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/sim/adder4_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/sim/adder4_tb.sv|
+!i113 0
+R18
+R9
+vclk_divider
+2C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/clk_divider.sv
+R12
+R13
+!i10b 1
+!s100 h>?W=GV4Xa=:NTYeMZl>_2
+IZBeWK>9h@oe25c6fZl:zA3
+S1
+R4
+Z19 w1757484526
+8C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/clk_divider.sv
+FC:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/clk_divider.sv
+!i122 90
+L0 4 22
+R15
+R16
+r1
+!s85 0
+31
+R17
 !s107 C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/clk_divider.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/clk_divider.sv|
 !i113 0
-Z18 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-R10
+R18
+R9
 vclk_divider_testbench
 2C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/sim/clk_divider_testbench.sv
-R13
-R14
+R12
+!s110 1757479231
 !i10b 1
 !s100 ]K]cKH2`ozJc=zE5ceU;<1
 IFkdXm[ZiRc^ib0lk?Z8OY0
@@ -117,41 +189,141 @@ R16
 r1
 !s85 0
 31
-R17
+!s108 1757479231.000000
 !s107 C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/sim/clk_divider_testbench.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/sim/clk_divider_testbench.sv|
 !i113 0
 R18
-R10
+R9
+vlab2_ll_two_displays
+2C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/lab2_ll_two_displays.sv
+R12
+R13
+!i10b 1
+!s100 K37_Ko@h:nb7Sadg`T^[N2
+I27ic@o>i<VzGCF:Ya0?ok2
+S1
+R4
+w1757491324
+8C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/lab2_ll_two_displays.sv
+FC:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/lab2_ll_two_displays.sv
+!i122 91
+L0 5 53
+R15
+R16
+r1
+!s85 0
+31
+R17
+!s107 C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/lab2_ll_two_displays.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/lab2_ll_two_displays.sv|
+!i113 0
+R18
+R9
+vlab_2_ll_tb
+2C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/sim/lab_2_ll_tb.sv
+R12
+!s110 1757494822
+!i10b 1
+!s100 ?EKAcoEV8]fZ4DdEf@6dU3
+InH=EOI0LPO7H^l]^mQ=:O3
+S1
+R4
+w1757494819
+8C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/sim/lab_2_ll_tb.sv
+FC:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/sim/lab_2_ll_tb.sv
+!i122 95
+L0 9 89
+R15
+R16
+r1
+!s85 0
+31
+!s108 1757494821.000000
+!s107 C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/sim/lab_2_ll_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/sim/lab_2_ll_tb.sv|
+!i113 0
+R18
+R9
+vmux2
+2C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/mux2.sv
+R12
+R13
+!i10b 1
+!s100 Xz:HXcW4mS^02oO97F;l^3
+I?M4T?U9<TVDf@fUY@FTzH2
+S1
+R4
+R14
+8C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/mux2.sv
+FC:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/mux2.sv
+!i122 92
+L0 6 8
+R15
+R16
+r1
+!s85 0
+31
+R17
+!s107 C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/mux2.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/mux2.sv|
+!i113 0
+R18
+R9
+vmux2_tb
+2C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/sim/mux2_tb.sv
+R12
+!s110 1757486674
+!i10b 1
+!s100 g2zO6010j_W17]D>[l=>z2
+IzfMV?SAI8d[L^hhGzXGnA1
+S1
+R4
+w1757486656
+8C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/sim/mux2_tb.sv
+FC:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/sim/mux2_tb.sv
+!i122 33
+L0 4 29
+R15
+R16
+r1
+!s85 0
+31
+!s108 1757486674.000000
+!s107 C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/sim/mux2_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/sim/mux2_tb.sv|
+!i113 0
+R18
+R9
 vseven_seg_display
 2C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/seven_seg_display.sv
+R12
 R13
-Z19 !s110 1757481243
 !i10b 1
 !s100 1cjNdcVlj<jAgU<@eEjPL2
 Ib1>6hAk;jLET6]??RYHhd3
 S1
 R4
-w1757479905
+R19
 8C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/seven_seg_display.sv
 FC:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/seven_seg_display.sv
-!i122 29
+!i122 93
 L0 5 25
 R15
 R16
 r1
 !s85 0
 31
-Z20 !s108 1757481243.000000
+R17
 !s107 C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/seven_seg_display.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/seven_seg_display.sv|
 !i113 0
 R18
-R10
+R9
 vseven_seg_tb
 2C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/sim/seven_seg_tb.sv
-R13
-R19
+R12
+!s110 1757481243
 !i10b 1
 !s100 Wc?BDP3`[Lo?B<3k3O]zB3
 ICRhZIZ76VBl<JaOUDezS81
@@ -167,9 +339,9 @@ R16
 r1
 !s85 0
 31
-R20
+!s108 1757481243.000000
 !s107 C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/sim/seven_seg_tb.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/sim/seven_seg_tb.sv|
 !i113 0
 R18
-R10
+R9

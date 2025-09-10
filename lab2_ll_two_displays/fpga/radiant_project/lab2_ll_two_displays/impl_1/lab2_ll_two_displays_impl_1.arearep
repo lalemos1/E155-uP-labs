@@ -1,12 +1,48 @@
 ----------------------------------------------------------------------
-Report for cell clk_divider.TECH
+Report for cell lab2_ll_two_displays.TECH
 Register bits:  33 of 5280 (0.625%)
-I/O cells:      35
+I/O cells:      22
                                   Cell usage:
                                cell     count   Res Usage(%)
-                               CCU2        34          100.0
+                               CCU2        17          100.0
                             FD1P3XZ        33          100.0
-                                 IB        34          100.0
-                               LUT4        51          100.0
-                                 OB         1          100.0
-                              TOTAL       153
+                              HSOSC         1          100.0
+                                 IB         9          100.0
+                               LUT4        31          100.0
+                                 OB        13          100.0
+SUB MODULES
+                             adder4         1
+                        clk_divider         1
+                 mux2(WIDTH=3'b100)         1
+                  seven_seg_display         1
+                              TOTAL       108
+----------------------------------------------------------------------
+Report for cell seven_seg_display.v1
+Instance Path : seven_seg_display
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                               LUT4         7           22.6
+                              TOTAL         7
+----------------------------------------------------------------------
+Report for cell clk_divider.v1
+Instance Path : clk_divider
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                                FA2        17          100.0
+                            FD1P3XZ        33          100.0
+                               LUT4        13           41.9
+                              TOTAL        63
+----------------------------------------------------------------------
+Report for cell mux2(WIDTH=3'b100).v1
+Instance Path : switch_mux
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                               LUT4         4           12.9
+                              TOTAL         4
+----------------------------------------------------------------------
+Report for cell adder4.v1
+Instance Path : led_cnt_adder
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                               LUT4         7           22.6
+                              TOTAL         7

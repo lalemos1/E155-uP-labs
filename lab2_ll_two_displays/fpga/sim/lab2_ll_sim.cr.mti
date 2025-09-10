@@ -1,1 +1,36 @@
+C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/seven_seg_display.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/seven_seg_display.sv
+Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+-- Compiling module seven_seg_display
 
+Top level modules:
+	seven_seg_display
+
+} {} {}} C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/mux2.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/mux2.sv
+Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+-- Compiling module mux2
+
+Top level modules:
+	mux2
+
+} {} {}} C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/clk_divider.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/clk_divider.sv
+Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+-- Compiling module clk_divider
+
+Top level modules:
+	clk_divider
+
+} {} {}} C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/adder4.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/adder4.sv
+Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+-- Compiling module adder4
+
+Top level modules:
+	adder4
+
+} {} {}} C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/lab2_ll_two_displays.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/lab2_ll_two_displays.sv
+Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+-- Compiling module lab2_ll_two_displays
+
+Top level modules:
+	lab2_ll_two_displays
+
+} {} {}}

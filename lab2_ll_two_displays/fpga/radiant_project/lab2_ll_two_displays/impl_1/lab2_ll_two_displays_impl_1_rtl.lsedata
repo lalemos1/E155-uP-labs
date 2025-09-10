@@ -1,7 +1,7 @@
-<top name = "clk_divider"  library = "work"  arch = ""  entry = "Verilog">
+<top name = "lab2_ll_two_displays"  library = "work"  arch = ""  entry = "Verilog">
 
 <clocks>
-    <clockitem name = "clk"  type = "port" />
+    <clockitem name = "clk"  type = "net" />
 </clocks>
 
 <!--
