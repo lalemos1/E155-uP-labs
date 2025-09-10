@@ -56,7 +56,7 @@ module lab_2_ll_tb;
 	
 	// Check seg outputs and led_cnt output against switch 1 & 2 inputs
 	always @(posedge clk_div_p2) begin
-		if (reset_p34) begin
+		if (reset_p34) begin  // remember-- reset is active low
 			/* // The automatic error correction is still buggy, but I can visually verify that the sim is working -- except the weird transition points on seg makes me think it is still broken (maybe has to do with how vector loading is delayed by #1?)
 			// Check both seg outputs
 			if (seg == seg_expected1) begin
