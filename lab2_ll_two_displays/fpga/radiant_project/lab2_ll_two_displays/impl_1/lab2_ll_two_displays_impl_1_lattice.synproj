@@ -42,11 +42,11 @@
 -path "C:/lscc/radiant/2024.2/ispfpga/ice40tp/data" "C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/radiant_project/lab2_ll_two_displays/impl_1" "C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/radiant_project/lab2_ll_two_displays"
 -ver "C:/lscc/radiant/2024.2/ip/pmi/pmi_iCE40UP.v"
 -lib pmi -vhd "C:/lscc/radiant/2024.2/ip/pmi/pmi_iCE40UP.vhd"
--sver "C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/adder4.sv"
-"C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/clk_divider.sv"
-"C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/lab2_ll_two_displays.sv"
-"C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/mux2.sv"
+-sver "C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/lab2_ll_two_displays.sv"
 "C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/seven_seg_display.sv"
+"C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/mux2.sv"
+"C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/adder4.sv"
+"C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/src/clk_divider.sv"
 
 
 -path "C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/radiant_project/lab2_ll_two_displays"

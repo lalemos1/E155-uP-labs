@@ -33,4 +33,11 @@ Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
 Top level modules:
 	lab2_ll_two_displays
 
+} {} {}} C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/sim/lab_2_ll_tb.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/sim/lab_2_ll_tb.sv
+Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+-- Compiling module lab_2_ll_tb
+
+Top level modules:
+	lab_2_ll_tb
+
 } {} {}}

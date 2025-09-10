@@ -8,33 +8,35 @@ Package: SG48
 Performance Grade:  High-Performance_1.2V
 
 Mapper:    version Radiant Software (64-bit) 2024.2.0.3.0
-Mapped on: Wed Sep 10 01:36:29 2025
+Mapped on: Wed Sep 10 14:34:24 2025
 
 Design Information
 ------------------
 
-Command line:   map -i lab2_ll_two_displays_impl_1_syn.udb -o
-     lab2_ll_two_displays_impl_1_map.udb -mp lab2_ll_two_displays_impl_1.mrp
-     -hierrpt -gui -msgset C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll
-     _two_displays/fpga/radiant_project/lab2_ll_two_displays/promote.xml
+Command line:   map -pdc C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_t
+     wo_displays/fpga/radiant_project/lab2_ll_two_displays/lab2_ll_pinout.pdc -i
+     lab2_ll_two_displays_impl_1_syn.udb -o lab2_ll_two_displays_impl_1_map.udb
+     -mp lab2_ll_two_displays_impl_1.mrp -hierrpt -gui -msgset C:/Users/llemos/D
+     ocuments/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/radiant_project/lab2
+     _ll_two_displays/promote.xml
 
 Design Summary
 --------------
 
    Number of slice registers:  33 out of  5280 (1%)
    Number of I/O registers:      0 out of   117 (0%)
-   Number of LUT4s:            66 out of  5280 (1%)
-      Number of logic LUT4s:              32
+   Number of LUT4s:            67 out of  5280 (1%)
+      Number of logic LUT4s:              33
       Number of ripple logic:             17 (34 LUT4s)
-   Number of IO sites used:   22 out of 39 (56%)
-      Number of IO sites used for general PIO: 22
+   Number of IO sites used:   23 out of 39 (59%)
+      Number of IO sites used for general PIO: 23
       Number of IO sites used for I3C: 0 out of 2 (0%)
       (note: If I3C is not used, its site can be used as general PIO)
-      Number of IO sites used for PIO+I3C: 22 out of 36 (61%)
+      Number of IO sites used for PIO+I3C: 23 out of 36 (64%)
       Number of IO sites used for OD+RGB IO buffers: 0 out of 3 (0%)
       (note: If RGB LED drivers are not used, sites can be used as OD outputs,
        see TN1288 iCE40 LED Driver Usage Guide)
-      Number of IO sites used for PIO+I3C+OD+RGB: 22 out of 39 (56%)
+      Number of IO sites used for PIO+I3C+OD+RGB: 23 out of 39 (59%)
    Number of DSPs:             0 out of 8 (0%)
    Number of I2Cs:             0 out of 2 (0%)
    Number of High Speed OSCs:  1 out of 1 (100%)
@@ -57,9 +59,7 @@ Design Summary
       Net clk_divider.n25: 1 loads, 1 SLICEs
    Top 10 highest fanout non-clock nets:
       Net clk_divider.n26: 17 loads
-      Net switch1or2[0]: 7 loads
-      Net switch1or2[1]: 7 loads
-      Net switch1or2[2]: 7 loads
+      Net clk_div_p44_c: 7 loads
 
                                     Page 1
 
@@ -69,8 +69,10 @@ Design Summary
 
 Design Summary (cont)
 ---------------------
+      Net switch1or2[0]: 7 loads
+      Net switch1or2[1]: 7 loads
+      Net switch1or2[2]: 7 loads
       Net switch1or2[3]: 7 loads
-      Net clk_div_p2_c: 6 loads
       Net switch1_c_0: 4 loads
       Net switch2_c_0: 4 loads
       Net switch1_c_1: 3 loads
@@ -125,8 +127,6 @@ IO (PIO) Attributes
 | seg[4]              | OUTPUT    |           |       |       |           |
 +---------------------+-----------+-----------+-------+-------+-----------+
 | seg[5]              | OUTPUT    |           |       |       |           |
-+---------------------+-----------+-----------+-------+-------+-----------+
-| seg[6]              | OUTPUT    |           |       |       |           |
 
                                     Page 2
 
@@ -136,6 +136,8 @@ IO (PIO) Attributes
 
 IO (PIO) Attributes (cont)
 --------------------------
++---------------------+-----------+-----------+-------+-------+-----------+
+| seg[6]              | OUTPUT    |           |       |       |           |
 +---------------------+-----------+-----------+-------+-------+-----------+
 | led_cnt[0]          | OUTPUT    |           |       |       |           |
 +---------------------+-----------+-----------+-------+-------+-----------+
@@ -147,7 +149,9 @@ IO (PIO) Attributes (cont)
 +---------------------+-----------+-----------+-------+-------+-----------+
 | led_cnt[4]          | OUTPUT    |           |       |       |           |
 +---------------------+-----------+-----------+-------+-------+-----------+
-| clk_div_p2          | OUTPUT    |           |       |       |           |
+| not_clk_div_p9      | OUTPUT    |           |       |       |           |
++---------------------+-----------+-----------+-------+-------+-----------+
+| clk_div_p44         | OUTPUT    |           |       |       |           |
 +---------------------+-----------+-----------+-------+-------+-----------+
 
 Removed logic
@@ -174,7 +178,7 @@ Instance Name: hf_osc.osc_inst
 Constraint Summary
 ------------------
 
-   Total number of constraints: 1
+   Total number of constraints: 23
    Total number of constraints dropped: 0
 
 Run Time and Memory Usage
@@ -183,11 +187,7 @@ Run Time and Memory Usage
    Total CPU Time: 0 secs
    Total REAL Time: 0 secs
    Peak Memory Usage: 67 MB
-Checksum -- map: d3f20d2594a7941071cff00e4d3ac1c6424e1de2
-
-
-
-
+Checksum -- map: 99d834aaf018e8d443a89f883ecf53e29a1a528a
 
 
 

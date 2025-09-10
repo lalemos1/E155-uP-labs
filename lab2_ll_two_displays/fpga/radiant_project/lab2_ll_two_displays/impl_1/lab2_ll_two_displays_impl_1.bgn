@@ -4,7 +4,7 @@ Copyright (c) 1995 AT&T Corp.   All rights reserved.
 Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
 Copyright (c) 2001 Agere Systems   All rights reserved.
 Copyright (c) 2002-2024 Lattice Semiconductor Corporation,  All rights reserved.
-Wed Sep 10 01:36:54 2025
+Wed Sep 10 14:34:48 2025
 
 
 Command: bitgen -w -gui -msgset C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/radiant_project/lab2_ll_two_displays/promote.xml -freq 0 lab2_ll_two_displays_impl_1.udb C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/radiant_project/lab2_ll_two_displays/impl_1/lab2_ll_two_displays_impl_1 

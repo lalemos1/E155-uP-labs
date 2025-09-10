@@ -1,6 +1,6 @@
 Lattice Timing Report -  Setup  and Hold, Version Radiant Software (64-bit) 2024.2.0.3.0
 
-Wed Sep 10 01:36:45 2025
+Wed Sep 10 14:34:39 2025
 
 Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
 Copyright (c) 1995 AT&T Corp.   All rights reserved.
@@ -52,7 +52,7 @@ create_clock -name {clk} -period 41.6667 [get_pins {hf_osc.osc_inst/CLKHF }]
 
 1.2  Constraint Coverage
 ---------------------------
-Constraint Coverage: 67.8571%
+Constraint Coverage: 67.1378%
 
 
 1.3  Overall Summary
@@ -111,7 +111,7 @@ switch1[3]                              |                     input
 seg[0]                                  |                    output
 -------------------------------------------------------------------
                                         |                          
-Number of I/O ports without constraint  |                        22
+Number of I/O ports without constraint  |                        23
                                         |                          
 -------------------------------------------------------------------
 
@@ -153,23 +153,22 @@ Clock Domain Crossing
 -------------------------------------------------------
           Listing 10 End Points          |    Slack    
 -------------------------------------------------------
-{clk_divider/counter_16__i27/SR   clk_divider/counter_16__i28/SR}              
-                                         |   25.330 ns 
-{clk_divider/counter_16__i23/SR   clk_divider/counter_16__i24/SR}              
-                                         |   25.330 ns 
-{clk_divider/counter_16__i25/SR   clk_divider/counter_16__i26/SR}              
-                                         |   25.330 ns 
-{clk_divider/counter_16__i29/SR   clk_divider/counter_16__i30/SR}              
-                                         |   25.330 ns 
-clk_divider/counter_16__i31/SR           |   25.924 ns 
-clk_divider/counter_16__i31/D            |   26.049 ns 
-clk_divider/counter_16__i30/D            |   26.881 ns 
-{clk_divider/counter_16__i17/SR   clk_divider/counter_16__i18/SR}              
-                                         |   27.035 ns 
-{clk_divider/counter_16__i19/SR   clk_divider/counter_16__i20/SR}              
-                                         |   27.035 ns 
-{clk_divider/counter_16__i7/SR   clk_divider/counter_16__i8/SR}              
-                                         |   27.035 ns 
+{clk_divider/counter_15__i23/SR   clk_divider/counter_15__i24/SR}              
+                                         |   25.608 ns 
+{clk_divider/counter_15__i29/SR   clk_divider/counter_15__i30/SR}              
+                                         |   25.608 ns 
+{clk_divider/counter_15__i25/SR   clk_divider/counter_15__i26/SR}              
+                                         |   25.608 ns 
+{clk_divider/counter_15__i27/SR   clk_divider/counter_15__i28/SR}              
+                                         |   25.608 ns 
+clk_divider/counter_15__i31/D            |   26.049 ns 
+clk_divider/counter_15__i31/SR           |   26.202 ns 
+clk_divider/counter_15__i30/D            |   26.881 ns 
+clk_divider/counter_15__i29/D            |   27.158 ns 
+{clk_divider/counter_15__i19/SR   clk_divider/counter_15__i20/SR}              
+                                         |   27.313 ns 
+{clk_divider/counter_15__i21/SR   clk_divider/counter_15__i22/SR}              
+                                         |   27.313 ns 
 -------------------------------------------------------
                                          |             
 Setup # of endpoints with negative slack:|           0 
@@ -192,15 +191,15 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
  ++++Path 1  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Path Begin       : clk_divider/counter_16__i5/Q  (SLICE_R21C4D)
-Path End         : {clk_divider/counter_16__i27/SR   clk_divider/counter_16__i28/SR}  (SLICE_R21C7C)
+Path Begin       : clk_divider/counter_15__i5/Q  (SLICE_R13C3D)
+Path End         : {clk_divider/counter_15__i23/SR   clk_divider/counter_15__i24/SR}  (SLICE_R13C6A)
 Source Clock     : clk (R)
 Destination Clock: clk (R)
 Logic Level      : 6
-Delay Ratio      : 76.7% (route), 23.3% (logic)
+Delay Ratio      : 76.3% (route), 23.7% (logic)
 Clock Skew       : 0.000 ns 
 Setup Constraint : 41.666 ns 
-Path Slack       : 25.329 ns  (Passed)
+Path Slack       : 25.607 ns  (Passed)
 
 
 Source Clock Path
@@ -208,33 +207,33 @@ Name                                      Cell/Site Name     Delay Name       In
 ----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                  0.000  19      
 clk_divider/clk                                              NET DELAY           5.499                  5.499  19      
-{clk_divider/counter_16__i5/CK   clk_divider/counter_16__i6/CK}
+{clk_divider/counter_15__i5/CK   clk_divider/counter_15__i6/CK}
                                                              CLOCK PIN           0.000                  5.499  1       
 
 
 Data Path
 Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
 ----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
-clk_divider/counter_16__i5/CK->clk_divider/counter_16__i5/Q
-                                          SLICE_R21C4D       CLK_TO_Q0_DELAY     1.388                  6.887  2       
+clk_divider/counter_15__i5/CK->clk_divider/counter_15__i5/Q
+                                          SLICE_R13C3D       CLK_TO_Q0_DELAY     1.388                  6.887  2       
 clk_divider/counter[5]                                       NET DELAY           2.736                  9.623  2       
 clk_divider/i15_4_lut/C->clk_divider/i15_4_lut/Z
-                                          SLICE_R22C6B       A1_TO_F1_DELAY      0.449                 10.072  1       
-clk_divider/n35                                              NET DELAY           2.763                 12.835  1       
+                                          SLICE_R14C5C       A0_TO_F0_DELAY      0.449                 10.072  1       
+clk_divider/n35                                              NET DELAY           2.485                 12.557  1       
 clk_divider/i18_3_lut/A->clk_divider/i18_3_lut/Z
-                                          SLICE_R22C5A       D1_TO_F1_DELAY      0.476                 13.311  1       
-clk_divider/n38                                              NET DELAY           0.304                 13.615  1       
+                                          SLICE_R14C4A       B1_TO_F1_DELAY      0.476                 13.033  1       
+clk_divider/n38                                              NET DELAY           0.304                 13.337  1       
 clk_divider/i1_4_lut/C->clk_divider/i1_4_lut/Z
-                                          SLICE_R22C5B       C0_TO_F0_DELAY      0.476                 14.091  1       
-clk_divider/n14                                              NET DELAY           0.304                 14.395  1       
+                                          SLICE_R14C4B       C0_TO_F0_DELAY      0.476                 13.813  1       
+clk_divider/n14                                              NET DELAY           0.304                 14.117  1       
 clk_divider/i10_4_lut/D->clk_divider/i10_4_lut/Z
-                                          SLICE_R22C5B       C1_TO_F1_DELAY      0.449                 14.844  2       
-clk_divider/n23                                              NET DELAY           2.168                 17.012  2       
-clk_divider/i601_2_lut_4_lut/A->clk_divider/i601_2_lut_4_lut/Z
-                                          SLICE_R22C5C       D1_TO_F1_DELAY      0.449                 17.461  17      
-clk_divider/n26                                              NET DELAY           3.846                 21.307  17      
-{clk_divider/counter_16__i27/SR   clk_divider/counter_16__i28/SR}
-                                                             ENDPOINT            0.000                 21.307  1       
+                                          SLICE_R14C4B       C1_TO_F1_DELAY      0.449                 14.566  2       
+clk_divider/n23                                              NET DELAY           2.168                 16.734  2       
+clk_divider/i521_2_lut_4_lut/A->clk_divider/i521_2_lut_4_lut/Z
+                                          SLICE_R14C4C       D1_TO_F1_DELAY      0.449                 17.183  17      
+clk_divider/n26                                              NET DELAY           3.846                 21.029  17      
+{clk_divider/counter_15__i23/SR   clk_divider/counter_15__i24/SR}
+                                                             ENDPOINT            0.000                 21.029  1       
 
 
 Destination Clock Path
@@ -243,30 +242,30 @@ Name                                      Cell/Site Name     Delay Name       In
                                                              CONSTRAINT          0.000                 41.666  1       
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                 41.666  19      
 clk_divider/clk                                              NET DELAY           5.499                 47.165  19      
-{clk_divider/counter_16__i27/CK   clk_divider/counter_16__i28/CK}
+{clk_divider/counter_15__i23/CK   clk_divider/counter_15__i24/CK}
                                                              CLOCK PIN           0.000                 47.165  1       
                                                              Uncertainty      -(0.000)                 47.165  
                                                              Setup time       -(0.529)                 46.636  
 ----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
 Required Time                                                                                          46.636  
-Arrival Time                                                                                        -(21.306)  
+Arrival Time                                                                                        -(21.028)  
 ----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
-Path Slack  (Passed)                                                                                   25.329  
+Path Slack  (Passed)                                                                                   25.607  
 
 
 
 
 ++++ Path 2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : clk_divider/counter_16__i5/Q  (SLICE_R21C4D)
-Path End         : {clk_divider/counter_16__i23/SR   clk_divider/counter_16__i24/SR}  (SLICE_R21C7A)
+Path Begin       : clk_divider/counter_15__i5/Q  (SLICE_R13C3D)
+Path End         : {clk_divider/counter_15__i29/SR   clk_divider/counter_15__i30/SR}  (SLICE_R13C6D)
 Source Clock     : clk (R)
 Destination Clock: clk (R)
 Logic Level      : 6
-Delay Ratio      : 76.7% (route), 23.3% (logic)
+Delay Ratio      : 76.3% (route), 23.7% (logic)
 Clock Skew       : 0.000 ns 
 Setup Constraint : 41.666 ns 
-Path Slack       : 25.329 ns  (Passed)
+Path Slack       : 25.607 ns  (Passed)
 
 
 Source Clock Path
@@ -274,33 +273,33 @@ Name                                      Cell/Site Name     Delay Name       In
 ----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                  0.000  19      
 clk_divider/clk                                              NET DELAY           5.499                  5.499  19      
-{clk_divider/counter_16__i5/CK   clk_divider/counter_16__i6/CK}
+{clk_divider/counter_15__i5/CK   clk_divider/counter_15__i6/CK}
                                                              CLOCK PIN           0.000                  5.499  1       
 
 
 Data Path
 Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
 ----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
-clk_divider/counter_16__i5/CK->clk_divider/counter_16__i5/Q
-                                          SLICE_R21C4D       CLK_TO_Q0_DELAY     1.388                  6.887  2       
+clk_divider/counter_15__i5/CK->clk_divider/counter_15__i5/Q
+                                          SLICE_R13C3D       CLK_TO_Q0_DELAY     1.388                  6.887  2       
 clk_divider/counter[5]                                       NET DELAY           2.736                  9.623  2       
 clk_divider/i15_4_lut/C->clk_divider/i15_4_lut/Z
-                                          SLICE_R22C6B       A1_TO_F1_DELAY      0.449                 10.072  1       
-clk_divider/n35                                              NET DELAY           2.763                 12.835  1       
+                                          SLICE_R14C5C       A0_TO_F0_DELAY      0.449                 10.072  1       
+clk_divider/n35                                              NET DELAY           2.485                 12.557  1       
 clk_divider/i18_3_lut/A->clk_divider/i18_3_lut/Z
-                                          SLICE_R22C5A       D1_TO_F1_DELAY      0.476                 13.311  1       
-clk_divider/n38                                              NET DELAY           0.304                 13.615  1       
+                                          SLICE_R14C4A       B1_TO_F1_DELAY      0.476                 13.033  1       
+clk_divider/n38                                              NET DELAY           0.304                 13.337  1       
 clk_divider/i1_4_lut/C->clk_divider/i1_4_lut/Z
-                                          SLICE_R22C5B       C0_TO_F0_DELAY      0.476                 14.091  1       
-clk_divider/n14                                              NET DELAY           0.304                 14.395  1       
+                                          SLICE_R14C4B       C0_TO_F0_DELAY      0.476                 13.813  1       
+clk_divider/n14                                              NET DELAY           0.304                 14.117  1       
 clk_divider/i10_4_lut/D->clk_divider/i10_4_lut/Z
-                                          SLICE_R22C5B       C1_TO_F1_DELAY      0.449                 14.844  2       
-clk_divider/n23                                              NET DELAY           2.168                 17.012  2       
-clk_divider/i601_2_lut_4_lut/A->clk_divider/i601_2_lut_4_lut/Z
-                                          SLICE_R22C5C       D1_TO_F1_DELAY      0.449                 17.461  17      
-clk_divider/n26                                              NET DELAY           3.846                 21.307  17      
-{clk_divider/counter_16__i23/SR   clk_divider/counter_16__i24/SR}
-                                                             ENDPOINT            0.000                 21.307  1       
+                                          SLICE_R14C4B       C1_TO_F1_DELAY      0.449                 14.566  2       
+clk_divider/n23                                              NET DELAY           2.168                 16.734  2       
+clk_divider/i521_2_lut_4_lut/A->clk_divider/i521_2_lut_4_lut/Z
+                                          SLICE_R14C4C       D1_TO_F1_DELAY      0.449                 17.183  17      
+clk_divider/n26                                              NET DELAY           3.846                 21.029  17      
+{clk_divider/counter_15__i29/SR   clk_divider/counter_15__i30/SR}
+                                                             ENDPOINT            0.000                 21.029  1       
 
 
 Destination Clock Path
@@ -309,30 +308,30 @@ Name                                      Cell/Site Name     Delay Name       In
                                                              CONSTRAINT          0.000                 41.666  1       
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                 41.666  19      
 clk_divider/clk                                              NET DELAY           5.499                 47.165  19      
-{clk_divider/counter_16__i23/CK   clk_divider/counter_16__i24/CK}
+{clk_divider/counter_15__i29/CK   clk_divider/counter_15__i30/CK}
                                                              CLOCK PIN           0.000                 47.165  1       
                                                              Uncertainty      -(0.000)                 47.165  
                                                              Setup time       -(0.529)                 46.636  
 ----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
 Required Time                                                                                          46.636  
-Arrival Time                                                                                        -(21.306)  
+Arrival Time                                                                                        -(21.028)  
 ----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
-Path Slack  (Passed)                                                                                   25.329  
+Path Slack  (Passed)                                                                                   25.607  
 
 
 
 
 ++++ Path 3 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : clk_divider/counter_16__i5/Q  (SLICE_R21C4D)
-Path End         : {clk_divider/counter_16__i25/SR   clk_divider/counter_16__i26/SR}  (SLICE_R21C7B)
+Path Begin       : clk_divider/counter_15__i5/Q  (SLICE_R13C3D)
+Path End         : {clk_divider/counter_15__i25/SR   clk_divider/counter_15__i26/SR}  (SLICE_R13C6B)
 Source Clock     : clk (R)
 Destination Clock: clk (R)
 Logic Level      : 6
-Delay Ratio      : 76.7% (route), 23.3% (logic)
+Delay Ratio      : 76.3% (route), 23.7% (logic)
 Clock Skew       : 0.000 ns 
 Setup Constraint : 41.666 ns 
-Path Slack       : 25.329 ns  (Passed)
+Path Slack       : 25.607 ns  (Passed)
 
 
 Source Clock Path
@@ -340,33 +339,33 @@ Name                                      Cell/Site Name     Delay Name       In
 ----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                  0.000  19      
 clk_divider/clk                                              NET DELAY           5.499                  5.499  19      
-{clk_divider/counter_16__i5/CK   clk_divider/counter_16__i6/CK}
+{clk_divider/counter_15__i5/CK   clk_divider/counter_15__i6/CK}
                                                              CLOCK PIN           0.000                  5.499  1       
 
 
 Data Path
 Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
 ----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
-clk_divider/counter_16__i5/CK->clk_divider/counter_16__i5/Q
-                                          SLICE_R21C4D       CLK_TO_Q0_DELAY     1.388                  6.887  2       
+clk_divider/counter_15__i5/CK->clk_divider/counter_15__i5/Q
+                                          SLICE_R13C3D       CLK_TO_Q0_DELAY     1.388                  6.887  2       
 clk_divider/counter[5]                                       NET DELAY           2.736                  9.623  2       
 clk_divider/i15_4_lut/C->clk_divider/i15_4_lut/Z
-                                          SLICE_R22C6B       A1_TO_F1_DELAY      0.449                 10.072  1       
-clk_divider/n35                                              NET DELAY           2.763                 12.835  1       
+                                          SLICE_R14C5C       A0_TO_F0_DELAY      0.449                 10.072  1       
+clk_divider/n35                                              NET DELAY           2.485                 12.557  1       
 clk_divider/i18_3_lut/A->clk_divider/i18_3_lut/Z
-                                          SLICE_R22C5A       D1_TO_F1_DELAY      0.476                 13.311  1       
-clk_divider/n38                                              NET DELAY           0.304                 13.615  1       
+                                          SLICE_R14C4A       B1_TO_F1_DELAY      0.476                 13.033  1       
+clk_divider/n38                                              NET DELAY           0.304                 13.337  1       
 clk_divider/i1_4_lut/C->clk_divider/i1_4_lut/Z
-                                          SLICE_R22C5B       C0_TO_F0_DELAY      0.476                 14.091  1       
-clk_divider/n14                                              NET DELAY           0.304                 14.395  1       
+                                          SLICE_R14C4B       C0_TO_F0_DELAY      0.476                 13.813  1       
+clk_divider/n14                                              NET DELAY           0.304                 14.117  1       
 clk_divider/i10_4_lut/D->clk_divider/i10_4_lut/Z
-                                          SLICE_R22C5B       C1_TO_F1_DELAY      0.449                 14.844  2       
-clk_divider/n23                                              NET DELAY           2.168                 17.012  2       
-clk_divider/i601_2_lut_4_lut/A->clk_divider/i601_2_lut_4_lut/Z
-                                          SLICE_R22C5C       D1_TO_F1_DELAY      0.449                 17.461  17      
-clk_divider/n26                                              NET DELAY           3.846                 21.307  17      
-{clk_divider/counter_16__i25/SR   clk_divider/counter_16__i26/SR}
-                                                             ENDPOINT            0.000                 21.307  1       
+                                          SLICE_R14C4B       C1_TO_F1_DELAY      0.449                 14.566  2       
+clk_divider/n23                                              NET DELAY           2.168                 16.734  2       
+clk_divider/i521_2_lut_4_lut/A->clk_divider/i521_2_lut_4_lut/Z
+                                          SLICE_R14C4C       D1_TO_F1_DELAY      0.449                 17.183  17      
+clk_divider/n26                                              NET DELAY           3.846                 21.029  17      
+{clk_divider/counter_15__i25/SR   clk_divider/counter_15__i26/SR}
+                                                             ENDPOINT            0.000                 21.029  1       
 
 
 Destination Clock Path
@@ -375,30 +374,30 @@ Name                                      Cell/Site Name     Delay Name       In
                                                              CONSTRAINT          0.000                 41.666  1       
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                 41.666  19      
 clk_divider/clk                                              NET DELAY           5.499                 47.165  19      
-{clk_divider/counter_16__i25/CK   clk_divider/counter_16__i26/CK}
+{clk_divider/counter_15__i25/CK   clk_divider/counter_15__i26/CK}
                                                              CLOCK PIN           0.000                 47.165  1       
                                                              Uncertainty      -(0.000)                 47.165  
                                                              Setup time       -(0.529)                 46.636  
 ----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
 Required Time                                                                                          46.636  
-Arrival Time                                                                                        -(21.306)  
+Arrival Time                                                                                        -(21.028)  
 ----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
-Path Slack  (Passed)                                                                                   25.329  
+Path Slack  (Passed)                                                                                   25.607  
 
 
 
 
 ++++ Path 4 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : clk_divider/counter_16__i5/Q  (SLICE_R21C4D)
-Path End         : {clk_divider/counter_16__i29/SR   clk_divider/counter_16__i30/SR}  (SLICE_R21C7D)
+Path Begin       : clk_divider/counter_15__i5/Q  (SLICE_R13C3D)
+Path End         : {clk_divider/counter_15__i27/SR   clk_divider/counter_15__i28/SR}  (SLICE_R13C6C)
 Source Clock     : clk (R)
 Destination Clock: clk (R)
 Logic Level      : 6
-Delay Ratio      : 76.7% (route), 23.3% (logic)
+Delay Ratio      : 76.3% (route), 23.7% (logic)
 Clock Skew       : 0.000 ns 
 Setup Constraint : 41.666 ns 
-Path Slack       : 25.329 ns  (Passed)
+Path Slack       : 25.607 ns  (Passed)
 
 
 Source Clock Path
@@ -406,33 +405,33 @@ Name                                      Cell/Site Name     Delay Name       In
 ----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                  0.000  19      
 clk_divider/clk                                              NET DELAY           5.499                  5.499  19      
-{clk_divider/counter_16__i5/CK   clk_divider/counter_16__i6/CK}
+{clk_divider/counter_15__i5/CK   clk_divider/counter_15__i6/CK}
                                                              CLOCK PIN           0.000                  5.499  1       
 
 
 Data Path
 Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
 ----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
-clk_divider/counter_16__i5/CK->clk_divider/counter_16__i5/Q
-                                          SLICE_R21C4D       CLK_TO_Q0_DELAY     1.388                  6.887  2       
+clk_divider/counter_15__i5/CK->clk_divider/counter_15__i5/Q
+                                          SLICE_R13C3D       CLK_TO_Q0_DELAY     1.388                  6.887  2       
 clk_divider/counter[5]                                       NET DELAY           2.736                  9.623  2       
 clk_divider/i15_4_lut/C->clk_divider/i15_4_lut/Z
-                                          SLICE_R22C6B       A1_TO_F1_DELAY      0.449                 10.072  1       
-clk_divider/n35                                              NET DELAY           2.763                 12.835  1       
+                                          SLICE_R14C5C       A0_TO_F0_DELAY      0.449                 10.072  1       
+clk_divider/n35                                              NET DELAY           2.485                 12.557  1       
 clk_divider/i18_3_lut/A->clk_divider/i18_3_lut/Z
-                                          SLICE_R22C5A       D1_TO_F1_DELAY      0.476                 13.311  1       
-clk_divider/n38                                              NET DELAY           0.304                 13.615  1       
+                                          SLICE_R14C4A       B1_TO_F1_DELAY      0.476                 13.033  1       
+clk_divider/n38                                              NET DELAY           0.304                 13.337  1       
 clk_divider/i1_4_lut/C->clk_divider/i1_4_lut/Z
-                                          SLICE_R22C5B       C0_TO_F0_DELAY      0.476                 14.091  1       
-clk_divider/n14                                              NET DELAY           0.304                 14.395  1       
+                                          SLICE_R14C4B       C0_TO_F0_DELAY      0.476                 13.813  1       
+clk_divider/n14                                              NET DELAY           0.304                 14.117  1       
 clk_divider/i10_4_lut/D->clk_divider/i10_4_lut/Z
-                                          SLICE_R22C5B       C1_TO_F1_DELAY      0.449                 14.844  2       
-clk_divider/n23                                              NET DELAY           2.168                 17.012  2       
-clk_divider/i601_2_lut_4_lut/A->clk_divider/i601_2_lut_4_lut/Z
-                                          SLICE_R22C5C       D1_TO_F1_DELAY      0.449                 17.461  17      
-clk_divider/n26                                              NET DELAY           3.846                 21.307  17      
-{clk_divider/counter_16__i29/SR   clk_divider/counter_16__i30/SR}
-                                                             ENDPOINT            0.000                 21.307  1       
+                                          SLICE_R14C4B       C1_TO_F1_DELAY      0.449                 14.566  2       
+clk_divider/n23                                              NET DELAY           2.168                 16.734  2       
+clk_divider/i521_2_lut_4_lut/A->clk_divider/i521_2_lut_4_lut/Z
+                                          SLICE_R14C4C       D1_TO_F1_DELAY      0.449                 17.183  17      
+clk_divider/n26                                              NET DELAY           3.846                 21.029  17      
+{clk_divider/counter_15__i27/SR   clk_divider/counter_15__i28/SR}
+                                                             ENDPOINT            0.000                 21.029  1       
 
 
 Destination Clock Path
@@ -441,87 +440,23 @@ Name                                      Cell/Site Name     Delay Name       In
                                                              CONSTRAINT          0.000                 41.666  1       
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                 41.666  19      
 clk_divider/clk                                              NET DELAY           5.499                 47.165  19      
-{clk_divider/counter_16__i29/CK   clk_divider/counter_16__i30/CK}
+{clk_divider/counter_15__i27/CK   clk_divider/counter_15__i28/CK}
                                                              CLOCK PIN           0.000                 47.165  1       
                                                              Uncertainty      -(0.000)                 47.165  
                                                              Setup time       -(0.529)                 46.636  
 ----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
 Required Time                                                                                          46.636  
-Arrival Time                                                                                        -(21.306)  
+Arrival Time                                                                                        -(21.028)  
 ----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
-Path Slack  (Passed)                                                                                   25.329  
+Path Slack  (Passed)                                                                                   25.607  
 
 
 
 
 ++++ Path 5 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : clk_divider/counter_16__i5/Q  (SLICE_R21C4D)
-Path End         : clk_divider/counter_16__i31/SR  (SLICE_R21C8A)
-Source Clock     : clk (R)
-Destination Clock: clk (R)
-Logic Level      : 6
-Delay Ratio      : 75.8% (route), 24.2% (logic)
-Clock Skew       : 0.000 ns 
-Setup Constraint : 41.666 ns 
-Path Slack       : 25.923 ns  (Passed)
-
-
-Source Clock Path
-Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
-----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
-hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                  0.000  19      
-clk_divider/clk                                              NET DELAY           5.499                  5.499  19      
-{clk_divider/counter_16__i5/CK   clk_divider/counter_16__i6/CK}
-                                                             CLOCK PIN           0.000                  5.499  1       
-
-
-Data Path
-Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
-----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
-clk_divider/counter_16__i5/CK->clk_divider/counter_16__i5/Q
-                                          SLICE_R21C4D       CLK_TO_Q0_DELAY     1.388                  6.887  2       
-clk_divider/counter[5]                                       NET DELAY           2.736                  9.623  2       
-clk_divider/i15_4_lut/C->clk_divider/i15_4_lut/Z
-                                          SLICE_R22C6B       A1_TO_F1_DELAY      0.449                 10.072  1       
-clk_divider/n35                                              NET DELAY           2.763                 12.835  1       
-clk_divider/i18_3_lut/A->clk_divider/i18_3_lut/Z
-                                          SLICE_R22C5A       D1_TO_F1_DELAY      0.476                 13.311  1       
-clk_divider/n38                                              NET DELAY           0.304                 13.615  1       
-clk_divider/i1_4_lut/C->clk_divider/i1_4_lut/Z
-                                          SLICE_R22C5B       C0_TO_F0_DELAY      0.476                 14.091  1       
-clk_divider/n14                                              NET DELAY           0.304                 14.395  1       
-clk_divider/i10_4_lut/D->clk_divider/i10_4_lut/Z
-                                          SLICE_R22C5B       C1_TO_F1_DELAY      0.449                 14.844  2       
-clk_divider/n23                                              NET DELAY           2.168                 17.012  2       
-clk_divider/i601_2_lut_4_lut/A->clk_divider/i601_2_lut_4_lut/Z
-                                          SLICE_R22C5C       D1_TO_F1_DELAY      0.449                 17.461  17      
-clk_divider/n26                                              NET DELAY           3.252                 20.713  17      
-clk_divider/counter_16__i31/SR                               ENDPOINT            0.000                 20.713  1       
-
-
-Destination Clock Path
-Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
-----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
-                                                             CONSTRAINT          0.000                 41.666  1       
-hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                 41.666  19      
-clk_divider/clk                                              NET DELAY           5.499                 47.165  19      
-clk_divider/counter_16__i31/CK                               CLOCK PIN           0.000                 47.165  1       
-                                                             Uncertainty      -(0.000)                 47.165  
-                                                             Setup time       -(0.529)                 46.636  
-----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
-Required Time                                                                                          46.636  
-Arrival Time                                                                                        -(20.712)  
-----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
-Path Slack  (Passed)                                                                                   25.923  
-
-
-
-
-++++ Path 6 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
-
-Path Begin       : clk_divider/counter_16__i0/Q  (SLICE_R21C4A)
-Path End         : clk_divider/counter_16__i31/D  (SLICE_R21C8A)
+Path Begin       : clk_divider/counter_15__i0/Q  (SLICE_R13C3A)
+Path End         : clk_divider/counter_15__i31/D  (SLICE_R13C7A)
 Source Clock     : clk (R)
 Destination Clock: clk (R)
 Logic Level      : 33
@@ -536,112 +471,112 @@ Name                                      Cell/Site Name     Delay Name         
 ----------------------------------------  -----------------  -------------------  --------  ---------------------  ------  
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY           0.000                  0.000  19      
 clk_divider/clk                                              NET DELAY               5.499                  5.499  19      
-clk_divider/counter_16__i0/CK                                CLOCK PIN               0.000                  5.499  1       
+clk_divider/counter_15__i0/CK                                CLOCK PIN               0.000                  5.499  1       
 
 
 Data Path
 Name                                      Cell/Site Name     Delay Name           Incr      Arrival/Required Time  Fanout  
 ----------------------------------------  -----------------  -------------------  --------  ---------------------  ------  
-clk_divider/counter_16__i0/CK->clk_divider/counter_16__i0/Q
-                                          SLICE_R21C4A       CLK_TO_Q1_DELAY         1.388                  6.887  2       
+clk_divider/counter_15__i0/CK->clk_divider/counter_15__i0/Q
+                                          SLICE_R13C3A       CLK_TO_Q1_DELAY         1.388                  6.887  2       
 clk_divider/counter[0]                                       NET DELAY               2.022                  8.909  2       
-clk_divider/counter_16_add_4_1/C1->clk_divider/counter_16_add_4_1/CO1
-                                          SLICE_R21C4A       C1_TO_COUT1_DELAY       0.343                  9.252  2       
-clk_divider/n315                                             NET DELAY               0.000                  9.252  2       
-clk_divider/counter_16_add_4_3/CI0->clk_divider/counter_16_add_4_3/CO0
-                                          SLICE_R21C4B       CIN0_TO_COUT0_DELAY     0.277                  9.529  2       
-clk_divider/n906                                             NET DELAY               0.000                  9.529  2       
-clk_divider/counter_16_add_4_3/CI1->clk_divider/counter_16_add_4_3/CO1
-                                          SLICE_R21C4B       CIN1_TO_COUT1_DELAY     0.277                  9.806  2       
-clk_divider/n317                                             NET DELAY               0.000                  9.806  2       
-clk_divider/counter_16_add_4_5/CI0->clk_divider/counter_16_add_4_5/CO0
-                                          SLICE_R21C4C       CIN0_TO_COUT0_DELAY     0.277                 10.083  2       
-clk_divider/n909                                             NET DELAY               0.000                 10.083  2       
-clk_divider/counter_16_add_4_5/CI1->clk_divider/counter_16_add_4_5/CO1
-                                          SLICE_R21C4C       CIN1_TO_COUT1_DELAY     0.277                 10.360  2       
-clk_divider/n319                                             NET DELAY               0.000                 10.360  2       
-clk_divider/counter_16_add_4_7/CI0->clk_divider/counter_16_add_4_7/CO0
-                                          SLICE_R21C4D       CIN0_TO_COUT0_DELAY     0.277                 10.637  2       
-clk_divider/n912                                             NET DELAY               0.000                 10.637  2       
-clk_divider/counter_16_add_4_7/CI1->clk_divider/counter_16_add_4_7/CO1
-                                          SLICE_R21C4D       CIN1_TO_COUT1_DELAY     0.277                 10.914  2       
-clk_divider/n321                                             NET DELAY               0.555                 11.469  2       
-clk_divider/counter_16_add_4_9/CI0->clk_divider/counter_16_add_4_9/CO0
-                                          SLICE_R21C5A       CIN0_TO_COUT0_DELAY     0.277                 11.746  2       
-clk_divider/n915                                             NET DELAY               0.000                 11.746  2       
-clk_divider/counter_16_add_4_9/CI1->clk_divider/counter_16_add_4_9/CO1
-                                          SLICE_R21C5A       CIN1_TO_COUT1_DELAY     0.277                 12.023  2       
-clk_divider/n323                                             NET DELAY               0.000                 12.023  2       
-clk_divider/counter_16_add_4_11/CI0->clk_divider/counter_16_add_4_11/CO0
-                                          SLICE_R21C5B       CIN0_TO_COUT0_DELAY     0.277                 12.300  2       
-clk_divider/n918                                             NET DELAY               0.000                 12.300  2       
-clk_divider/counter_16_add_4_11/CI1->clk_divider/counter_16_add_4_11/CO1
-                                          SLICE_R21C5B       CIN1_TO_COUT1_DELAY     0.277                 12.577  2       
-clk_divider/n325                                             NET DELAY               0.000                 12.577  2       
-clk_divider/counter_16_add_4_13/CI0->clk_divider/counter_16_add_4_13/CO0
-                                          SLICE_R21C5C       CIN0_TO_COUT0_DELAY     0.277                 12.854  2       
-clk_divider/n921                                             NET DELAY               0.000                 12.854  2       
-clk_divider/counter_16_add_4_13/CI1->clk_divider/counter_16_add_4_13/CO1
-                                          SLICE_R21C5C       CIN1_TO_COUT1_DELAY     0.277                 13.131  2       
-clk_divider/n327                                             NET DELAY               0.000                 13.131  2       
-clk_divider/counter_16_add_4_15/CI0->clk_divider/counter_16_add_4_15/CO0
-                                          SLICE_R21C5D       CIN0_TO_COUT0_DELAY     0.277                 13.408  2       
-clk_divider/n924                                             NET DELAY               0.000                 13.408  2       
-clk_divider/counter_16_add_4_15/CI1->clk_divider/counter_16_add_4_15/CO1
-                                          SLICE_R21C5D       CIN1_TO_COUT1_DELAY     0.277                 13.685  2       
-clk_divider/n329                                             NET DELAY               0.555                 14.240  2       
-clk_divider/counter_16_add_4_17/CI0->clk_divider/counter_16_add_4_17/CO0
-                                          SLICE_R21C6A       CIN0_TO_COUT0_DELAY     0.277                 14.517  2       
-clk_divider/n927                                             NET DELAY               0.000                 14.517  2       
-clk_divider/counter_16_add_4_17/CI1->clk_divider/counter_16_add_4_17/CO1
-                                          SLICE_R21C6A       CIN1_TO_COUT1_DELAY     0.277                 14.794  2       
-clk_divider/n331                                             NET DELAY               0.000                 14.794  2       
-clk_divider/counter_16_add_4_19/CI0->clk_divider/counter_16_add_4_19/CO0
-                                          SLICE_R21C6B       CIN0_TO_COUT0_DELAY     0.277                 15.071  2       
-clk_divider/n930                                             NET DELAY               0.000                 15.071  2       
-clk_divider/counter_16_add_4_19/CI1->clk_divider/counter_16_add_4_19/CO1
-                                          SLICE_R21C6B       CIN1_TO_COUT1_DELAY     0.277                 15.348  2       
-clk_divider/n333                                             NET DELAY               0.000                 15.348  2       
-clk_divider/counter_16_add_4_21/CI0->clk_divider/counter_16_add_4_21/CO0
-                                          SLICE_R21C6C       CIN0_TO_COUT0_DELAY     0.277                 15.625  2       
-clk_divider/n933                                             NET DELAY               0.000                 15.625  2       
-clk_divider/counter_16_add_4_21/CI1->clk_divider/counter_16_add_4_21/CO1
-                                          SLICE_R21C6C       CIN1_TO_COUT1_DELAY     0.277                 15.902  2       
-clk_divider/n335                                             NET DELAY               0.000                 15.902  2       
-clk_divider/counter_16_add_4_23/CI0->clk_divider/counter_16_add_4_23/CO0
-                                          SLICE_R21C6D       CIN0_TO_COUT0_DELAY     0.277                 16.179  2       
-clk_divider/n936                                             NET DELAY               0.000                 16.179  2       
-clk_divider/counter_16_add_4_23/CI1->clk_divider/counter_16_add_4_23/CO1
-                                          SLICE_R21C6D       CIN1_TO_COUT1_DELAY     0.277                 16.456  2       
-clk_divider/n337                                             NET DELAY               0.555                 17.011  2       
-clk_divider/counter_16_add_4_25/CI0->clk_divider/counter_16_add_4_25/CO0
-                                          SLICE_R21C7A       CIN0_TO_COUT0_DELAY     0.277                 17.288  2       
-clk_divider/n939                                             NET DELAY               0.000                 17.288  2       
-clk_divider/counter_16_add_4_25/CI1->clk_divider/counter_16_add_4_25/CO1
-                                          SLICE_R21C7A       CIN1_TO_COUT1_DELAY     0.277                 17.565  2       
-clk_divider/n339                                             NET DELAY               0.000                 17.565  2       
-clk_divider/counter_16_add_4_27/CI0->clk_divider/counter_16_add_4_27/CO0
-                                          SLICE_R21C7B       CIN0_TO_COUT0_DELAY     0.277                 17.842  2       
-clk_divider/n942                                             NET DELAY               0.000                 17.842  2       
-clk_divider/counter_16_add_4_27/CI1->clk_divider/counter_16_add_4_27/CO1
-                                          SLICE_R21C7B       CIN1_TO_COUT1_DELAY     0.277                 18.119  2       
-clk_divider/n341                                             NET DELAY               0.000                 18.119  2       
-clk_divider/counter_16_add_4_29/CI0->clk_divider/counter_16_add_4_29/CO0
-                                          SLICE_R21C7C       CIN0_TO_COUT0_DELAY     0.277                 18.396  2       
-clk_divider/n945                                             NET DELAY               0.000                 18.396  2       
-clk_divider/counter_16_add_4_29/CI1->clk_divider/counter_16_add_4_29/CO1
-                                          SLICE_R21C7C       CIN1_TO_COUT1_DELAY     0.277                 18.673  2       
-clk_divider/n343                                             NET DELAY               0.000                 18.673  2       
-clk_divider/counter_16_add_4_31/CI0->clk_divider/counter_16_add_4_31/CO0
-                                          SLICE_R21C7D       CIN0_TO_COUT0_DELAY     0.277                 18.950  2       
-clk_divider/n948                                             NET DELAY               0.000                 18.950  2       
-clk_divider/counter_16_add_4_31/CI1->clk_divider/counter_16_add_4_31/CO1
-                                          SLICE_R21C7D       CIN1_TO_COUT1_DELAY     0.277                 19.227  2       
-clk_divider/n345                                             NET DELAY               1.216                 20.443  2       
-clk_divider/counter_16_add_4_33/D0->clk_divider/counter_16_add_4_33/S0
-                                          SLICE_R21C8A       D0_TO_F0_DELAY          0.476                 20.919  1       
+clk_divider/counter_15_add_4_1/C1->clk_divider/counter_15_add_4_1/CO1
+                                          SLICE_R13C3A       C1_TO_COUT1_DELAY       0.343                  9.252  2       
+clk_divider/n236                                             NET DELAY               0.000                  9.252  2       
+clk_divider/counter_15_add_4_3/CI0->clk_divider/counter_15_add_4_3/CO0
+                                          SLICE_R13C3B       CIN0_TO_COUT0_DELAY     0.277                  9.529  2       
+clk_divider/n827                                             NET DELAY               0.000                  9.529  2       
+clk_divider/counter_15_add_4_3/CI1->clk_divider/counter_15_add_4_3/CO1
+                                          SLICE_R13C3B       CIN1_TO_COUT1_DELAY     0.277                  9.806  2       
+clk_divider/n238                                             NET DELAY               0.000                  9.806  2       
+clk_divider/counter_15_add_4_5/CI0->clk_divider/counter_15_add_4_5/CO0
+                                          SLICE_R13C3C       CIN0_TO_COUT0_DELAY     0.277                 10.083  2       
+clk_divider/n830                                             NET DELAY               0.000                 10.083  2       
+clk_divider/counter_15_add_4_5/CI1->clk_divider/counter_15_add_4_5/CO1
+                                          SLICE_R13C3C       CIN1_TO_COUT1_DELAY     0.277                 10.360  2       
+clk_divider/n240                                             NET DELAY               0.000                 10.360  2       
+clk_divider/counter_15_add_4_7/CI0->clk_divider/counter_15_add_4_7/CO0
+                                          SLICE_R13C3D       CIN0_TO_COUT0_DELAY     0.277                 10.637  2       
+clk_divider/n833                                             NET DELAY               0.000                 10.637  2       
+clk_divider/counter_15_add_4_7/CI1->clk_divider/counter_15_add_4_7/CO1
+                                          SLICE_R13C3D       CIN1_TO_COUT1_DELAY     0.277                 10.914  2       
+clk_divider/n242                                             NET DELAY               0.555                 11.469  2       
+clk_divider/counter_15_add_4_9/CI0->clk_divider/counter_15_add_4_9/CO0
+                                          SLICE_R13C4A       CIN0_TO_COUT0_DELAY     0.277                 11.746  2       
+clk_divider/n836                                             NET DELAY               0.000                 11.746  2       
+clk_divider/counter_15_add_4_9/CI1->clk_divider/counter_15_add_4_9/CO1
+                                          SLICE_R13C4A       CIN1_TO_COUT1_DELAY     0.277                 12.023  2       
+clk_divider/n244                                             NET DELAY               0.000                 12.023  2       
+clk_divider/counter_15_add_4_11/CI0->clk_divider/counter_15_add_4_11/CO0
+                                          SLICE_R13C4B       CIN0_TO_COUT0_DELAY     0.277                 12.300  2       
+clk_divider/n839                                             NET DELAY               0.000                 12.300  2       
+clk_divider/counter_15_add_4_11/CI1->clk_divider/counter_15_add_4_11/CO1
+                                          SLICE_R13C4B       CIN1_TO_COUT1_DELAY     0.277                 12.577  2       
+clk_divider/n246                                             NET DELAY               0.000                 12.577  2       
+clk_divider/counter_15_add_4_13/CI0->clk_divider/counter_15_add_4_13/CO0
+                                          SLICE_R13C4C       CIN0_TO_COUT0_DELAY     0.277                 12.854  2       
+clk_divider/n842                                             NET DELAY               0.000                 12.854  2       
+clk_divider/counter_15_add_4_13/CI1->clk_divider/counter_15_add_4_13/CO1
+                                          SLICE_R13C4C       CIN1_TO_COUT1_DELAY     0.277                 13.131  2       
+clk_divider/n248                                             NET DELAY               0.000                 13.131  2       
+clk_divider/counter_15_add_4_15/CI0->clk_divider/counter_15_add_4_15/CO0
+                                          SLICE_R13C4D       CIN0_TO_COUT0_DELAY     0.277                 13.408  2       
+clk_divider/n845                                             NET DELAY               0.000                 13.408  2       
+clk_divider/counter_15_add_4_15/CI1->clk_divider/counter_15_add_4_15/CO1
+                                          SLICE_R13C4D       CIN1_TO_COUT1_DELAY     0.277                 13.685  2       
+clk_divider/n250                                             NET DELAY               0.555                 14.240  2       
+clk_divider/counter_15_add_4_17/CI0->clk_divider/counter_15_add_4_17/CO0
+                                          SLICE_R13C5A       CIN0_TO_COUT0_DELAY     0.277                 14.517  2       
+clk_divider/n848                                             NET DELAY               0.000                 14.517  2       
+clk_divider/counter_15_add_4_17/CI1->clk_divider/counter_15_add_4_17/CO1
+                                          SLICE_R13C5A       CIN1_TO_COUT1_DELAY     0.277                 14.794  2       
+clk_divider/n252                                             NET DELAY               0.000                 14.794  2       
+clk_divider/counter_15_add_4_19/CI0->clk_divider/counter_15_add_4_19/CO0
+                                          SLICE_R13C5B       CIN0_TO_COUT0_DELAY     0.277                 15.071  2       
+clk_divider/n851                                             NET DELAY               0.000                 15.071  2       
+clk_divider/counter_15_add_4_19/CI1->clk_divider/counter_15_add_4_19/CO1
+                                          SLICE_R13C5B       CIN1_TO_COUT1_DELAY     0.277                 15.348  2       
+clk_divider/n254                                             NET DELAY               0.000                 15.348  2       
+clk_divider/counter_15_add_4_21/CI0->clk_divider/counter_15_add_4_21/CO0
+                                          SLICE_R13C5C       CIN0_TO_COUT0_DELAY     0.277                 15.625  2       
+clk_divider/n854                                             NET DELAY               0.000                 15.625  2       
+clk_divider/counter_15_add_4_21/CI1->clk_divider/counter_15_add_4_21/CO1
+                                          SLICE_R13C5C       CIN1_TO_COUT1_DELAY     0.277                 15.902  2       
+clk_divider/n256                                             NET DELAY               0.000                 15.902  2       
+clk_divider/counter_15_add_4_23/CI0->clk_divider/counter_15_add_4_23/CO0
+                                          SLICE_R13C5D       CIN0_TO_COUT0_DELAY     0.277                 16.179  2       
+clk_divider/n857                                             NET DELAY               0.000                 16.179  2       
+clk_divider/counter_15_add_4_23/CI1->clk_divider/counter_15_add_4_23/CO1
+                                          SLICE_R13C5D       CIN1_TO_COUT1_DELAY     0.277                 16.456  2       
+clk_divider/n258                                             NET DELAY               0.555                 17.011  2       
+clk_divider/counter_15_add_4_25/CI0->clk_divider/counter_15_add_4_25/CO0
+                                          SLICE_R13C6A       CIN0_TO_COUT0_DELAY     0.277                 17.288  2       
+clk_divider/n860                                             NET DELAY               0.000                 17.288  2       
+clk_divider/counter_15_add_4_25/CI1->clk_divider/counter_15_add_4_25/CO1
+                                          SLICE_R13C6A       CIN1_TO_COUT1_DELAY     0.277                 17.565  2       
+clk_divider/n260                                             NET DELAY               0.000                 17.565  2       
+clk_divider/counter_15_add_4_27/CI0->clk_divider/counter_15_add_4_27/CO0
+                                          SLICE_R13C6B       CIN0_TO_COUT0_DELAY     0.277                 17.842  2       
+clk_divider/n863                                             NET DELAY               0.000                 17.842  2       
+clk_divider/counter_15_add_4_27/CI1->clk_divider/counter_15_add_4_27/CO1
+                                          SLICE_R13C6B       CIN1_TO_COUT1_DELAY     0.277                 18.119  2       
+clk_divider/n262                                             NET DELAY               0.000                 18.119  2       
+clk_divider/counter_15_add_4_29/CI0->clk_divider/counter_15_add_4_29/CO0
+                                          SLICE_R13C6C       CIN0_TO_COUT0_DELAY     0.277                 18.396  2       
+clk_divider/n866                                             NET DELAY               0.000                 18.396  2       
+clk_divider/counter_15_add_4_29/CI1->clk_divider/counter_15_add_4_29/CO1
+                                          SLICE_R13C6C       CIN1_TO_COUT1_DELAY     0.277                 18.673  2       
+clk_divider/n264                                             NET DELAY               0.000                 18.673  2       
+clk_divider/counter_15_add_4_31/CI0->clk_divider/counter_15_add_4_31/CO0
+                                          SLICE_R13C6D       CIN0_TO_COUT0_DELAY     0.277                 18.950  2       
+clk_divider/n869                                             NET DELAY               0.000                 18.950  2       
+clk_divider/counter_15_add_4_31/CI1->clk_divider/counter_15_add_4_31/CO1
+                                          SLICE_R13C6D       CIN1_TO_COUT1_DELAY     0.277                 19.227  2       
+clk_divider/n266                                             NET DELAY               1.216                 20.443  2       
+clk_divider/counter_15_add_4_33/D0->clk_divider/counter_15_add_4_33/S0
+                                          SLICE_R13C7A       D0_TO_F0_DELAY          0.476                 20.919  1       
 clk_divider/n133[31]                                         NET DELAY               0.000                 20.919  1       
-clk_divider/counter_16__i31/D                                ENDPOINT                0.000                 20.919  1       
+clk_divider/counter_15__i31/D                                ENDPOINT                0.000                 20.919  1       
 
 
 Destination Clock Path
@@ -650,7 +585,7 @@ Name                                      Cell/Site Name     Delay Name         
                                                              CONSTRAINT              0.000                 41.666  1       
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY           0.000                 41.666  19      
 clk_divider/clk                                              NET DELAY               5.499                 47.165  19      
-clk_divider/counter_16__i31/CK                               CLOCK PIN               0.000                 47.165  1       
+clk_divider/counter_15__i31/CK                               CLOCK PIN               0.000                 47.165  1       
                                                              Uncertainty          -(0.000)                 47.165  
                                                              Setup time           -(0.198)                 46.967  
 ----------------------------------------  -----------------  -------------------  --------  ---------------------  ------  
@@ -662,10 +597,74 @@ Path Slack  (Passed)                                                            
 
 
 
+++++ Path 6 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : clk_divider/counter_15__i5/Q  (SLICE_R13C3D)
+Path End         : clk_divider/counter_15__i31/SR  (SLICE_R13C7A)
+Source Clock     : clk (R)
+Destination Clock: clk (R)
+Logic Level      : 6
+Delay Ratio      : 75.3% (route), 24.7% (logic)
+Clock Skew       : 0.000 ns 
+Setup Constraint : 41.666 ns 
+Path Slack       : 26.201 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                  0.000  19      
+clk_divider/clk                                              NET DELAY           5.499                  5.499  19      
+{clk_divider/counter_15__i5/CK   clk_divider/counter_15__i6/CK}
+                                                             CLOCK PIN           0.000                  5.499  1       
+
+
+Data Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+clk_divider/counter_15__i5/CK->clk_divider/counter_15__i5/Q
+                                          SLICE_R13C3D       CLK_TO_Q0_DELAY     1.388                  6.887  2       
+clk_divider/counter[5]                                       NET DELAY           2.736                  9.623  2       
+clk_divider/i15_4_lut/C->clk_divider/i15_4_lut/Z
+                                          SLICE_R14C5C       A0_TO_F0_DELAY      0.449                 10.072  1       
+clk_divider/n35                                              NET DELAY           2.485                 12.557  1       
+clk_divider/i18_3_lut/A->clk_divider/i18_3_lut/Z
+                                          SLICE_R14C4A       B1_TO_F1_DELAY      0.476                 13.033  1       
+clk_divider/n38                                              NET DELAY           0.304                 13.337  1       
+clk_divider/i1_4_lut/C->clk_divider/i1_4_lut/Z
+                                          SLICE_R14C4B       C0_TO_F0_DELAY      0.476                 13.813  1       
+clk_divider/n14                                              NET DELAY           0.304                 14.117  1       
+clk_divider/i10_4_lut/D->clk_divider/i10_4_lut/Z
+                                          SLICE_R14C4B       C1_TO_F1_DELAY      0.449                 14.566  2       
+clk_divider/n23                                              NET DELAY           2.168                 16.734  2       
+clk_divider/i521_2_lut_4_lut/A->clk_divider/i521_2_lut_4_lut/Z
+                                          SLICE_R14C4C       D1_TO_F1_DELAY      0.449                 17.183  17      
+clk_divider/n26                                              NET DELAY           3.252                 20.435  17      
+clk_divider/counter_15__i31/SR                               ENDPOINT            0.000                 20.435  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+                                                             CONSTRAINT          0.000                 41.666  1       
+hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                 41.666  19      
+clk_divider/clk                                              NET DELAY           5.499                 47.165  19      
+clk_divider/counter_15__i31/CK                               CLOCK PIN           0.000                 47.165  1       
+                                                             Uncertainty      -(0.000)                 47.165  
+                                                             Setup time       -(0.529)                 46.636  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+Required Time                                                                                          46.636  
+Arrival Time                                                                                        -(20.434)  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+Path Slack  (Passed)                                                                                   26.201  
+
+
+
+
 ++++ Path 7 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : clk_divider/counter_16__i0/Q  (SLICE_R21C4A)
-Path End         : clk_divider/counter_16__i30/D  (SLICE_R21C7D)
+Path Begin       : clk_divider/counter_15__i0/Q  (SLICE_R13C3A)
+Path End         : clk_divider/counter_15__i30/D  (SLICE_R13C6D)
 Source Clock     : clk (R)
 Destination Clock: clk (R)
 Logic Level      : 32
@@ -680,109 +679,109 @@ Name                                      Cell/Site Name     Delay Name         
 ----------------------------------------  -----------------  -------------------  --------  ---------------------  ------  
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY           0.000                  0.000  19      
 clk_divider/clk                                              NET DELAY               5.499                  5.499  19      
-clk_divider/counter_16__i0/CK                                CLOCK PIN               0.000                  5.499  1       
+clk_divider/counter_15__i0/CK                                CLOCK PIN               0.000                  5.499  1       
 
 
 Data Path
 Name                                      Cell/Site Name     Delay Name           Incr      Arrival/Required Time  Fanout  
 ----------------------------------------  -----------------  -------------------  --------  ---------------------  ------  
-clk_divider/counter_16__i0/CK->clk_divider/counter_16__i0/Q
-                                          SLICE_R21C4A       CLK_TO_Q1_DELAY         1.388                  6.887  2       
+clk_divider/counter_15__i0/CK->clk_divider/counter_15__i0/Q
+                                          SLICE_R13C3A       CLK_TO_Q1_DELAY         1.388                  6.887  2       
 clk_divider/counter[0]                                       NET DELAY               2.022                  8.909  2       
-clk_divider/counter_16_add_4_1/C1->clk_divider/counter_16_add_4_1/CO1
-                                          SLICE_R21C4A       C1_TO_COUT1_DELAY       0.343                  9.252  2       
-clk_divider/n315                                             NET DELAY               0.000                  9.252  2       
-clk_divider/counter_16_add_4_3/CI0->clk_divider/counter_16_add_4_3/CO0
-                                          SLICE_R21C4B       CIN0_TO_COUT0_DELAY     0.277                  9.529  2       
-clk_divider/n906                                             NET DELAY               0.000                  9.529  2       
-clk_divider/counter_16_add_4_3/CI1->clk_divider/counter_16_add_4_3/CO1
-                                          SLICE_R21C4B       CIN1_TO_COUT1_DELAY     0.277                  9.806  2       
-clk_divider/n317                                             NET DELAY               0.000                  9.806  2       
-clk_divider/counter_16_add_4_5/CI0->clk_divider/counter_16_add_4_5/CO0
-                                          SLICE_R21C4C       CIN0_TO_COUT0_DELAY     0.277                 10.083  2       
-clk_divider/n909                                             NET DELAY               0.000                 10.083  2       
-clk_divider/counter_16_add_4_5/CI1->clk_divider/counter_16_add_4_5/CO1
-                                          SLICE_R21C4C       CIN1_TO_COUT1_DELAY     0.277                 10.360  2       
-clk_divider/n319                                             NET DELAY               0.000                 10.360  2       
-clk_divider/counter_16_add_4_7/CI0->clk_divider/counter_16_add_4_7/CO0
-                                          SLICE_R21C4D       CIN0_TO_COUT0_DELAY     0.277                 10.637  2       
-clk_divider/n912                                             NET DELAY               0.000                 10.637  2       
-clk_divider/counter_16_add_4_7/CI1->clk_divider/counter_16_add_4_7/CO1
-                                          SLICE_R21C4D       CIN1_TO_COUT1_DELAY     0.277                 10.914  2       
-clk_divider/n321                                             NET DELAY               0.555                 11.469  2       
-clk_divider/counter_16_add_4_9/CI0->clk_divider/counter_16_add_4_9/CO0
-                                          SLICE_R21C5A       CIN0_TO_COUT0_DELAY     0.277                 11.746  2       
-clk_divider/n915                                             NET DELAY               0.000                 11.746  2       
-clk_divider/counter_16_add_4_9/CI1->clk_divider/counter_16_add_4_9/CO1
-                                          SLICE_R21C5A       CIN1_TO_COUT1_DELAY     0.277                 12.023  2       
-clk_divider/n323                                             NET DELAY               0.000                 12.023  2       
-clk_divider/counter_16_add_4_11/CI0->clk_divider/counter_16_add_4_11/CO0
-                                          SLICE_R21C5B       CIN0_TO_COUT0_DELAY     0.277                 12.300  2       
-clk_divider/n918                                             NET DELAY               0.000                 12.300  2       
-clk_divider/counter_16_add_4_11/CI1->clk_divider/counter_16_add_4_11/CO1
-                                          SLICE_R21C5B       CIN1_TO_COUT1_DELAY     0.277                 12.577  2       
-clk_divider/n325                                             NET DELAY               0.000                 12.577  2       
-clk_divider/counter_16_add_4_13/CI0->clk_divider/counter_16_add_4_13/CO0
-                                          SLICE_R21C5C       CIN0_TO_COUT0_DELAY     0.277                 12.854  2       
-clk_divider/n921                                             NET DELAY               0.000                 12.854  2       
-clk_divider/counter_16_add_4_13/CI1->clk_divider/counter_16_add_4_13/CO1
-                                          SLICE_R21C5C       CIN1_TO_COUT1_DELAY     0.277                 13.131  2       
-clk_divider/n327                                             NET DELAY               0.000                 13.131  2       
-clk_divider/counter_16_add_4_15/CI0->clk_divider/counter_16_add_4_15/CO0
-                                          SLICE_R21C5D       CIN0_TO_COUT0_DELAY     0.277                 13.408  2       
-clk_divider/n924                                             NET DELAY               0.000                 13.408  2       
-clk_divider/counter_16_add_4_15/CI1->clk_divider/counter_16_add_4_15/CO1
-                                          SLICE_R21C5D       CIN1_TO_COUT1_DELAY     0.277                 13.685  2       
-clk_divider/n329                                             NET DELAY               0.555                 14.240  2       
-clk_divider/counter_16_add_4_17/CI0->clk_divider/counter_16_add_4_17/CO0
-                                          SLICE_R21C6A       CIN0_TO_COUT0_DELAY     0.277                 14.517  2       
-clk_divider/n927                                             NET DELAY               0.000                 14.517  2       
-clk_divider/counter_16_add_4_17/CI1->clk_divider/counter_16_add_4_17/CO1
-                                          SLICE_R21C6A       CIN1_TO_COUT1_DELAY     0.277                 14.794  2       
-clk_divider/n331                                             NET DELAY               0.000                 14.794  2       
-clk_divider/counter_16_add_4_19/CI0->clk_divider/counter_16_add_4_19/CO0
-                                          SLICE_R21C6B       CIN0_TO_COUT0_DELAY     0.277                 15.071  2       
-clk_divider/n930                                             NET DELAY               0.000                 15.071  2       
-clk_divider/counter_16_add_4_19/CI1->clk_divider/counter_16_add_4_19/CO1
-                                          SLICE_R21C6B       CIN1_TO_COUT1_DELAY     0.277                 15.348  2       
-clk_divider/n333                                             NET DELAY               0.000                 15.348  2       
-clk_divider/counter_16_add_4_21/CI0->clk_divider/counter_16_add_4_21/CO0
-                                          SLICE_R21C6C       CIN0_TO_COUT0_DELAY     0.277                 15.625  2       
-clk_divider/n933                                             NET DELAY               0.000                 15.625  2       
-clk_divider/counter_16_add_4_21/CI1->clk_divider/counter_16_add_4_21/CO1
-                                          SLICE_R21C6C       CIN1_TO_COUT1_DELAY     0.277                 15.902  2       
-clk_divider/n335                                             NET DELAY               0.000                 15.902  2       
-clk_divider/counter_16_add_4_23/CI0->clk_divider/counter_16_add_4_23/CO0
-                                          SLICE_R21C6D       CIN0_TO_COUT0_DELAY     0.277                 16.179  2       
-clk_divider/n936                                             NET DELAY               0.000                 16.179  2       
-clk_divider/counter_16_add_4_23/CI1->clk_divider/counter_16_add_4_23/CO1
-                                          SLICE_R21C6D       CIN1_TO_COUT1_DELAY     0.277                 16.456  2       
-clk_divider/n337                                             NET DELAY               0.555                 17.011  2       
-clk_divider/counter_16_add_4_25/CI0->clk_divider/counter_16_add_4_25/CO0
-                                          SLICE_R21C7A       CIN0_TO_COUT0_DELAY     0.277                 17.288  2       
-clk_divider/n939                                             NET DELAY               0.000                 17.288  2       
-clk_divider/counter_16_add_4_25/CI1->clk_divider/counter_16_add_4_25/CO1
-                                          SLICE_R21C7A       CIN1_TO_COUT1_DELAY     0.277                 17.565  2       
-clk_divider/n339                                             NET DELAY               0.000                 17.565  2       
-clk_divider/counter_16_add_4_27/CI0->clk_divider/counter_16_add_4_27/CO0
-                                          SLICE_R21C7B       CIN0_TO_COUT0_DELAY     0.277                 17.842  2       
-clk_divider/n942                                             NET DELAY               0.000                 17.842  2       
-clk_divider/counter_16_add_4_27/CI1->clk_divider/counter_16_add_4_27/CO1
-                                          SLICE_R21C7B       CIN1_TO_COUT1_DELAY     0.277                 18.119  2       
-clk_divider/n341                                             NET DELAY               0.000                 18.119  2       
-clk_divider/counter_16_add_4_29/CI0->clk_divider/counter_16_add_4_29/CO0
-                                          SLICE_R21C7C       CIN0_TO_COUT0_DELAY     0.277                 18.396  2       
-clk_divider/n945                                             NET DELAY               0.000                 18.396  2       
-clk_divider/counter_16_add_4_29/CI1->clk_divider/counter_16_add_4_29/CO1
-                                          SLICE_R21C7C       CIN1_TO_COUT1_DELAY     0.277                 18.673  2       
-clk_divider/n343                                             NET DELAY               0.000                 18.673  2       
-clk_divider/counter_16_add_4_31/CI0->clk_divider/counter_16_add_4_31/CO0
-                                          SLICE_R21C7D       CIN0_TO_COUT0_DELAY     0.277                 18.950  2       
-clk_divider/n948                                             NET DELAY               0.661                 19.611  2       
-clk_divider/counter_16_add_4_31/D1->clk_divider/counter_16_add_4_31/S1
-                                          SLICE_R21C7D       D1_TO_F1_DELAY          0.476                 20.087  1       
+clk_divider/counter_15_add_4_1/C1->clk_divider/counter_15_add_4_1/CO1
+                                          SLICE_R13C3A       C1_TO_COUT1_DELAY       0.343                  9.252  2       
+clk_divider/n236                                             NET DELAY               0.000                  9.252  2       
+clk_divider/counter_15_add_4_3/CI0->clk_divider/counter_15_add_4_3/CO0
+                                          SLICE_R13C3B       CIN0_TO_COUT0_DELAY     0.277                  9.529  2       
+clk_divider/n827                                             NET DELAY               0.000                  9.529  2       
+clk_divider/counter_15_add_4_3/CI1->clk_divider/counter_15_add_4_3/CO1
+                                          SLICE_R13C3B       CIN1_TO_COUT1_DELAY     0.277                  9.806  2       
+clk_divider/n238                                             NET DELAY               0.000                  9.806  2       
+clk_divider/counter_15_add_4_5/CI0->clk_divider/counter_15_add_4_5/CO0
+                                          SLICE_R13C3C       CIN0_TO_COUT0_DELAY     0.277                 10.083  2       
+clk_divider/n830                                             NET DELAY               0.000                 10.083  2       
+clk_divider/counter_15_add_4_5/CI1->clk_divider/counter_15_add_4_5/CO1
+                                          SLICE_R13C3C       CIN1_TO_COUT1_DELAY     0.277                 10.360  2       
+clk_divider/n240                                             NET DELAY               0.000                 10.360  2       
+clk_divider/counter_15_add_4_7/CI0->clk_divider/counter_15_add_4_7/CO0
+                                          SLICE_R13C3D       CIN0_TO_COUT0_DELAY     0.277                 10.637  2       
+clk_divider/n833                                             NET DELAY               0.000                 10.637  2       
+clk_divider/counter_15_add_4_7/CI1->clk_divider/counter_15_add_4_7/CO1
+                                          SLICE_R13C3D       CIN1_TO_COUT1_DELAY     0.277                 10.914  2       
+clk_divider/n242                                             NET DELAY               0.555                 11.469  2       
+clk_divider/counter_15_add_4_9/CI0->clk_divider/counter_15_add_4_9/CO0
+                                          SLICE_R13C4A       CIN0_TO_COUT0_DELAY     0.277                 11.746  2       
+clk_divider/n836                                             NET DELAY               0.000                 11.746  2       
+clk_divider/counter_15_add_4_9/CI1->clk_divider/counter_15_add_4_9/CO1
+                                          SLICE_R13C4A       CIN1_TO_COUT1_DELAY     0.277                 12.023  2       
+clk_divider/n244                                             NET DELAY               0.000                 12.023  2       
+clk_divider/counter_15_add_4_11/CI0->clk_divider/counter_15_add_4_11/CO0
+                                          SLICE_R13C4B       CIN0_TO_COUT0_DELAY     0.277                 12.300  2       
+clk_divider/n839                                             NET DELAY               0.000                 12.300  2       
+clk_divider/counter_15_add_4_11/CI1->clk_divider/counter_15_add_4_11/CO1
+                                          SLICE_R13C4B       CIN1_TO_COUT1_DELAY     0.277                 12.577  2       
+clk_divider/n246                                             NET DELAY               0.000                 12.577  2       
+clk_divider/counter_15_add_4_13/CI0->clk_divider/counter_15_add_4_13/CO0
+                                          SLICE_R13C4C       CIN0_TO_COUT0_DELAY     0.277                 12.854  2       
+clk_divider/n842                                             NET DELAY               0.000                 12.854  2       
+clk_divider/counter_15_add_4_13/CI1->clk_divider/counter_15_add_4_13/CO1
+                                          SLICE_R13C4C       CIN1_TO_COUT1_DELAY     0.277                 13.131  2       
+clk_divider/n248                                             NET DELAY               0.000                 13.131  2       
+clk_divider/counter_15_add_4_15/CI0->clk_divider/counter_15_add_4_15/CO0
+                                          SLICE_R13C4D       CIN0_TO_COUT0_DELAY     0.277                 13.408  2       
+clk_divider/n845                                             NET DELAY               0.000                 13.408  2       
+clk_divider/counter_15_add_4_15/CI1->clk_divider/counter_15_add_4_15/CO1
+                                          SLICE_R13C4D       CIN1_TO_COUT1_DELAY     0.277                 13.685  2       
+clk_divider/n250                                             NET DELAY               0.555                 14.240  2       
+clk_divider/counter_15_add_4_17/CI0->clk_divider/counter_15_add_4_17/CO0
+                                          SLICE_R13C5A       CIN0_TO_COUT0_DELAY     0.277                 14.517  2       
+clk_divider/n848                                             NET DELAY               0.000                 14.517  2       
+clk_divider/counter_15_add_4_17/CI1->clk_divider/counter_15_add_4_17/CO1
+                                          SLICE_R13C5A       CIN1_TO_COUT1_DELAY     0.277                 14.794  2       
+clk_divider/n252                                             NET DELAY               0.000                 14.794  2       
+clk_divider/counter_15_add_4_19/CI0->clk_divider/counter_15_add_4_19/CO0
+                                          SLICE_R13C5B       CIN0_TO_COUT0_DELAY     0.277                 15.071  2       
+clk_divider/n851                                             NET DELAY               0.000                 15.071  2       
+clk_divider/counter_15_add_4_19/CI1->clk_divider/counter_15_add_4_19/CO1
+                                          SLICE_R13C5B       CIN1_TO_COUT1_DELAY     0.277                 15.348  2       
+clk_divider/n254                                             NET DELAY               0.000                 15.348  2       
+clk_divider/counter_15_add_4_21/CI0->clk_divider/counter_15_add_4_21/CO0
+                                          SLICE_R13C5C       CIN0_TO_COUT0_DELAY     0.277                 15.625  2       
+clk_divider/n854                                             NET DELAY               0.000                 15.625  2       
+clk_divider/counter_15_add_4_21/CI1->clk_divider/counter_15_add_4_21/CO1
+                                          SLICE_R13C5C       CIN1_TO_COUT1_DELAY     0.277                 15.902  2       
+clk_divider/n256                                             NET DELAY               0.000                 15.902  2       
+clk_divider/counter_15_add_4_23/CI0->clk_divider/counter_15_add_4_23/CO0
+                                          SLICE_R13C5D       CIN0_TO_COUT0_DELAY     0.277                 16.179  2       
+clk_divider/n857                                             NET DELAY               0.000                 16.179  2       
+clk_divider/counter_15_add_4_23/CI1->clk_divider/counter_15_add_4_23/CO1
+                                          SLICE_R13C5D       CIN1_TO_COUT1_DELAY     0.277                 16.456  2       
+clk_divider/n258                                             NET DELAY               0.555                 17.011  2       
+clk_divider/counter_15_add_4_25/CI0->clk_divider/counter_15_add_4_25/CO0
+                                          SLICE_R13C6A       CIN0_TO_COUT0_DELAY     0.277                 17.288  2       
+clk_divider/n860                                             NET DELAY               0.000                 17.288  2       
+clk_divider/counter_15_add_4_25/CI1->clk_divider/counter_15_add_4_25/CO1
+                                          SLICE_R13C6A       CIN1_TO_COUT1_DELAY     0.277                 17.565  2       
+clk_divider/n260                                             NET DELAY               0.000                 17.565  2       
+clk_divider/counter_15_add_4_27/CI0->clk_divider/counter_15_add_4_27/CO0
+                                          SLICE_R13C6B       CIN0_TO_COUT0_DELAY     0.277                 17.842  2       
+clk_divider/n863                                             NET DELAY               0.000                 17.842  2       
+clk_divider/counter_15_add_4_27/CI1->clk_divider/counter_15_add_4_27/CO1
+                                          SLICE_R13C6B       CIN1_TO_COUT1_DELAY     0.277                 18.119  2       
+clk_divider/n262                                             NET DELAY               0.000                 18.119  2       
+clk_divider/counter_15_add_4_29/CI0->clk_divider/counter_15_add_4_29/CO0
+                                          SLICE_R13C6C       CIN0_TO_COUT0_DELAY     0.277                 18.396  2       
+clk_divider/n866                                             NET DELAY               0.000                 18.396  2       
+clk_divider/counter_15_add_4_29/CI1->clk_divider/counter_15_add_4_29/CO1
+                                          SLICE_R13C6C       CIN1_TO_COUT1_DELAY     0.277                 18.673  2       
+clk_divider/n264                                             NET DELAY               0.000                 18.673  2       
+clk_divider/counter_15_add_4_31/CI0->clk_divider/counter_15_add_4_31/CO0
+                                          SLICE_R13C6D       CIN0_TO_COUT0_DELAY     0.277                 18.950  2       
+clk_divider/n869                                             NET DELAY               0.661                 19.611  2       
+clk_divider/counter_15_add_4_31/D1->clk_divider/counter_15_add_4_31/S1
+                                          SLICE_R13C6D       D1_TO_F1_DELAY          0.476                 20.087  1       
 clk_divider/n133[30]                                         NET DELAY               0.000                 20.087  1       
-clk_divider/counter_16__i30/D                                ENDPOINT                0.000                 20.087  1       
+clk_divider/counter_15__i30/D                                ENDPOINT                0.000                 20.087  1       
 
 
 Destination Clock Path
@@ -791,7 +790,7 @@ Name                                      Cell/Site Name     Delay Name         
                                                              CONSTRAINT              0.000                 41.666  1       
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY           0.000                 41.666  19      
 clk_divider/clk                                              NET DELAY               5.499                 47.165  19      
-{clk_divider/counter_16__i29/CK   clk_divider/counter_16__i30/CK}
+{clk_divider/counter_15__i29/CK   clk_divider/counter_15__i30/CK}
                                                              CLOCK PIN               0.000                 47.165  1       
                                                              Uncertainty          -(0.000)                 47.165  
                                                              Setup time           -(0.198)                 46.967  
@@ -806,81 +805,154 @@ Path Slack  (Passed)                                                            
 
 ++++ Path 8 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : clk_divider/counter_16__i5/Q  (SLICE_R21C4D)
-Path End         : {clk_divider/counter_16__i17/SR   clk_divider/counter_16__i18/SR}  (SLICE_R21C6B)
+Path Begin       : clk_divider/counter_15__i0/Q  (SLICE_R13C3A)
+Path End         : clk_divider/counter_15__i29/D  (SLICE_R13C6D)
 Source Clock     : clk (R)
 Destination Clock: clk (R)
-Logic Level      : 6
-Delay Ratio      : 73.9% (route), 26.1% (logic)
+Logic Level      : 31
+Delay Ratio      : 30.4% (route), 69.6% (logic)
 Clock Skew       : 0.000 ns 
 Setup Constraint : 41.666 ns 
-Path Slack       : 27.034 ns  (Passed)
+Path Slack       : 27.157 ns  (Passed)
 
 
 Source Clock Path
-Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
-----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
-hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                  0.000  19      
-clk_divider/clk                                              NET DELAY           5.499                  5.499  19      
-{clk_divider/counter_16__i5/CK   clk_divider/counter_16__i6/CK}
-                                                             CLOCK PIN           0.000                  5.499  1       
+Name                                      Cell/Site Name     Delay Name           Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  -------------------  --------  ---------------------  ------  
+hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY           0.000                  0.000  19      
+clk_divider/clk                                              NET DELAY               5.499                  5.499  19      
+clk_divider/counter_15__i0/CK                                CLOCK PIN               0.000                  5.499  1       
 
 
 Data Path
-Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
-----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
-clk_divider/counter_16__i5/CK->clk_divider/counter_16__i5/Q
-                                          SLICE_R21C4D       CLK_TO_Q0_DELAY     1.388                  6.887  2       
-clk_divider/counter[5]                                       NET DELAY           2.736                  9.623  2       
-clk_divider/i15_4_lut/C->clk_divider/i15_4_lut/Z
-                                          SLICE_R22C6B       A1_TO_F1_DELAY      0.449                 10.072  1       
-clk_divider/n35                                              NET DELAY           2.763                 12.835  1       
-clk_divider/i18_3_lut/A->clk_divider/i18_3_lut/Z
-                                          SLICE_R22C5A       D1_TO_F1_DELAY      0.476                 13.311  1       
-clk_divider/n38                                              NET DELAY           0.304                 13.615  1       
-clk_divider/i1_4_lut/C->clk_divider/i1_4_lut/Z
-                                          SLICE_R22C5B       C0_TO_F0_DELAY      0.476                 14.091  1       
-clk_divider/n14                                              NET DELAY           0.304                 14.395  1       
-clk_divider/i10_4_lut/D->clk_divider/i10_4_lut/Z
-                                          SLICE_R22C5B       C1_TO_F1_DELAY      0.449                 14.844  2       
-clk_divider/n23                                              NET DELAY           2.168                 17.012  2       
-clk_divider/i601_2_lut_4_lut/A->clk_divider/i601_2_lut_4_lut/Z
-                                          SLICE_R22C5C       D1_TO_F1_DELAY      0.449                 17.461  17      
-clk_divider/n26                                              NET DELAY           2.141                 19.602  17      
-{clk_divider/counter_16__i17/SR   clk_divider/counter_16__i18/SR}
-                                                             ENDPOINT            0.000                 19.602  1       
+Name                                      Cell/Site Name     Delay Name           Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  -------------------  --------  ---------------------  ------  
+clk_divider/counter_15__i0/CK->clk_divider/counter_15__i0/Q
+                                          SLICE_R13C3A       CLK_TO_Q1_DELAY         1.388                  6.887  2       
+clk_divider/counter[0]                                       NET DELAY               2.022                  8.909  2       
+clk_divider/counter_15_add_4_1/C1->clk_divider/counter_15_add_4_1/CO1
+                                          SLICE_R13C3A       C1_TO_COUT1_DELAY       0.343                  9.252  2       
+clk_divider/n236                                             NET DELAY               0.000                  9.252  2       
+clk_divider/counter_15_add_4_3/CI0->clk_divider/counter_15_add_4_3/CO0
+                                          SLICE_R13C3B       CIN0_TO_COUT0_DELAY     0.277                  9.529  2       
+clk_divider/n827                                             NET DELAY               0.000                  9.529  2       
+clk_divider/counter_15_add_4_3/CI1->clk_divider/counter_15_add_4_3/CO1
+                                          SLICE_R13C3B       CIN1_TO_COUT1_DELAY     0.277                  9.806  2       
+clk_divider/n238                                             NET DELAY               0.000                  9.806  2       
+clk_divider/counter_15_add_4_5/CI0->clk_divider/counter_15_add_4_5/CO0
+                                          SLICE_R13C3C       CIN0_TO_COUT0_DELAY     0.277                 10.083  2       
+clk_divider/n830                                             NET DELAY               0.000                 10.083  2       
+clk_divider/counter_15_add_4_5/CI1->clk_divider/counter_15_add_4_5/CO1
+                                          SLICE_R13C3C       CIN1_TO_COUT1_DELAY     0.277                 10.360  2       
+clk_divider/n240                                             NET DELAY               0.000                 10.360  2       
+clk_divider/counter_15_add_4_7/CI0->clk_divider/counter_15_add_4_7/CO0
+                                          SLICE_R13C3D       CIN0_TO_COUT0_DELAY     0.277                 10.637  2       
+clk_divider/n833                                             NET DELAY               0.000                 10.637  2       
+clk_divider/counter_15_add_4_7/CI1->clk_divider/counter_15_add_4_7/CO1
+                                          SLICE_R13C3D       CIN1_TO_COUT1_DELAY     0.277                 10.914  2       
+clk_divider/n242                                             NET DELAY               0.555                 11.469  2       
+clk_divider/counter_15_add_4_9/CI0->clk_divider/counter_15_add_4_9/CO0
+                                          SLICE_R13C4A       CIN0_TO_COUT0_DELAY     0.277                 11.746  2       
+clk_divider/n836                                             NET DELAY               0.000                 11.746  2       
+clk_divider/counter_15_add_4_9/CI1->clk_divider/counter_15_add_4_9/CO1
+                                          SLICE_R13C4A       CIN1_TO_COUT1_DELAY     0.277                 12.023  2       
+clk_divider/n244                                             NET DELAY               0.000                 12.023  2       
+clk_divider/counter_15_add_4_11/CI0->clk_divider/counter_15_add_4_11/CO0
+                                          SLICE_R13C4B       CIN0_TO_COUT0_DELAY     0.277                 12.300  2       
+clk_divider/n839                                             NET DELAY               0.000                 12.300  2       
+clk_divider/counter_15_add_4_11/CI1->clk_divider/counter_15_add_4_11/CO1
+                                          SLICE_R13C4B       CIN1_TO_COUT1_DELAY     0.277                 12.577  2       
+clk_divider/n246                                             NET DELAY               0.000                 12.577  2       
+clk_divider/counter_15_add_4_13/CI0->clk_divider/counter_15_add_4_13/CO0
+                                          SLICE_R13C4C       CIN0_TO_COUT0_DELAY     0.277                 12.854  2       
+clk_divider/n842                                             NET DELAY               0.000                 12.854  2       
+clk_divider/counter_15_add_4_13/CI1->clk_divider/counter_15_add_4_13/CO1
+                                          SLICE_R13C4C       CIN1_TO_COUT1_DELAY     0.277                 13.131  2       
+clk_divider/n248                                             NET DELAY               0.000                 13.131  2       
+clk_divider/counter_15_add_4_15/CI0->clk_divider/counter_15_add_4_15/CO0
+                                          SLICE_R13C4D       CIN0_TO_COUT0_DELAY     0.277                 13.408  2       
+clk_divider/n845                                             NET DELAY               0.000                 13.408  2       
+clk_divider/counter_15_add_4_15/CI1->clk_divider/counter_15_add_4_15/CO1
+                                          SLICE_R13C4D       CIN1_TO_COUT1_DELAY     0.277                 13.685  2       
+clk_divider/n250                                             NET DELAY               0.555                 14.240  2       
+clk_divider/counter_15_add_4_17/CI0->clk_divider/counter_15_add_4_17/CO0
+                                          SLICE_R13C5A       CIN0_TO_COUT0_DELAY     0.277                 14.517  2       
+clk_divider/n848                                             NET DELAY               0.000                 14.517  2       
+clk_divider/counter_15_add_4_17/CI1->clk_divider/counter_15_add_4_17/CO1
+                                          SLICE_R13C5A       CIN1_TO_COUT1_DELAY     0.277                 14.794  2       
+clk_divider/n252                                             NET DELAY               0.000                 14.794  2       
+clk_divider/counter_15_add_4_19/CI0->clk_divider/counter_15_add_4_19/CO0
+                                          SLICE_R13C5B       CIN0_TO_COUT0_DELAY     0.277                 15.071  2       
+clk_divider/n851                                             NET DELAY               0.000                 15.071  2       
+clk_divider/counter_15_add_4_19/CI1->clk_divider/counter_15_add_4_19/CO1
+                                          SLICE_R13C5B       CIN1_TO_COUT1_DELAY     0.277                 15.348  2       
+clk_divider/n254                                             NET DELAY               0.000                 15.348  2       
+clk_divider/counter_15_add_4_21/CI0->clk_divider/counter_15_add_4_21/CO0
+                                          SLICE_R13C5C       CIN0_TO_COUT0_DELAY     0.277                 15.625  2       
+clk_divider/n854                                             NET DELAY               0.000                 15.625  2       
+clk_divider/counter_15_add_4_21/CI1->clk_divider/counter_15_add_4_21/CO1
+                                          SLICE_R13C5C       CIN1_TO_COUT1_DELAY     0.277                 15.902  2       
+clk_divider/n256                                             NET DELAY               0.000                 15.902  2       
+clk_divider/counter_15_add_4_23/CI0->clk_divider/counter_15_add_4_23/CO0
+                                          SLICE_R13C5D       CIN0_TO_COUT0_DELAY     0.277                 16.179  2       
+clk_divider/n857                                             NET DELAY               0.000                 16.179  2       
+clk_divider/counter_15_add_4_23/CI1->clk_divider/counter_15_add_4_23/CO1
+                                          SLICE_R13C5D       CIN1_TO_COUT1_DELAY     0.277                 16.456  2       
+clk_divider/n258                                             NET DELAY               0.555                 17.011  2       
+clk_divider/counter_15_add_4_25/CI0->clk_divider/counter_15_add_4_25/CO0
+                                          SLICE_R13C6A       CIN0_TO_COUT0_DELAY     0.277                 17.288  2       
+clk_divider/n860                                             NET DELAY               0.000                 17.288  2       
+clk_divider/counter_15_add_4_25/CI1->clk_divider/counter_15_add_4_25/CO1
+                                          SLICE_R13C6A       CIN1_TO_COUT1_DELAY     0.277                 17.565  2       
+clk_divider/n260                                             NET DELAY               0.000                 17.565  2       
+clk_divider/counter_15_add_4_27/CI0->clk_divider/counter_15_add_4_27/CO0
+                                          SLICE_R13C6B       CIN0_TO_COUT0_DELAY     0.277                 17.842  2       
+clk_divider/n863                                             NET DELAY               0.000                 17.842  2       
+clk_divider/counter_15_add_4_27/CI1->clk_divider/counter_15_add_4_27/CO1
+                                          SLICE_R13C6B       CIN1_TO_COUT1_DELAY     0.277                 18.119  2       
+clk_divider/n262                                             NET DELAY               0.000                 18.119  2       
+clk_divider/counter_15_add_4_29/CI0->clk_divider/counter_15_add_4_29/CO0
+                                          SLICE_R13C6C       CIN0_TO_COUT0_DELAY     0.277                 18.396  2       
+clk_divider/n866                                             NET DELAY               0.000                 18.396  2       
+clk_divider/counter_15_add_4_29/CI1->clk_divider/counter_15_add_4_29/CO1
+                                          SLICE_R13C6C       CIN1_TO_COUT1_DELAY     0.277                 18.673  2       
+clk_divider/n264                                             NET DELAY               0.661                 19.334  2       
+clk_divider/counter_15_add_4_31/D0->clk_divider/counter_15_add_4_31/S0
+                                          SLICE_R13C6D       D0_TO_F0_DELAY          0.476                 19.810  1       
+clk_divider/n133[29]                                         NET DELAY               0.000                 19.810  1       
+clk_divider/counter_15__i29/D                                ENDPOINT                0.000                 19.810  1       
 
 
 Destination Clock Path
-Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
-----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
-                                                             CONSTRAINT          0.000                 41.666  1       
-hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                 41.666  19      
-clk_divider/clk                                              NET DELAY           5.499                 47.165  19      
-{clk_divider/counter_16__i17/CK   clk_divider/counter_16__i18/CK}
-                                                             CLOCK PIN           0.000                 47.165  1       
-                                                             Uncertainty      -(0.000)                 47.165  
-                                                             Setup time       -(0.529)                 46.636  
-----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
-Required Time                                                                                          46.636  
-Arrival Time                                                                                        -(19.601)  
-----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
-Path Slack  (Passed)                                                                                   27.034  
+Name                                      Cell/Site Name     Delay Name           Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  -------------------  --------  ---------------------  ------  
+                                                             CONSTRAINT              0.000                 41.666  1       
+hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY           0.000                 41.666  19      
+clk_divider/clk                                              NET DELAY               5.499                 47.165  19      
+{clk_divider/counter_15__i29/CK   clk_divider/counter_15__i30/CK}
+                                                             CLOCK PIN               0.000                 47.165  1       
+                                                             Uncertainty          -(0.000)                 47.165  
+                                                             Setup time           -(0.198)                 46.967  
+----------------------------------------  -----------------  -------------------  --------  ---------------------  ------  
+Required Time                                                                                              46.967  
+Arrival Time                                                                                            -(19.809)  
+----------------------------------------  -----------------  -------------------  --------  ---------------------  ------  
+Path Slack  (Passed)                                                                                       27.157  
 
 
 
 
 ++++ Path 9 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : clk_divider/counter_16__i5/Q  (SLICE_R21C4D)
-Path End         : {clk_divider/counter_16__i19/SR   clk_divider/counter_16__i20/SR}  (SLICE_R21C6C)
+Path Begin       : clk_divider/counter_15__i5/Q  (SLICE_R13C3D)
+Path End         : {clk_divider/counter_15__i19/SR   clk_divider/counter_15__i20/SR}  (SLICE_R13C5C)
 Source Clock     : clk (R)
 Destination Clock: clk (R)
 Logic Level      : 6
-Delay Ratio      : 73.9% (route), 26.1% (logic)
+Delay Ratio      : 73.3% (route), 26.7% (logic)
 Clock Skew       : 0.000 ns 
 Setup Constraint : 41.666 ns 
-Path Slack       : 27.034 ns  (Passed)
+Path Slack       : 27.312 ns  (Passed)
 
 
 Source Clock Path
@@ -888,33 +960,33 @@ Name                                      Cell/Site Name     Delay Name       In
 ----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                  0.000  19      
 clk_divider/clk                                              NET DELAY           5.499                  5.499  19      
-{clk_divider/counter_16__i5/CK   clk_divider/counter_16__i6/CK}
+{clk_divider/counter_15__i5/CK   clk_divider/counter_15__i6/CK}
                                                              CLOCK PIN           0.000                  5.499  1       
 
 
 Data Path
 Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
 ----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
-clk_divider/counter_16__i5/CK->clk_divider/counter_16__i5/Q
-                                          SLICE_R21C4D       CLK_TO_Q0_DELAY     1.388                  6.887  2       
+clk_divider/counter_15__i5/CK->clk_divider/counter_15__i5/Q
+                                          SLICE_R13C3D       CLK_TO_Q0_DELAY     1.388                  6.887  2       
 clk_divider/counter[5]                                       NET DELAY           2.736                  9.623  2       
 clk_divider/i15_4_lut/C->clk_divider/i15_4_lut/Z
-                                          SLICE_R22C6B       A1_TO_F1_DELAY      0.449                 10.072  1       
-clk_divider/n35                                              NET DELAY           2.763                 12.835  1       
+                                          SLICE_R14C5C       A0_TO_F0_DELAY      0.449                 10.072  1       
+clk_divider/n35                                              NET DELAY           2.485                 12.557  1       
 clk_divider/i18_3_lut/A->clk_divider/i18_3_lut/Z
-                                          SLICE_R22C5A       D1_TO_F1_DELAY      0.476                 13.311  1       
-clk_divider/n38                                              NET DELAY           0.304                 13.615  1       
+                                          SLICE_R14C4A       B1_TO_F1_DELAY      0.476                 13.033  1       
+clk_divider/n38                                              NET DELAY           0.304                 13.337  1       
 clk_divider/i1_4_lut/C->clk_divider/i1_4_lut/Z
-                                          SLICE_R22C5B       C0_TO_F0_DELAY      0.476                 14.091  1       
-clk_divider/n14                                              NET DELAY           0.304                 14.395  1       
+                                          SLICE_R14C4B       C0_TO_F0_DELAY      0.476                 13.813  1       
+clk_divider/n14                                              NET DELAY           0.304                 14.117  1       
 clk_divider/i10_4_lut/D->clk_divider/i10_4_lut/Z
-                                          SLICE_R22C5B       C1_TO_F1_DELAY      0.449                 14.844  2       
-clk_divider/n23                                              NET DELAY           2.168                 17.012  2       
-clk_divider/i601_2_lut_4_lut/A->clk_divider/i601_2_lut_4_lut/Z
-                                          SLICE_R22C5C       D1_TO_F1_DELAY      0.449                 17.461  17      
-clk_divider/n26                                              NET DELAY           2.141                 19.602  17      
-{clk_divider/counter_16__i19/SR   clk_divider/counter_16__i20/SR}
-                                                             ENDPOINT            0.000                 19.602  1       
+                                          SLICE_R14C4B       C1_TO_F1_DELAY      0.449                 14.566  2       
+clk_divider/n23                                              NET DELAY           2.168                 16.734  2       
+clk_divider/i521_2_lut_4_lut/A->clk_divider/i521_2_lut_4_lut/Z
+                                          SLICE_R14C4C       D1_TO_F1_DELAY      0.449                 17.183  17      
+clk_divider/n26                                              NET DELAY           2.141                 19.324  17      
+{clk_divider/counter_15__i19/SR   clk_divider/counter_15__i20/SR}
+                                                             ENDPOINT            0.000                 19.324  1       
 
 
 Destination Clock Path
@@ -923,30 +995,30 @@ Name                                      Cell/Site Name     Delay Name       In
                                                              CONSTRAINT          0.000                 41.666  1       
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                 41.666  19      
 clk_divider/clk                                              NET DELAY           5.499                 47.165  19      
-{clk_divider/counter_16__i19/CK   clk_divider/counter_16__i20/CK}
+{clk_divider/counter_15__i19/CK   clk_divider/counter_15__i20/CK}
                                                              CLOCK PIN           0.000                 47.165  1       
                                                              Uncertainty      -(0.000)                 47.165  
                                                              Setup time       -(0.529)                 46.636  
 ----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
 Required Time                                                                                          46.636  
-Arrival Time                                                                                        -(19.601)  
+Arrival Time                                                                                        -(19.323)  
 ----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
-Path Slack  (Passed)                                                                                   27.034  
+Path Slack  (Passed)                                                                                   27.312  
 
 
 
 
 ++++ Path 10 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : clk_divider/counter_16__i5/Q  (SLICE_R21C4D)
-Path End         : {clk_divider/counter_16__i7/SR   clk_divider/counter_16__i8/SR}  (SLICE_R21C5A)
+Path Begin       : clk_divider/counter_15__i5/Q  (SLICE_R13C3D)
+Path End         : {clk_divider/counter_15__i21/SR   clk_divider/counter_15__i22/SR}  (SLICE_R13C5D)
 Source Clock     : clk (R)
 Destination Clock: clk (R)
 Logic Level      : 6
-Delay Ratio      : 73.9% (route), 26.1% (logic)
+Delay Ratio      : 73.3% (route), 26.7% (logic)
 Clock Skew       : 0.000 ns 
 Setup Constraint : 41.666 ns 
-Path Slack       : 27.034 ns  (Passed)
+Path Slack       : 27.312 ns  (Passed)
 
 
 Source Clock Path
@@ -954,33 +1026,33 @@ Name                                      Cell/Site Name     Delay Name       In
 ----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                  0.000  19      
 clk_divider/clk                                              NET DELAY           5.499                  5.499  19      
-{clk_divider/counter_16__i5/CK   clk_divider/counter_16__i6/CK}
+{clk_divider/counter_15__i5/CK   clk_divider/counter_15__i6/CK}
                                                              CLOCK PIN           0.000                  5.499  1       
 
 
 Data Path
 Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
 ----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
-clk_divider/counter_16__i5/CK->clk_divider/counter_16__i5/Q
-                                          SLICE_R21C4D       CLK_TO_Q0_DELAY     1.388                  6.887  2       
+clk_divider/counter_15__i5/CK->clk_divider/counter_15__i5/Q
+                                          SLICE_R13C3D       CLK_TO_Q0_DELAY     1.388                  6.887  2       
 clk_divider/counter[5]                                       NET DELAY           2.736                  9.623  2       
 clk_divider/i15_4_lut/C->clk_divider/i15_4_lut/Z
-                                          SLICE_R22C6B       A1_TO_F1_DELAY      0.449                 10.072  1       
-clk_divider/n35                                              NET DELAY           2.763                 12.835  1       
+                                          SLICE_R14C5C       A0_TO_F0_DELAY      0.449                 10.072  1       
+clk_divider/n35                                              NET DELAY           2.485                 12.557  1       
 clk_divider/i18_3_lut/A->clk_divider/i18_3_lut/Z
-                                          SLICE_R22C5A       D1_TO_F1_DELAY      0.476                 13.311  1       
-clk_divider/n38                                              NET DELAY           0.304                 13.615  1       
+                                          SLICE_R14C4A       B1_TO_F1_DELAY      0.476                 13.033  1       
+clk_divider/n38                                              NET DELAY           0.304                 13.337  1       
 clk_divider/i1_4_lut/C->clk_divider/i1_4_lut/Z
-                                          SLICE_R22C5B       C0_TO_F0_DELAY      0.476                 14.091  1       
-clk_divider/n14                                              NET DELAY           0.304                 14.395  1       
+                                          SLICE_R14C4B       C0_TO_F0_DELAY      0.476                 13.813  1       
+clk_divider/n14                                              NET DELAY           0.304                 14.117  1       
 clk_divider/i10_4_lut/D->clk_divider/i10_4_lut/Z
-                                          SLICE_R22C5B       C1_TO_F1_DELAY      0.449                 14.844  2       
-clk_divider/n23                                              NET DELAY           2.168                 17.012  2       
-clk_divider/i601_2_lut_4_lut/A->clk_divider/i601_2_lut_4_lut/Z
-                                          SLICE_R22C5C       D1_TO_F1_DELAY      0.449                 17.461  17      
-clk_divider/n26                                              NET DELAY           2.141                 19.602  17      
-{clk_divider/counter_16__i7/SR   clk_divider/counter_16__i8/SR}
-                                                             ENDPOINT            0.000                 19.602  1       
+                                          SLICE_R14C4B       C1_TO_F1_DELAY      0.449                 14.566  2       
+clk_divider/n23                                              NET DELAY           2.168                 16.734  2       
+clk_divider/i521_2_lut_4_lut/A->clk_divider/i521_2_lut_4_lut/Z
+                                          SLICE_R14C4C       D1_TO_F1_DELAY      0.449                 17.183  17      
+clk_divider/n26                                              NET DELAY           2.141                 19.324  17      
+{clk_divider/counter_15__i21/SR   clk_divider/counter_15__i22/SR}
+                                                             ENDPOINT            0.000                 19.324  1       
 
 
 Destination Clock Path
@@ -989,15 +1061,15 @@ Name                                      Cell/Site Name     Delay Name       In
                                                              CONSTRAINT          0.000                 41.666  1       
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                 41.666  19      
 clk_divider/clk                                              NET DELAY           5.499                 47.165  19      
-{clk_divider/counter_16__i7/CK   clk_divider/counter_16__i8/CK}
+{clk_divider/counter_15__i21/CK   clk_divider/counter_15__i22/CK}
                                                              CLOCK PIN           0.000                 47.165  1       
                                                              Uncertainty      -(0.000)                 47.165  
                                                              Setup time       -(0.529)                 46.636  
 ----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
 Required Time                                                                                          46.636  
-Arrival Time                                                                                        -(19.601)  
+Arrival Time                                                                                        -(19.323)  
 ----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
-Path Slack  (Passed)                                                                                   27.034  
+Path Slack  (Passed)                                                                                   27.312  
 
 
 
@@ -1019,16 +1091,16 @@ Path Slack  (Passed)                                                            
 -------------------------------------------------------
           Listing 10 End Points          |    Slack    
 -------------------------------------------------------
-clk_divider/counter_16__i20/D            |    1.913 ns 
-clk_divider/counter_16__i23/D            |    1.913 ns 
-clk_divider/counter_16__i24/D            |    1.913 ns 
-clk_divider/counter_16__i25/D            |    1.913 ns 
-clk_divider/counter_16__i26/D            |    1.913 ns 
-clk_divider/counter_16__i7/D             |    1.913 ns 
-clk_divider/counter_16__i8/D             |    1.913 ns 
-clk_divider/counter_16__i29/D            |    1.913 ns 
-clk_divider/counter_16__i30/D            |    1.913 ns 
-clk_divider/counter_16__i31/D            |    1.913 ns 
+clk_divider/counter_15__i22/D            |    1.913 ns 
+clk_divider/counter_15__i23/D            |    1.913 ns 
+clk_divider/counter_15__i24/D            |    1.913 ns 
+clk_divider/counter_15__i29/D            |    1.913 ns 
+clk_divider/counter_15__i30/D            |    1.913 ns 
+clk_divider/counter_15__i31/D            |    1.913 ns 
+clk_divider/counter_15__i25/D            |    1.913 ns 
+clk_divider/counter_15__i26/D            |    1.913 ns 
+clk_divider/counter_15__i27/D            |    1.913 ns 
+clk_divider/counter_15__i28/D            |    1.913 ns 
 -------------------------------------------------------
                                          |             
 Hold # of endpoints with negative slack: |           0 
@@ -1051,8 +1123,8 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
  ++++Path 1  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Path Begin       : clk_divider/counter_16__i20/Q  (SLICE_R21C6C)
-Path End         : clk_divider/counter_16__i20/D  (SLICE_R21C6C)
+Path Begin       : clk_divider/counter_15__i22/Q  (SLICE_R13C5D)
+Path End         : clk_divider/counter_15__i22/D  (SLICE_R13C5D)
 Source Clock     : clk (R)
 Destination Clock: clk (R)
 Logic Level      : 2
@@ -1067,20 +1139,20 @@ Name                                      Cell/Site Name     Delay Name       In
 ----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  20      
 clk_divider/clk                                              NET DELAY        3.084                  3.084  20      
-{clk_divider/counter_16__i19/CK   clk_divider/counter_16__i20/CK}
+{clk_divider/counter_15__i21/CK   clk_divider/counter_15__i22/CK}
                                                              CLOCK PIN        0.000                  3.084  1       
 
 
 Data Path
 Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
 ----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
-clk_divider/counter_16__i20/CK->clk_divider/counter_16__i20/Q
-                                          SLICE_R21C6C       CLK_TO_Q1_DELAY  0.779                  3.863  2       
-clk_divider/counter[20]                                      NET DELAY        0.882                  4.745  2       
-clk_divider/counter_16_add_4_21/C1->clk_divider/counter_16_add_4_21/S1
-                                          SLICE_R21C6C       C1_TO_F1_DELAY   0.252                  4.997  1       
-clk_divider/n133[20]                                         NET DELAY        0.000                  4.997  1       
-clk_divider/counter_16__i20/D                                ENDPOINT         0.000                  4.997  1       
+clk_divider/counter_15__i22/CK->clk_divider/counter_15__i22/Q
+                                          SLICE_R13C5D       CLK_TO_Q1_DELAY  0.779                  3.863  2       
+clk_divider/counter[22]                                      NET DELAY        0.882                  4.745  2       
+clk_divider/counter_15_add_4_23/C1->clk_divider/counter_15_add_4_23/S1
+                                          SLICE_R13C5D       C1_TO_F1_DELAY   0.252                  4.997  1       
+clk_divider/n133[22]                                         NET DELAY        0.000                  4.997  1       
+clk_divider/counter_15__i22/D                                ENDPOINT         0.000                  4.997  1       
 
 
 Destination Clock Path
@@ -1089,7 +1161,7 @@ Name                                      Cell/Site Name     Delay Name       In
                                                              CONSTRAINT       0.000                  0.000  1       
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  20      
 clk_divider/clk                                              NET DELAY        3.084                  3.084  20      
-{clk_divider/counter_16__i19/CK   clk_divider/counter_16__i20/CK}
+{clk_divider/counter_15__i21/CK   clk_divider/counter_15__i22/CK}
                                                              CLOCK PIN        0.000                  3.084  1       
                                                              Uncertainty      0.000                  3.084  
                                                              Hold time        0.000                  3.084  
@@ -1104,8 +1176,8 @@ Path Slack  (Passed)                                                            
 
 ++++ Path 2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : clk_divider/counter_16__i23/Q  (SLICE_R21C7A)
-Path End         : clk_divider/counter_16__i23/D  (SLICE_R21C7A)
+Path Begin       : clk_divider/counter_15__i23/Q  (SLICE_R13C6A)
+Path End         : clk_divider/counter_15__i23/D  (SLICE_R13C6A)
 Source Clock     : clk (R)
 Destination Clock: clk (R)
 Logic Level      : 2
@@ -1120,20 +1192,20 @@ Name                                      Cell/Site Name     Delay Name       In
 ----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  20      
 clk_divider/clk                                              NET DELAY        3.084                  3.084  20      
-{clk_divider/counter_16__i23/CK   clk_divider/counter_16__i24/CK}
+{clk_divider/counter_15__i23/CK   clk_divider/counter_15__i24/CK}
                                                              CLOCK PIN        0.000                  3.084  1       
 
 
 Data Path
 Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
 ----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
-clk_divider/counter_16__i23/CK->clk_divider/counter_16__i23/Q
-                                          SLICE_R21C7A       CLK_TO_Q0_DELAY  0.779                  3.863  2       
+clk_divider/counter_15__i23/CK->clk_divider/counter_15__i23/Q
+                                          SLICE_R13C6A       CLK_TO_Q0_DELAY  0.779                  3.863  2       
 clk_divider/counter[23]                                      NET DELAY        0.882                  4.745  2       
-clk_divider/counter_16_add_4_25/C0->clk_divider/counter_16_add_4_25/S0
-                                          SLICE_R21C7A       C0_TO_F0_DELAY   0.252                  4.997  1       
+clk_divider/counter_15_add_4_25/C0->clk_divider/counter_15_add_4_25/S0
+                                          SLICE_R13C6A       C0_TO_F0_DELAY   0.252                  4.997  1       
 clk_divider/n133[23]                                         NET DELAY        0.000                  4.997  1       
-clk_divider/counter_16__i23/D                                ENDPOINT         0.000                  4.997  1       
+clk_divider/counter_15__i23/D                                ENDPOINT         0.000                  4.997  1       
 
 
 Destination Clock Path
@@ -1142,7 +1214,7 @@ Name                                      Cell/Site Name     Delay Name       In
                                                              CONSTRAINT       0.000                  0.000  1       
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  20      
 clk_divider/clk                                              NET DELAY        3.084                  3.084  20      
-{clk_divider/counter_16__i23/CK   clk_divider/counter_16__i24/CK}
+{clk_divider/counter_15__i23/CK   clk_divider/counter_15__i24/CK}
                                                              CLOCK PIN        0.000                  3.084  1       
                                                              Uncertainty      0.000                  3.084  
                                                              Hold time        0.000                  3.084  
@@ -1157,8 +1229,8 @@ Path Slack  (Passed)                                                            
 
 ++++ Path 3 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : clk_divider/counter_16__i24/Q  (SLICE_R21C7A)
-Path End         : clk_divider/counter_16__i24/D  (SLICE_R21C7A)
+Path Begin       : clk_divider/counter_15__i24/Q  (SLICE_R13C6A)
+Path End         : clk_divider/counter_15__i24/D  (SLICE_R13C6A)
 Source Clock     : clk (R)
 Destination Clock: clk (R)
 Logic Level      : 2
@@ -1173,20 +1245,20 @@ Name                                      Cell/Site Name     Delay Name       In
 ----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  20      
 clk_divider/clk                                              NET DELAY        3.084                  3.084  20      
-{clk_divider/counter_16__i23/CK   clk_divider/counter_16__i24/CK}
+{clk_divider/counter_15__i23/CK   clk_divider/counter_15__i24/CK}
                                                              CLOCK PIN        0.000                  3.084  1       
 
 
 Data Path
 Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
 ----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
-clk_divider/counter_16__i24/CK->clk_divider/counter_16__i24/Q
-                                          SLICE_R21C7A       CLK_TO_Q1_DELAY  0.779                  3.863  2       
+clk_divider/counter_15__i24/CK->clk_divider/counter_15__i24/Q
+                                          SLICE_R13C6A       CLK_TO_Q1_DELAY  0.779                  3.863  2       
 clk_divider/counter[24]                                      NET DELAY        0.882                  4.745  2       
-clk_divider/counter_16_add_4_25/C1->clk_divider/counter_16_add_4_25/S1
-                                          SLICE_R21C7A       C1_TO_F1_DELAY   0.252                  4.997  1       
+clk_divider/counter_15_add_4_25/C1->clk_divider/counter_15_add_4_25/S1
+                                          SLICE_R13C6A       C1_TO_F1_DELAY   0.252                  4.997  1       
 clk_divider/n133[24]                                         NET DELAY        0.000                  4.997  1       
-clk_divider/counter_16__i24/D                                ENDPOINT         0.000                  4.997  1       
+clk_divider/counter_15__i24/D                                ENDPOINT         0.000                  4.997  1       
 
 
 Destination Clock Path
@@ -1195,7 +1267,7 @@ Name                                      Cell/Site Name     Delay Name       In
                                                              CONSTRAINT       0.000                  0.000  1       
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  20      
 clk_divider/clk                                              NET DELAY        3.084                  3.084  20      
-{clk_divider/counter_16__i23/CK   clk_divider/counter_16__i24/CK}
+{clk_divider/counter_15__i23/CK   clk_divider/counter_15__i24/CK}
                                                              CLOCK PIN        0.000                  3.084  1       
                                                              Uncertainty      0.000                  3.084  
                                                              Hold time        0.000                  3.084  
@@ -1210,8 +1282,8 @@ Path Slack  (Passed)                                                            
 
 ++++ Path 4 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : clk_divider/counter_16__i25/Q  (SLICE_R21C7B)
-Path End         : clk_divider/counter_16__i25/D  (SLICE_R21C7B)
+Path Begin       : clk_divider/counter_15__i29/Q  (SLICE_R13C6D)
+Path End         : clk_divider/counter_15__i29/D  (SLICE_R13C6D)
 Source Clock     : clk (R)
 Destination Clock: clk (R)
 Logic Level      : 2
@@ -1226,20 +1298,20 @@ Name                                      Cell/Site Name     Delay Name       In
 ----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  20      
 clk_divider/clk                                              NET DELAY        3.084                  3.084  20      
-{clk_divider/counter_16__i25/CK   clk_divider/counter_16__i26/CK}
+{clk_divider/counter_15__i29/CK   clk_divider/counter_15__i30/CK}
                                                              CLOCK PIN        0.000                  3.084  1       
 
 
 Data Path
 Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
 ----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
-clk_divider/counter_16__i25/CK->clk_divider/counter_16__i25/Q
-                                          SLICE_R21C7B       CLK_TO_Q0_DELAY  0.779                  3.863  2       
-clk_divider/counter[25]                                      NET DELAY        0.882                  4.745  2       
-clk_divider/counter_16_add_4_27/C0->clk_divider/counter_16_add_4_27/S0
-                                          SLICE_R21C7B       C0_TO_F0_DELAY   0.252                  4.997  1       
-clk_divider/n133[25]                                         NET DELAY        0.000                  4.997  1       
-clk_divider/counter_16__i25/D                                ENDPOINT         0.000                  4.997  1       
+clk_divider/counter_15__i29/CK->clk_divider/counter_15__i29/Q
+                                          SLICE_R13C6D       CLK_TO_Q0_DELAY  0.779                  3.863  2       
+clk_divider/counter[29]                                      NET DELAY        0.882                  4.745  2       
+clk_divider/counter_15_add_4_31/C0->clk_divider/counter_15_add_4_31/S0
+                                          SLICE_R13C6D       C0_TO_F0_DELAY   0.252                  4.997  1       
+clk_divider/n133[29]                                         NET DELAY        0.000                  4.997  1       
+clk_divider/counter_15__i29/D                                ENDPOINT         0.000                  4.997  1       
 
 
 Destination Clock Path
@@ -1248,7 +1320,7 @@ Name                                      Cell/Site Name     Delay Name       In
                                                              CONSTRAINT       0.000                  0.000  1       
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  20      
 clk_divider/clk                                              NET DELAY        3.084                  3.084  20      
-{clk_divider/counter_16__i25/CK   clk_divider/counter_16__i26/CK}
+{clk_divider/counter_15__i29/CK   clk_divider/counter_15__i30/CK}
                                                              CLOCK PIN        0.000                  3.084  1       
                                                              Uncertainty      0.000                  3.084  
                                                              Hold time        0.000                  3.084  
@@ -1263,8 +1335,8 @@ Path Slack  (Passed)                                                            
 
 ++++ Path 5 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : clk_divider/counter_16__i26/Q  (SLICE_R21C7B)
-Path End         : clk_divider/counter_16__i26/D  (SLICE_R21C7B)
+Path Begin       : clk_divider/counter_15__i30/Q  (SLICE_R13C6D)
+Path End         : clk_divider/counter_15__i30/D  (SLICE_R13C6D)
 Source Clock     : clk (R)
 Destination Clock: clk (R)
 Logic Level      : 2
@@ -1279,20 +1351,20 @@ Name                                      Cell/Site Name     Delay Name       In
 ----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  20      
 clk_divider/clk                                              NET DELAY        3.084                  3.084  20      
-{clk_divider/counter_16__i25/CK   clk_divider/counter_16__i26/CK}
+{clk_divider/counter_15__i29/CK   clk_divider/counter_15__i30/CK}
                                                              CLOCK PIN        0.000                  3.084  1       
 
 
 Data Path
 Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
 ----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
-clk_divider/counter_16__i26/CK->clk_divider/counter_16__i26/Q
-                                          SLICE_R21C7B       CLK_TO_Q1_DELAY  0.779                  3.863  2       
-clk_divider/counter[26]                                      NET DELAY        0.882                  4.745  2       
-clk_divider/counter_16_add_4_27/C1->clk_divider/counter_16_add_4_27/S1
-                                          SLICE_R21C7B       C1_TO_F1_DELAY   0.252                  4.997  1       
-clk_divider/n133[26]                                         NET DELAY        0.000                  4.997  1       
-clk_divider/counter_16__i26/D                                ENDPOINT         0.000                  4.997  1       
+clk_divider/counter_15__i30/CK->clk_divider/counter_15__i30/Q
+                                          SLICE_R13C6D       CLK_TO_Q1_DELAY  0.779                  3.863  2       
+clk_divider/counter[30]                                      NET DELAY        0.882                  4.745  2       
+clk_divider/counter_15_add_4_31/C1->clk_divider/counter_15_add_4_31/S1
+                                          SLICE_R13C6D       C1_TO_F1_DELAY   0.252                  4.997  1       
+clk_divider/n133[30]                                         NET DELAY        0.000                  4.997  1       
+clk_divider/counter_15__i30/D                                ENDPOINT         0.000                  4.997  1       
 
 
 Destination Clock Path
@@ -1301,7 +1373,7 @@ Name                                      Cell/Site Name     Delay Name       In
                                                              CONSTRAINT       0.000                  0.000  1       
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  20      
 clk_divider/clk                                              NET DELAY        3.084                  3.084  20      
-{clk_divider/counter_16__i25/CK   clk_divider/counter_16__i26/CK}
+{clk_divider/counter_15__i29/CK   clk_divider/counter_15__i30/CK}
                                                              CLOCK PIN        0.000                  3.084  1       
                                                              Uncertainty      0.000                  3.084  
                                                              Hold time        0.000                  3.084  
@@ -1316,8 +1388,8 @@ Path Slack  (Passed)                                                            
 
 ++++ Path 6 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : clk_divider/counter_16__i7/Q  (SLICE_R21C5A)
-Path End         : clk_divider/counter_16__i7/D  (SLICE_R21C5A)
+Path Begin       : clk_divider/counter_15__i31/Q  (SLICE_R13C7A)
+Path End         : clk_divider/counter_15__i31/D  (SLICE_R13C7A)
 Source Clock     : clk (R)
 Destination Clock: clk (R)
 Logic Level      : 2
@@ -1332,20 +1404,19 @@ Name                                      Cell/Site Name     Delay Name       In
 ----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  20      
 clk_divider/clk                                              NET DELAY        3.084                  3.084  20      
-{clk_divider/counter_16__i7/CK   clk_divider/counter_16__i8/CK}
-                                                             CLOCK PIN        0.000                  3.084  1       
+clk_divider/counter_15__i31/CK                               CLOCK PIN        0.000                  3.084  1       
 
 
 Data Path
 Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
 ----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
-clk_divider/counter_16__i7/CK->clk_divider/counter_16__i7/Q
-                                          SLICE_R21C5A       CLK_TO_Q0_DELAY  0.779                  3.863  2       
-clk_divider/counter[7]                                       NET DELAY        0.882                  4.745  2       
-clk_divider/counter_16_add_4_9/C0->clk_divider/counter_16_add_4_9/S0
-                                          SLICE_R21C5A       C0_TO_F0_DELAY   0.252                  4.997  1       
-clk_divider/n133[7]                                          NET DELAY        0.000                  4.997  1       
-clk_divider/counter_16__i7/D                                 ENDPOINT         0.000                  4.997  1       
+clk_divider/counter_15__i31/CK->clk_divider/counter_15__i31/Q
+                                          SLICE_R13C7A       CLK_TO_Q0_DELAY  0.779                  3.863  2       
+clk_divider/counter[31]                                      NET DELAY        0.882                  4.745  2       
+clk_divider/counter_15_add_4_33/C0->clk_divider/counter_15_add_4_33/S0
+                                          SLICE_R13C7A       C0_TO_F0_DELAY   0.252                  4.997  1       
+clk_divider/n133[31]                                         NET DELAY        0.000                  4.997  1       
+clk_divider/counter_15__i31/D                                ENDPOINT         0.000                  4.997  1       
 
 
 Destination Clock Path
@@ -1354,8 +1425,7 @@ Name                                      Cell/Site Name     Delay Name       In
                                                              CONSTRAINT       0.000                  0.000  1       
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  20      
 clk_divider/clk                                              NET DELAY        3.084                  3.084  20      
-{clk_divider/counter_16__i7/CK   clk_divider/counter_16__i8/CK}
-                                                             CLOCK PIN        0.000                  3.084  1       
+clk_divider/counter_15__i31/CK                               CLOCK PIN        0.000                  3.084  1       
                                                              Uncertainty      0.000                  3.084  
                                                              Hold time        0.000                  3.084  
 ----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
@@ -1369,8 +1439,8 @@ Path Slack  (Passed)                                                            
 
 ++++ Path 7 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : clk_divider/counter_16__i8/Q  (SLICE_R21C5A)
-Path End         : clk_divider/counter_16__i8/D  (SLICE_R21C5A)
+Path Begin       : clk_divider/counter_15__i25/Q  (SLICE_R13C6B)
+Path End         : clk_divider/counter_15__i25/D  (SLICE_R13C6B)
 Source Clock     : clk (R)
 Destination Clock: clk (R)
 Logic Level      : 2
@@ -1385,20 +1455,20 @@ Name                                      Cell/Site Name     Delay Name       In
 ----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  20      
 clk_divider/clk                                              NET DELAY        3.084                  3.084  20      
-{clk_divider/counter_16__i7/CK   clk_divider/counter_16__i8/CK}
+{clk_divider/counter_15__i25/CK   clk_divider/counter_15__i26/CK}
                                                              CLOCK PIN        0.000                  3.084  1       
 
 
 Data Path
 Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
 ----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
-clk_divider/counter_16__i8/CK->clk_divider/counter_16__i8/Q
-                                          SLICE_R21C5A       CLK_TO_Q1_DELAY  0.779                  3.863  2       
-clk_divider/counter[8]                                       NET DELAY        0.882                  4.745  2       
-clk_divider/counter_16_add_4_9/C1->clk_divider/counter_16_add_4_9/S1
-                                          SLICE_R21C5A       C1_TO_F1_DELAY   0.252                  4.997  1       
-clk_divider/n133[8]                                          NET DELAY        0.000                  4.997  1       
-clk_divider/counter_16__i8/D                                 ENDPOINT         0.000                  4.997  1       
+clk_divider/counter_15__i25/CK->clk_divider/counter_15__i25/Q
+                                          SLICE_R13C6B       CLK_TO_Q0_DELAY  0.779                  3.863  2       
+clk_divider/counter[25]                                      NET DELAY        0.882                  4.745  2       
+clk_divider/counter_15_add_4_27/C0->clk_divider/counter_15_add_4_27/S0
+                                          SLICE_R13C6B       C0_TO_F0_DELAY   0.252                  4.997  1       
+clk_divider/n133[25]                                         NET DELAY        0.000                  4.997  1       
+clk_divider/counter_15__i25/D                                ENDPOINT         0.000                  4.997  1       
 
 
 Destination Clock Path
@@ -1407,7 +1477,7 @@ Name                                      Cell/Site Name     Delay Name       In
                                                              CONSTRAINT       0.000                  0.000  1       
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  20      
 clk_divider/clk                                              NET DELAY        3.084                  3.084  20      
-{clk_divider/counter_16__i7/CK   clk_divider/counter_16__i8/CK}
+{clk_divider/counter_15__i25/CK   clk_divider/counter_15__i26/CK}
                                                              CLOCK PIN        0.000                  3.084  1       
                                                              Uncertainty      0.000                  3.084  
                                                              Hold time        0.000                  3.084  
@@ -1422,8 +1492,8 @@ Path Slack  (Passed)                                                            
 
 ++++ Path 8 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : clk_divider/counter_16__i29/Q  (SLICE_R21C7D)
-Path End         : clk_divider/counter_16__i29/D  (SLICE_R21C7D)
+Path Begin       : clk_divider/counter_15__i26/Q  (SLICE_R13C6B)
+Path End         : clk_divider/counter_15__i26/D  (SLICE_R13C6B)
 Source Clock     : clk (R)
 Destination Clock: clk (R)
 Logic Level      : 2
@@ -1438,20 +1508,20 @@ Name                                      Cell/Site Name     Delay Name       In
 ----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  20      
 clk_divider/clk                                              NET DELAY        3.084                  3.084  20      
-{clk_divider/counter_16__i29/CK   clk_divider/counter_16__i30/CK}
+{clk_divider/counter_15__i25/CK   clk_divider/counter_15__i26/CK}
                                                              CLOCK PIN        0.000                  3.084  1       
 
 
 Data Path
 Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
 ----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
-clk_divider/counter_16__i29/CK->clk_divider/counter_16__i29/Q
-                                          SLICE_R21C7D       CLK_TO_Q0_DELAY  0.779                  3.863  2       
-clk_divider/counter[29]                                      NET DELAY        0.882                  4.745  2       
-clk_divider/counter_16_add_4_31/C0->clk_divider/counter_16_add_4_31/S0
-                                          SLICE_R21C7D       C0_TO_F0_DELAY   0.252                  4.997  1       
-clk_divider/n133[29]                                         NET DELAY        0.000                  4.997  1       
-clk_divider/counter_16__i29/D                                ENDPOINT         0.000                  4.997  1       
+clk_divider/counter_15__i26/CK->clk_divider/counter_15__i26/Q
+                                          SLICE_R13C6B       CLK_TO_Q1_DELAY  0.779                  3.863  2       
+clk_divider/counter[26]                                      NET DELAY        0.882                  4.745  2       
+clk_divider/counter_15_add_4_27/C1->clk_divider/counter_15_add_4_27/S1
+                                          SLICE_R13C6B       C1_TO_F1_DELAY   0.252                  4.997  1       
+clk_divider/n133[26]                                         NET DELAY        0.000                  4.997  1       
+clk_divider/counter_15__i26/D                                ENDPOINT         0.000                  4.997  1       
 
 
 Destination Clock Path
@@ -1460,7 +1530,7 @@ Name                                      Cell/Site Name     Delay Name       In
                                                              CONSTRAINT       0.000                  0.000  1       
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  20      
 clk_divider/clk                                              NET DELAY        3.084                  3.084  20      
-{clk_divider/counter_16__i29/CK   clk_divider/counter_16__i30/CK}
+{clk_divider/counter_15__i25/CK   clk_divider/counter_15__i26/CK}
                                                              CLOCK PIN        0.000                  3.084  1       
                                                              Uncertainty      0.000                  3.084  
                                                              Hold time        0.000                  3.084  
@@ -1475,8 +1545,8 @@ Path Slack  (Passed)                                                            
 
 ++++ Path 9 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : clk_divider/counter_16__i30/Q  (SLICE_R21C7D)
-Path End         : clk_divider/counter_16__i30/D  (SLICE_R21C7D)
+Path Begin       : clk_divider/counter_15__i27/Q  (SLICE_R13C6C)
+Path End         : clk_divider/counter_15__i27/D  (SLICE_R13C6C)
 Source Clock     : clk (R)
 Destination Clock: clk (R)
 Logic Level      : 2
@@ -1491,20 +1561,20 @@ Name                                      Cell/Site Name     Delay Name       In
 ----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  20      
 clk_divider/clk                                              NET DELAY        3.084                  3.084  20      
-{clk_divider/counter_16__i29/CK   clk_divider/counter_16__i30/CK}
+{clk_divider/counter_15__i27/CK   clk_divider/counter_15__i28/CK}
                                                              CLOCK PIN        0.000                  3.084  1       
 
 
 Data Path
 Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
 ----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
-clk_divider/counter_16__i30/CK->clk_divider/counter_16__i30/Q
-                                          SLICE_R21C7D       CLK_TO_Q1_DELAY  0.779                  3.863  2       
-clk_divider/counter[30]                                      NET DELAY        0.882                  4.745  2       
-clk_divider/counter_16_add_4_31/C1->clk_divider/counter_16_add_4_31/S1
-                                          SLICE_R21C7D       C1_TO_F1_DELAY   0.252                  4.997  1       
-clk_divider/n133[30]                                         NET DELAY        0.000                  4.997  1       
-clk_divider/counter_16__i30/D                                ENDPOINT         0.000                  4.997  1       
+clk_divider/counter_15__i27/CK->clk_divider/counter_15__i27/Q
+                                          SLICE_R13C6C       CLK_TO_Q0_DELAY  0.779                  3.863  2       
+clk_divider/counter[27]                                      NET DELAY        0.882                  4.745  2       
+clk_divider/counter_15_add_4_29/C0->clk_divider/counter_15_add_4_29/S0
+                                          SLICE_R13C6C       C0_TO_F0_DELAY   0.252                  4.997  1       
+clk_divider/n133[27]                                         NET DELAY        0.000                  4.997  1       
+clk_divider/counter_15__i27/D                                ENDPOINT         0.000                  4.997  1       
 
 
 Destination Clock Path
@@ -1513,7 +1583,7 @@ Name                                      Cell/Site Name     Delay Name       In
                                                              CONSTRAINT       0.000                  0.000  1       
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  20      
 clk_divider/clk                                              NET DELAY        3.084                  3.084  20      
-{clk_divider/counter_16__i29/CK   clk_divider/counter_16__i30/CK}
+{clk_divider/counter_15__i27/CK   clk_divider/counter_15__i28/CK}
                                                              CLOCK PIN        0.000                  3.084  1       
                                                              Uncertainty      0.000                  3.084  
                                                              Hold time        0.000                  3.084  
@@ -1528,8 +1598,8 @@ Path Slack  (Passed)                                                            
 
 ++++ Path 10 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : clk_divider/counter_16__i31/Q  (SLICE_R21C8A)
-Path End         : clk_divider/counter_16__i31/D  (SLICE_R21C8A)
+Path Begin       : clk_divider/counter_15__i28/Q  (SLICE_R13C6C)
+Path End         : clk_divider/counter_15__i28/D  (SLICE_R13C6C)
 Source Clock     : clk (R)
 Destination Clock: clk (R)
 Logic Level      : 2
@@ -1544,19 +1614,20 @@ Name                                      Cell/Site Name     Delay Name       In
 ----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  20      
 clk_divider/clk                                              NET DELAY        3.084                  3.084  20      
-clk_divider/counter_16__i31/CK                               CLOCK PIN        0.000                  3.084  1       
+{clk_divider/counter_15__i27/CK   clk_divider/counter_15__i28/CK}
+                                                             CLOCK PIN        0.000                  3.084  1       
 
 
 Data Path
 Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
 ----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
-clk_divider/counter_16__i31/CK->clk_divider/counter_16__i31/Q
-                                          SLICE_R21C8A       CLK_TO_Q0_DELAY  0.779                  3.863  2       
-clk_divider/counter[31]                                      NET DELAY        0.882                  4.745  2       
-clk_divider/counter_16_add_4_33/C0->clk_divider/counter_16_add_4_33/S0
-                                          SLICE_R21C8A       C0_TO_F0_DELAY   0.252                  4.997  1       
-clk_divider/n133[31]                                         NET DELAY        0.000                  4.997  1       
-clk_divider/counter_16__i31/D                                ENDPOINT         0.000                  4.997  1       
+clk_divider/counter_15__i28/CK->clk_divider/counter_15__i28/Q
+                                          SLICE_R13C6C       CLK_TO_Q1_DELAY  0.779                  3.863  2       
+clk_divider/counter[28]                                      NET DELAY        0.882                  4.745  2       
+clk_divider/counter_15_add_4_29/C1->clk_divider/counter_15_add_4_29/S1
+                                          SLICE_R13C6C       C1_TO_F1_DELAY   0.252                  4.997  1       
+clk_divider/n133[28]                                         NET DELAY        0.000                  4.997  1       
+clk_divider/counter_15__i28/D                                ENDPOINT         0.000                  4.997  1       
 
 
 Destination Clock Path
@@ -1565,7 +1636,8 @@ Name                                      Cell/Site Name     Delay Name       In
                                                              CONSTRAINT       0.000                  0.000  1       
 hf_osc.osc_inst/CLKHF                     HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  20      
 clk_divider/clk                                              NET DELAY        3.084                  3.084  20      
-clk_divider/counter_16__i31/CK                               CLOCK PIN        0.000                  3.084  1       
+{clk_divider/counter_15__i27/CK   clk_divider/counter_15__i28/CK}
+                                                             CLOCK PIN        0.000                  3.084  1       
                                                              Uncertainty      0.000                  3.084  
                                                              Hold time        0.000                  3.084  
 ----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
