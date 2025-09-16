@@ -1,1 +1,0 @@
-C:/lscc/radiant/2024.2/questasim/win64/VisualizerRls/bin/viscom.exe -nolock -quiet -jmem_size 393216 work.lab2_ll_two_displays work.lab_2_ll_tb -quiet -auto_acc_if_foreign -work work +acc -L iCE40UP -allow_unnamed -o _opt2 -id 1-089df44dd27b-68c1b43e-36f-af4 +__design_bin_path+C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab2_ll_two_displays/fpga/sim +__betafsm
