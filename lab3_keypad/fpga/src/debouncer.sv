@@ -18,7 +18,7 @@ module debouncer #(parameter WIDTH = 4) (
 	
 	
 	
-	// Instantiate counter module
+	// Instantiate counter module -- I'LL PROBS NEED TO INSTANTIATE A SECOND COUNTER FOR ERROR
 	counter #( .SIZE(6'd32) ) (
 		.clk       ( clk ), 
 		.reset     ( reset ),
@@ -37,7 +37,6 @@ module debouncer #(parameter WIDTH = 4) (
 		.q     ( d_mid )  // output [3:0]
 	);
 	*/
-	output            logic tick
 	
 	
 	
