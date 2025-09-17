@@ -6,19 +6,38 @@ module scanner(
 				input logic  [3:0] R,
 				
 				output logic [3:0] C,
-				output logic [3:0] R_out
+				output logic [3:0] R_out,
+				output logic       db_error // FOR DEBUGGING; MAY REMOVE
 			  );
-	
-	// instantiate debouncer
-	debouncer #( .WIDTH(3'd4) ) (
-		
-	);
 	
 	// state logic
 	typedef enum logic [3:0] 
 		{RESET, SCAN_C0, SCAN_C1, SCAN_C2, SCAN_C3, DEBOUNCE_HIGH, ON, DEBOUNCE_LOW, ERROR} 
 		statetype;
 	statetype state, next_state;
+	
+	// debouncer logic
+	logic        db_en;
+	logic [3:0]  db_criterion;
+	logic [31:0] db_period;
+	logic        db_steady;
+	logic        db_error;
+	
+	// instantiate debouncer
+	debouncer #( .WIDTH(3'd4) ) db(
+		.clk             ( clk ), 
+		.reset           ( reset ),        // input
+		.en              ( db_en ),        // input
+		.criterion       ( db_criterion ), // input [3:0] 
+		.in              ( R ),            // input [3:0]
+		.debounce_period ( db_period ),    // input [31:0]
+				
+		.steady ( db_steady ),             // output 
+		.error  ( db_error )               // output
+	);
+	
+	assign db_period = 240000; // target: 10 ms (24MHz / 240000 = 100 Hz)
+	
 	
 	// state register
 	always_ff @(posedge clk, posedge reset)
@@ -31,9 +50,9 @@ module scanner(
 			RESET:                       next_state = SCAN_C0;
 			SCAN_C0:        C <= 0001; // DOESN'T WAIT FOR SYNCHRONIZER -- WILL CAUSE BUG IF/WHEN I ADD IT
 							case( R ) begin
-								4'b0001: target <= 4'b0001; // I'm basically trying to enable the debouncer with target = R and wait for the debouncer to provide steady to move on, rather than have a dedicated DEBOUNCE state . I have no idea how to implement ERROR now, tho
-										 debounce_en <= 1; 
-										 if (steady) next_state = ON; // I wonder if I can replace this with a ternary statement
+								4'b0001: db_criterion <= 4'b0001; // I'm basically trying to enable the debouncer with target = R and wait for the debouncer to provide steady to move on, rather than have a dedicated DEBOUNCE state . I have no idea how to implement ERROR now, tho
+										 db_en <= 1; 
+										 if (db_steady) next_state = ON; // I wonder if I can replace this with a ternary statement
 										 else        next_state = SCAN_C0;
 								4'b0010:    
 								4'b0100:    

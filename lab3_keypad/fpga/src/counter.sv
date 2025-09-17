@@ -1,26 +1,27 @@
 // Lucas Lemos - llemos@hmc.edu - 9/15/2025
 // This module implements a moore machine clock counter
 
-module counter #(parameter SIZE = 32) (
-	input             logic clk, reset, en,
-	input  [SIZE-1:0] logic cnt_goal,       // value to count to before setting "tick" high (sets duty cycle of 24MHz clock)
-	input  [SIZE-1:0] logic criterion,      // criterion necessary to iterate counter
-	input  [SIZE-1:0] logic target,         // the value the criterion must meet
+module counter #(parameter SIZE = 32, parameter WIDTH = 4) (
+	input  logic             clk, reset, en,
+	input  logic [SIZE-1:0]  cnt_goal,       // value to count to before setting "tick" high (sets duty cycle of 24MHz clock)
+	input  logic [WIDTH-1:0] in,             // input necessary to iterate counter
+	input  logic [WIDTH-1:0] criterion,      // the value the input must meet
 	
-	output            logic tick            // "on" period of the counter
+	output logic             tick            // the "on" period of the counter
 	);
 	
 	logic [SIZE-1:0] count;
 	
-	always_ff @(posedge clk, posedge reset, posedge en) begin
-		if ( en ) begin // counter must be enabled to keep counting. count retains value if disabled
-			if ( criterion == target ) count <= count + 1;
-			else             count <= 0;         // if criterion fails to be met, RESET the counter
+	always_ff @(posedge clk) begin
+		if ( ~reset ) count <= 0; // synchronous reset
+		else if ( en ) begin                                // counter must be enabled to count
+			if ( in == criterion ) count <= count + 1;
+			else                   count <= 0;         // if criterion fails to be met, RESET the counter
 		end
-		if ( reset ) count <= 0;
-		if ( count == cnt_goal ) tick <= 1;
+		else count <= 0; // if ~en, reset the counter (IDK IF THIS IS THE BEST WAY TO IMPLEMENT THIS)
 	end
-	
+	assign tick = count > cnt_goal; // this might not be behaving like i'd expect for a clock divider, but I think this might actually work for the debouncer...
+	// to make periodic, I think i'd make the counter reset after some max value maybe?
 	
 endmodule
 
