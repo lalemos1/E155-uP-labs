@@ -16,11 +16,12 @@ module debouncer #(parameter WIDTH = 4) (
 	logic [31:0] clk_divisor;
 	
 	
-	
-	
-	
 	// Instantiate counter module -- I'LL PROBS NEED TO INSTANTIATE A SECOND COUNTER FOR ERROR
-	counter #( .SIZE(6'd32), .WIDTH(3'd4) ) steady_counter(
+	counter #( 
+		.SIZE   ( 7'd32 ),       // counter bus size
+		.WIDTH  ( 3'd4 ),        // bus width of signals
+		.MAXVAL ( 27'd24000000 ) // frequency of HSOSC
+	) steady_counter (
 		.clk       ( clk ),             // input
 		.reset     ( reset ),           // input
 		.en        ( en ),              // input
@@ -29,15 +30,6 @@ module debouncer #(parameter WIDTH = 4) (
 		.criterion ( criterion ),       // input [3:0]
 		
 		.tick      ( steady )           // output
-	);
-	/*
-		flopr #(.WIDTH(3'd4)) flop_a(
-		.clk   ( clk ),   // input
-		.reset ( reset ), // input
-		.d     ( d_a ),   // input [3:0]
-		.q     ( d_mid )  // output [3:0]
-	);
-	*/
 	
 	
 	

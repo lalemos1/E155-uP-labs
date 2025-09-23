@@ -19,7 +19,11 @@ module counter_tb;  // BUG: fails tv=32'b0 when it actually works
 	logic [31:0] testvectors[10000:0]; // create space for 10,000 32-bit wide test vectors
 	
 	// Instantiate device under test
-	counter #( .SIZE(6'd32), .WIDTH(3'd4) ) DUT(
+	counter #( 
+		.SIZE   ( 7'd32 ), 
+		.WIDTH  ( 3'd4 ),
+		.MAXVAL ( 26'd4 ) // 3'd2
+	) DUT (
 		.clk       ( clk ),             // input
 		.reset     ( reset ),           // input
 		.en        ( en ),              // input
@@ -31,7 +35,7 @@ module counter_tb;  // BUG: fails tv=32'b0 when it actually works
 	);
 	
 	// Accounts for offset of divisor*2 in the implementation
-	assign expected_count = cnt_goal; //divisor<<1;
+	assign expected_count = cnt_goal + 1; // offset b/c moore machine (not mealy)
 	assign in = 4'b0001;
 	assign criterion = 4'b0001;
 	
@@ -67,7 +71,7 @@ module counter_tb;  // BUG: fails tv=32'b0 when it actually works
 				$display(" clk_counter = %b (%b expected)", clk_counter, expected_count);
 				errors = errors + 1;
 			end
-			
+		#1; reset = 0; #12 reset = 1;
 		vectornum = vectornum + 1;
 		clk_counter = 0; // THIS IS BEHAVING WRONG FOR THE EXPECTED FUNCTIONALITY
 		
