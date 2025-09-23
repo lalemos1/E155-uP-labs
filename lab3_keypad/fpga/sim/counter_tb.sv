@@ -1,7 +1,7 @@
 // Lucas Lemos - llemos@hmc.edu - 9/16/2025
 // Tests the counter module that it outputs the proper duty cycle relative to the clk from the HSOSC
 
-module counter_tb;  // BUG: fails tv=32'b0 when it actually works
+module counter_tb;
 	// DUT logic
 	logic        clk, reset, en;  // input to DUT
 	logic [31:0] cnt_goal;        // input to DUT (value to count to before setting "tick" high (sets duty cycle of 24MHz clock))
@@ -22,7 +22,7 @@ module counter_tb;  // BUG: fails tv=32'b0 when it actually works
 	counter #( 
 		.SIZE   ( 7'd32 ), 
 		.WIDTH  ( 3'd4 ),
-		.MAXVAL ( 26'd4 ) // 3'd2
+		.MAXVAL ( 26'd4 )
 	) DUT (
 		.clk       ( clk ),             // input
 		.reset     ( reset ),           // input
@@ -34,7 +34,6 @@ module counter_tb;  // BUG: fails tv=32'b0 when it actually works
 		.tick      ( tick )             // output
 	);
 	
-	// Accounts for offset of divisor*2 in the implementation
 	assign expected_count = cnt_goal + 1; // offset b/c moore machine (not mealy)
 	assign in = 4'b0001;
 	assign criterion = 4'b0001;

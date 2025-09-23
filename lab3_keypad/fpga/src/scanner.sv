@@ -12,25 +12,33 @@ module scanner(
 	
 	// state logic
 	typedef enum logic [3:0] 
-		{RESET, SCAN_C0, SCAN_C1, SCAN_C2, SCAN_C3, DEBOUNCE_HIGH, ON, DEBOUNCE_LOW, ERROR} 
+		{RESET, SCAN_COL, SYNC_BUFFER, READ, DEBOUNCE_HIGH, ON, DEBOUNCE_LOW, ERROR} 
 		statetype;
 	statetype state, next_state;
+	
+	typedef enum logic [2:0]
+		{COL_RESET, C0, C1, C2, C3, COL_ERROR}
+		colstatetype;
+	colstatetype col_state, next_col_state;
+	logic        col_en;
 	
 	// debouncer logic
 	logic        db_en;
 	logic [3:0]  db_criterion;
+	logic [3:0]  db_fail_criterion;
 	logic [31:0] db_period;
 	logic        db_steady;
-	logic        db_error;
+	//logic        db_error; // already included above
 	
 	// instantiate debouncer
 	debouncer #( .WIDTH(3'd4) ) db(
 		.clk             ( clk ), 
-		.reset           ( reset ),        // input
-		.en              ( db_en ),        // input
-		.criterion       ( db_criterion ), // input [3:0] 
-		.in              ( R ),            // input [3:0]
-		.debounce_period ( db_period ),    // input [31:0]
+		.reset           ( reset ),             // input
+		.en              ( db_en ),             // input
+		.in              ( R ),                 // input
+		.criterion       ( db_criterion ),      // input
+		.fail_criterion    ( db_fail_criterion ), // input
+		.debounce_period ( db_period ),         // input [31:0]
 				
 		.steady ( db_steady ),             // output 
 		.error  ( db_error )               // output
@@ -40,63 +48,120 @@ module scanner(
 	
 	
 	// state register
-	always_ff @(posedge clk, posedge reset)
-		if (reset)    state <= RESET;
-		else		  state <= nextstate;
+	always_ff @(posedge clk) begin
+		if ( ~reset ) begin
+			state <= RESET; // synchronous reset, active low
+		    col_state <= COL_RESET;
+		end
+		else begin
+			state <= next_state;
+			col_state <= next_col_state;
+		end
+	end
+	
+	// scan column FSM
+	// need to make col_state and next_col_state real logic & col_en
+	always_comb begin
+		if ( col_state == COL_RESET ) begin
+								C = 4'b0000;
+								next_col_state = C0;
+		end
+		else if (col_en) begin
+			case (col_state)
+				C0: 		begin	
+								C = 4'b0001;
+								next_col_state = C1; // this might transition a tick too late and so when READ reads col, it actually reads one state later than I thought
+							end
+				C1: 		begin	
+								C = 4'b0010;
+								next_col_state = C2; 
+							end
+				C2: 		begin	
+								C = 4'b0100;
+								next_col_state = C3; 
+							end
+				C3: 		begin 	
+								C = 4'b1000;
+								next_col_state = C0; 
+							end
+				COL_ERROR:  begin
+								next_state = ERROR;
+								next_col_state = COL_ERROR;
+							end
+				default:    next_col_state = COL_ERROR;
+			endcase
+		end
+	end
 	
 	// next state logic
 	always_comb begin
 		case ( state )
-			RESET:                       next_state = SCAN_C0;
-			SCAN_C0:        C <= 0001; // DOESN'T WAIT FOR SYNCHRONIZER -- WILL CAUSE BUG IF/WHEN I ADD IT
-							case( R ) begin
-								4'b0001: db_criterion <= 4'b0001; // I'm basically trying to enable the debouncer with target = R and wait for the debouncer to provide steady to move on, rather than have a dedicated DEBOUNCE state . I have no idea how to implement ERROR now, tho
-										 db_en <= 1; 
-										 if (db_steady) next_state = ON; // I wonder if I can replace this with a ternary statement
-										 else        next_state = SCAN_C0;
-								4'b0010:    
-								4'b0100:    
-								4'b1000:    
-								4'b0000:    
-								default: next_state = SCAN_C0; // for simulaneous inputs -- MAY CAUSE A BUG
-							end
-			/*
-			SCAN_C1:        C <= 0010; // DOESN'T WAIT FOR SYNCHRONIZER -- WILL CAUSE BUG IF/WHEN I ADD IT     
-							case( R ) begin
-								0001:    next_state = DEBOUNCE_HIGH;
-								0010:    next_state = DEBOUNCE_HIGH;
-								0100:    next_state = DEBOUNCE_HIGH;
-								1000:    next_state = DEBOUNCE_HIGH;
-								0000:    next_state = SCAN_C2;
-								default: next_state = SCAN_C1; // for simulaneous inputs -- MAY CAUSE A BUG
-							end
-			SCAN_C2:        C <= 0100; // DOESN'T WAIT FOR SYNCHRONIZER -- WILL CAUSE BUG IF/WHEN I ADD IT    
-							case( R ) begin
-								0001:    next_state = DEBOUNCE_HIGH;
-								0010:    next_state = DEBOUNCE_HIGH;
-								0100:    next_state = DEBOUNCE_HIGH;
-								1000:    next_state = DEBOUNCE_HIGH;
-								0000:    next_state = SCAN_C3;
-								default: next_state = SCAN_C2; // for simulaneous inputs -- MAY CAUSE A BUG
-							end
-			SCAN_C3:        C <= 1000; // DOESN'T WAIT FOR SYNCHRONIZER -- WILL CAUSE BUG IF/WHEN I ADD IT
-							case( R ) begin
-								0001:    next_state = DEBOUNCE_HIGH;
-								0010:    next_state = DEBOUNCE_HIGH;
-								0100:    next_state = DEBOUNCE_HIGH;
-								1000:    next_state = DEBOUNCE_HIGH;
-								0000:    next_state = SCAN_C0;
-								default: next_state = SCAN_C3; // for simulaneous inputs -- MAY CAUSE A BUG
-							end
-							*/
-			DEBOUNCE_HIGH: // enable debouncer
-			ON:      
-			DEBOUNCE_LOW: 
-			ERROR:      
-			
-			default:  next_state = ERROR;
+			RESET:          				begin
+												  db_en             = 0;
+												  db_criterion      = 4'b0000;
+												  db_fail_criterion = 4'b0000;
+												  next_state        = SCAN_COL;
+											end
+			SCAN_COL:						begin
+												  col_en       = 1;
+												  next_state   = SYNC_BUFFER;	
+											end
+			SYNC_BUFFER:					begin
+												  col_en       = 0;
+												  next_state   = READ; // ONLY WAITS ONE TICK -- PROB DOESN'T WAIT LONG ENOUGH FOR SYNCHRONIZER, WHICH WILL CAUSE A BUG IF I ADD IT
+											end
+			READ:           case ( R ) 
+								4'b0000: 		  next_state   = SCAN_COL;
+								4'b0001: 	begin
+												  db_criterion = 4'b0001;
+												  next_state   = DEBOUNCE_HIGH;
+											end
+								4'b0010: 	begin
+												  db_criterion = 4'b0010;
+												  next_state   = DEBOUNCE_HIGH;
+											end
+								4'b0100: 	begin
+												  db_criterion = 4'b0100;
+												  next_state   = DEBOUNCE_HIGH;
+											end
+								4'b1000: 	begin
+												  db_criterion = 4'b1000;
+												  next_state   = DEBOUNCE_HIGH;
+											end
+								default: 		  next_state   = ERROR; // for simulaneous inputs -- MAY CAUSE A BUG
+							endcase
+			DEBOUNCE_HIGH:      			begin
+												  db_en             = 1;  // idk if i want this here or before the state transition to debounce_high
+												  db_fail_criterion = 4'b0000; // this too <--^^
+							if      ( db_steady ) next_state        = ON;
+							else if ( db_error )  next_state        = ERROR;
+							else                  next_state        = DEBOUNCE_HIGH; // loop
+											end
+			ON:      						begin
+												  db_en      = 0;
+												  //db_fail_criterion = 4'b0000; // idk why this is here
+												  R_out      = R;
+							if ( R == 4'b0000 )	  next_state = DEBOUNCE_LOW;
+							else 				  next_state = ON;
+											end
+			DEBOUNCE_LOW: 					begin
+												  db_en             = 1;
+												  R_out             = 4'b0000; 		   // idk if i want this here or in "SCAN_COL" (after debouncing)
+												  db_criterion      = 4'b0000; 	   // make sure the button debounces for low
+												  db_fail_criterion = 4'b0001; // I can't figure out how to implement this for all R != 4'b0000; MIGHT CAUSE A BUG
+							if 		( db_steady ) next_state        = SCAN_COL;
+							else if ( db_error )  next_state        = ERROR;
+							else				  next_state        = DEBOUNCE_LOW; // loop
+											end
+			ERROR:      					begin
+												  db_error   = 1;
+												  next_state = ERROR;
+											end
+			default:  							  next_state = ERROR;
+		endcase
+	end
 
-
+endmodule
 /*
 // state logic
 		typedef enum logic [2:0] {S0_C, S1_T, S2_R, S3_S, S4_D, S5_G, S6_V}

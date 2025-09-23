@@ -3,7 +3,7 @@
 
 module counter #(
 				parameter SIZE = 7'd32, 
-				parameter WIDTH = 3'd4,
+				parameter WIDTH = 1'b1,
 				parameter MAXVAL = 26'd24000000 // HSOSC frequency
 				) (
 				input  logic             clk, reset, en,
@@ -17,7 +17,7 @@ module counter #(
 	logic [SIZE-1:0] count;
 	
 	always_ff @(posedge clk) begin
-		if ( ~reset ) count <= 0; // synchronous reset
+		if ( ~reset ) count <= 0; // synchronous reset, active low
 		else if ( en ) begin                                // counter must be enabled to count
 			if ( in == criterion ) count <= count + 1;
 			else                   count <= 0;         // if criterion fails to be met, RESET the counter
