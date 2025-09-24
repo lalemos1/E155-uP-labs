@@ -8,30 +8,34 @@ module scanner(
 				output logic [3:0] C,
 				output logic [3:0] R_out,
 				output logic       error_led, // FOR DEBUGGING; MAY REMOVE
-				output logic	   col_error_led
 			  );
 	
-	// state logic
-	typedef enum logic [3:0] 
-		{RESET, SCAN_COL, SYNC_BUFFER, READ, DEBOUNCE_HIGH, ON, DEBOUNCE_LOW, ERROR} 
-		statetype;
-	statetype state, next_state;
-	
-	typedef enum logic [2:0]
-		{COL_RESET, C0, C1, C2, C3, COL_ERROR}
-		colstatetype;
-	colstatetype col_state, next_col_state;
-	logic        col_en;
-	
 	// debouncer logic
-	logic        db_en;
-	logic [3:0]  db_criterion;
-	logic [3:0]  db_fail_criterion;
-	logic [31:0] db_period;
-	logic        db_steady;
-	logic        db_error;
+	logic        db_en; // input
+	logic [3:0]  db_criterion; // input
+	logic [3:0]  db_fail_criterion; // input
+	logic [31:0] db_period; // input
+	logic        db_steady; // output
+	logic        db_error;  // output
 	
-	// instantiate debouncer
+	// scanner_fsm logic
+	//logic       clk, reset;  		// input
+	//logic [3:0] R; 				// input
+	//logic       db_steady; 			// input
+	//logic       db_error; 			// input
+	//logic [3:0] R_out; 				// output
+	//logic       col_en; 			// output
+	logic       scanner_error_led;	// output
+	//logic       db_en; 				// output
+	//logic [3:0] db_criterion; 		// output
+	//logic [3:0] db_fail_criterion; 	// output
+	
+	// col_fsm logic
+	logic       col_en;			// input
+	//logic [3:0] C; 				// output
+	logic       col_error_led;	// output
+	
+	// Instantiate debouncer
 	debouncer #( .WIDTH(3'd4) ) db(
 		.clk             ( clk ), 
 		.reset           ( reset ),             // input
@@ -45,125 +49,34 @@ module scanner(
 		.error  ( db_error )               // output
 	);
 	
+	// Instantiate scanner FSM
+	scanner_fsm DUT (
+		.clk             	( clk ),             	// input
+		.reset           	( reset ),           	// input
+		.R					( R ),					// input [3:0]
+		.db_steady     		( db_steady ),          // input
+		.db_error       	( db_error ),       	// input
+		
+		.R_out  			( R_out ),  			// output [3:0] 
+		.col_en 			( col_en ), 			// output
+		.scanner_error_led  ( scanner_error_led ),          // output
+		.db_en           	( db_en ),            	// output
+		.db_criterion		( db_criterion ),      	// output [3:0]
+		.db_fail_criterion 	( db_fail_criterion )	// output [3:0]
+	);
+	
+	// Instantiate column scanner FSM
+	col_fsm col_fsm(
+		.clk             	( clk ),            // input
+		.reset           	( reset ),          // input
+		.en					( col_en ),				// input
+		
+		.C  				( C ),  			// output [3:0] 
+		.col_error_led 		( col_error_led )	// output
+	);	
+	
 	assign db_period = 240000; // target: 10 ms (24MHz / 240000 = 100 Hz)
-	
-	
-	// state register
-	always_ff @(posedge clk) begin
-		if ( ~reset ) begin
-			state <= RESET; // synchronous reset, active low
-		    col_state <= COL_RESET;
-		end
-		else begin
-			state <= next_state;
-			col_state <= next_col_state;
-		end
-	end
-	
-	// scan column FSM
-	// need to make col_state and next_col_state real logic & col_en
-	always_comb begin
-		if ( col_state == COL_RESET ) begin
-								C = 4'b0000;
-								next_col_state = C0;
-		end
-		else if (col_en) begin
-			case (col_state)
-				C0: 		begin	
-								C = 4'b0001;
-								next_col_state = C1; // this might transition a tick too late and so when READ reads col, it actually reads one state later than I thought
-							end
-				C1: 		begin	
-								C = 4'b0010;
-								next_col_state = C2; 
-							end
-				C2: 		begin	
-								C = 4'b0100;
-								next_col_state = C3; 
-							end
-				C3: 		begin 	
-								C = 4'b1000;
-								next_col_state = C0; 
-							end
-				COL_ERROR:  begin
-								//next_state = ERROR; // this is probably illegal
-								col_error_led  = 1;
-								next_col_state = COL_ERROR;
-							end
-				default:    	next_col_state = COL_ERROR;
-			endcase
-		end
-		else C = 4'b0000;
-	end
-	
-	// next state logic
-	always_comb begin
-		case ( state )
-			RESET:          				begin
-												  db_en             = 0;
-												  db_criterion      = 4'b0000;
-												  db_fail_criterion = 4'b0000;
-												  next_state        = SCAN_COL;
-											end
-			SCAN_COL:						begin
-												  col_en       = 1;
-												  next_state   = SYNC_BUFFER;	
-											end
-			SYNC_BUFFER:					begin
-												  col_en       = 0;
-												  next_state   = READ; // ONLY WAITS ONE TICK -- PROB DOESN'T WAIT LONG ENOUGH FOR SYNCHRONIZER, WHICH WILL CAUSE A BUG IF I ADD IT
-											end
-			READ:           case ( R ) 
-								4'b0000: 		  next_state   = SCAN_COL;
-								4'b0001: 	begin
-												  db_criterion = 4'b0001;
-												  next_state   = DEBOUNCE_HIGH;
-											end
-								4'b0010: 	begin
-												  db_criterion = 4'b0010;
-												  next_state   = DEBOUNCE_HIGH;
-											end
-								4'b0100: 	begin
-												  db_criterion = 4'b0100;
-												  next_state   = DEBOUNCE_HIGH;
-											end
-								4'b1000: 	begin
-												  db_criterion = 4'b1000;
-												  next_state   = DEBOUNCE_HIGH;
-											end
-								default: 		  next_state   = ERROR; // for simulaneous inputs -- MAY CAUSE A BUG
-							endcase
-			DEBOUNCE_HIGH:      			begin
-												  db_en             = 1;  // idk if i want this here or before the state transition to debounce_high
-												  db_fail_criterion = 4'b0000; // this too <--^^
-							if      ( db_steady ) next_state        = ON;
-							else if ( db_error )  next_state        = ERROR;
-							else                  next_state        = DEBOUNCE_HIGH; // loop
-											end
-			ON:      						begin
-												  db_en      = 0;
-												  //db_fail_criterion = 4'b0000; // idk why this is here
-												  R_out      = R;
-							if ( R == 4'b0000 )	  next_state = DEBOUNCE_LOW;
-							else 				  next_state = ON;
-											end
-			DEBOUNCE_LOW: 					begin
-												  db_en             = 1;
-												  R_out             = 4'b0000; 		   // idk if i want this here or in "SCAN_COL" (after debouncing)
-												  db_criterion      = 4'b0000; 	   // make sure the button debounces for low
-												  db_fail_criterion = 4'b0001; // I can't figure out how to implement this for all R != 4'b0000; MIGHT CAUSE A BUG
-							if 		( db_steady ) next_state        = SCAN_COL;
-							else if ( db_error )  next_state        = ERROR;
-							else				  next_state        = DEBOUNCE_LOW; // loop
-											end
-			ERROR:      					begin
-												  error_led = 1;
-												  next_state = ERROR;
-											end
-			default:  							  next_state = ERROR;
-		endcase
-	end
-
+	assign error_led = (col_error_led or scanner_error_led);
 endmodule
 /*
 // state logic

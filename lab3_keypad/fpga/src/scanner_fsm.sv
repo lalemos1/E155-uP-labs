@@ -1,20 +1,18 @@
 // Lucas Lemos - llemos@hmc.edu - 9/15/2025
-// This module scans the keypad for inputs one column at a time and debounces valid inputs
+// This module implements the moore machine scanner FSM
 
 module scanner_fsm(
 				input logic        reset, clk,
 				input logic  [3:0] R,
-				
 				input  logic       db_steady,
 				input  logic       db_error,
 				
 				output logic [3:0] R_out,
 				output logic       col_en, // enable signal for columns fsm
 				output logic       error_led, // FOR DEBUGGING; MAY REMOVE
-				
-				output logic        db_en,
-				output logic [3:0]  db_criterion,
-				output logic [3:0]  db_fail_criterion
+				output logic       db_en,
+				output logic [3:0] db_criterion,
+				output logic [3:0] db_fail_criterion
 			  );
 	
 	// state logic
