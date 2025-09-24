@@ -7,7 +7,8 @@ module scanner(
 				
 				output logic [3:0] C,
 				output logic [3:0] R_out,
-				output logic       db_error // FOR DEBUGGING; MAY REMOVE
+				output logic       error_led, // FOR DEBUGGING; MAY REMOVE
+				output logic	   col_error_led
 			  );
 	
 	// state logic
@@ -28,7 +29,7 @@ module scanner(
 	logic [3:0]  db_fail_criterion;
 	logic [31:0] db_period;
 	logic        db_steady;
-	//logic        db_error; // already included above
+	logic        db_error;
 	
 	// instantiate debouncer
 	debouncer #( .WIDTH(3'd4) ) db(
@@ -85,12 +86,14 @@ module scanner(
 								next_col_state = C0; 
 							end
 				COL_ERROR:  begin
-								next_state = ERROR;
+								//next_state = ERROR; // this is probably illegal
+								col_error_led  = 1;
 								next_col_state = COL_ERROR;
 							end
-				default:    next_col_state = COL_ERROR;
+				default:    	next_col_state = COL_ERROR;
 			endcase
 		end
+		else C = 4'b0000;
 	end
 	
 	// next state logic
@@ -154,7 +157,7 @@ module scanner(
 							else				  next_state        = DEBOUNCE_LOW; // loop
 											end
 			ERROR:      					begin
-												  db_error   = 1;
+												  error_led = 1;
 												  next_state = ERROR;
 											end
 			default:  							  next_state = ERROR;
