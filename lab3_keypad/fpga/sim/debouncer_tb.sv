@@ -19,7 +19,7 @@ module debouncer_tb;
 		.clk             ( clk ),             // input
 		.reset           ( reset ),           // input
 		.en              ( en ),              // input
-		.in              ( R ),               // input {3:0]
+		.in              ( R ),               // input
 		.criterion       ( criterion ),       // input [3:0]
 		.fail_criterion  ( fail_criterion ),  // input [3:0]
 		.debounce_period ( debounce_period ), // input [31:0]
