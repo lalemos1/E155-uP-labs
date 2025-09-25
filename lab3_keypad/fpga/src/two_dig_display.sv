@@ -8,11 +8,11 @@ module two_dig_display(
 				
 							output  logic       clk_div_p44, not_clk_div_p9,
 							output  logic [4:0] led_cnt,
-							output  logic [6:0] seg
+							output  logic [6:0] seg,
+							output	logic		clk
 							);
 				
 	logic [3:0]  switch1or2; // output of the mux
-	logic        clk; // HSOSC to clk_divider
 	logic [31:0] divisor; // 48MHz / (2*divisor) = clk_div_p44 frequency
 	
 	// Generate clk by instantiating high speed oscillator module from iCE40 library

@@ -10,12 +10,12 @@ module col_fsm_tb;
 	
 	// Instantiate device under test
 	col_fsm DUT (
-		.clk             	( clk ),            // input
-		.reset           	( reset ),          // input
-		.en					( en ),				// input
+		.clk             ( clk ),            // input
+		.reset           ( reset ),          // input
+		.en				( en ),				// input
 		
-		.C  				( C ),  			// output [3:0] 
-		.col_error_led 		( col_error_led )	// output
+		.C  			( C ),  			// output [3:0] 
+		.col_error_led 	( col_error_led )	// output
 	);	
 	
 	// Generate test clock

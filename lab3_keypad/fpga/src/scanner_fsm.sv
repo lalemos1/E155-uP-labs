@@ -9,7 +9,7 @@ module scanner_fsm(
 				
 				output logic [3:0] R_out,
 				output logic       col_en, // enable signal for columns fsm
-				output logic       error_led, // FOR DEBUGGING; MAY REMOVE
+				output logic       scanner_error_led, // FOR DEBUGGING; MAY REMOVE
 				output logic       db_en,
 				output logic [3:0] db_criterion,
 				output logic [3:0] db_fail_criterion
@@ -21,12 +21,17 @@ module scanner_fsm(
 		statetype;
 	statetype state, next_state;
 	
-	
 	// state register
 	always_ff @(posedge clk) begin
 		if ( ~reset ) state <= RESET; // synchronous reset, active low
 		else 		  state <= next_state;
-		db_criterion <= ( state == READ ) ? R : 4'b0000;  // UPDATING DB_CRITERION INSTEAD OF OUTPUT LOGIC
+			
+		// Update db_criterion only during READ or DEBOUNCE_LOW
+		// I should move this to the output logic section
+		if ( state == READ ) 				db_criterion <= R;
+		else if ( state == DEBOUNCE_LOW ) 	db_criterion <= 4'b0000;
+		else								db_criterion <= db_criterion;
+		//db_criterion <= ( state == READ ) ? R : db_criterion;  // UPDATING DB_CRITERION INSTEAD OF OUTPUT LOGIC
 	end
 	
 	// next state logic
@@ -70,7 +75,7 @@ module scanner_fsm(
 			RESET:      begin  
 							R_out			 = 4'b0000;
 							col_en 			 = 0;
-							error_led		 = 0;
+							scanner_error_led= 0;
 							db_en 			 = 0;
 							//db_criterion      = 4'b0000; // actually updated in state register
 							db_fail_criterion = 4'b0000;
@@ -79,7 +84,7 @@ module scanner_fsm(
 							col_en 			 = 1;
 							
 							R_out			 = 4'b0000;
-							error_led		 = 0;
+							scanner_error_led= 0;
 							db_en 			 = 0;
 							//db_criterion      = 4'b0000; // actually updated in state register
 							db_fail_criterion = 4'b0000;
@@ -88,7 +93,7 @@ module scanner_fsm(
 							col_en 			 = 0;
 							
 							R_out			 = 4'b0000;
-							error_led		 = 0;
+							scanner_error_led= 0;
 							db_en 			 = 0;
 							//db_criterion      = 4'b0000; // actually updated in state register
 							db_fail_criterion = 4'b0000;
@@ -103,7 +108,7 @@ module scanner_fsm(
 						endcase */
 							R_out			  = 4'b0000;
 							col_en 			  = 0;
-							error_led		  = 0;
+							scanner_error_led = 0;
 							db_en 			  = 0;
 							db_fail_criterion = 4'b0000;
 						end
@@ -111,16 +116,16 @@ module scanner_fsm(
 							db_en             = 1;  // idk if i want this here or before the state transition to debounce_high
 							db_fail_criterion = 4'b0000; // this too <--^^
 						  
-							R_out			  = 4'b0000;
+							R_out			  = 4'b0000; // MIGHT WANNA UPDATE R_OUT HERE INSTEAD OF "ON"
 							col_en 			  = 0;
-							error_led		  = 0;
+							scanner_error_led = 0;
 						end
 			ON:      	begin
 							db_en = 0;
 							R_out = R;
 							
 							col_en 			  = 0;
-							error_led		  = 0;
+							scanner_error_led = 0;
 							db_fail_criterion = 4'b0000;
 						end
 			DEBOUNCE_LOW: begin
@@ -129,10 +134,10 @@ module scanner_fsm(
 							db_fail_criterion = 4'b0001; // I can't figure out how to implement this for all R != 4'b0000; MIGHT CAUSE A BUG
 							
 							col_en 			 = 0;
-							error_led		 = 0;
+							scanner_error_led= 0;
 						end
 			ERROR:	begin  
-						error_led = 1;
+						scanner_error_led = 1;
 						
 						R_out			 = 4'b0000;
 						col_en 			 = 0;
@@ -140,7 +145,7 @@ module scanner_fsm(
 						db_fail_criterion = 4'b0000;
 					end			  
 			default: begin  
-						error_led = 1;
+						scanner_error_led = 1;
 						
 						R_out			 = 4'b0000;
 						col_en 			 = 0;

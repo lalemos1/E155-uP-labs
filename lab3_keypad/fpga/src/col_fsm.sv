@@ -17,7 +17,7 @@ module col_fsm(
 	// state register
 	always_ff @(posedge clk) begin
 		if ( ~reset ) state <= RESET; // synchronous reset, active low
-		else 		  state <= next_state;
+		else 		  state <= next_state; // i probably should've implemented en here, but oh well
 	end
 	
 	// next state logic

@@ -10,7 +10,7 @@ module scanner_fsm_tb;
 	
 	logic [3:0] R_out; 				// output from DUT
 	logic       col_en; 			// output from DUT
-	logic       error_led;			// output from DUT
+	logic       scanner_error_led;	// output from DUT
 	logic       db_en; 				// output from DUT
 	logic [3:0] db_criterion; 		// output from DUT
 	logic [3:0] db_fail_criterion; 	// output from DUT
@@ -25,7 +25,7 @@ module scanner_fsm_tb;
 		
 		.R_out  			( R_out ),  			// output [3:0] 
 		.col_en 			( col_en ), 			// output
-		.error_led          ( error_led ),          // output
+		.scanner_error_led  ( scanner_error_led ),          // output
 		.db_en           	( db_en ),            	// output
 		.db_criterion		( db_criterion ),      	// output [3:0]
 		.db_fail_criterion 	( db_fail_criterion )	// output [3:0]

@@ -27,8 +27,6 @@ module counter #(
 	
 	// output
 	assign tick = ( count < MAXVAL ) ? ( count > cnt_goal ) : 0;
-	//assign tick = count > cnt_goal; // this might not be behaving like i'd expect for a clock divider, but I think this might actually work for the debouncer...
-	// to make periodic, I think i'd make the counter reset after some max value maybe?
 	
 endmodule
 
