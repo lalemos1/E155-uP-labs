@@ -2,11 +2,11 @@
 <RadiantProject version="4.2" radiant="2024.2.0.3.0" title="lab3_ll_keypad" device="iCE40UP5K-SG48I" performance_grade="High-Performance_1.2V" family_int="ice40tp" device_int="itpa08" package_int="SG48" operation_int="IND" speed_int="6" default_implementation="impl_1">
     <Options/>
     <Implementation title="impl_1" dir="impl_1" description="impl_1" synthesis="lse" default_strategy="Strategy1">
-        <Options def_top="lab3_ll_keypad" top="lab3_ll_keypad"/>
+        <Options top="lab3_ll_keypad"/>
         <Source name="../../src/lab3_ll_keypad.sv" type="Verilog" type_short="Verilog">
             <Options VerilogStandard="System Verilog" top_module="lab3_ll_keypad"/>
         </Source>
-        <Source name="../../src/synchronizer.sv" type="Verilog" type_short="Verilog" excluded="TRUE">
+        <Source name="../../src/synchronizer.sv" type="Verilog" type_short="Verilog">
             <Options VerilogStandard="System Verilog"/>
         </Source>
         <Source name="../../src/scanner.sv" type="Verilog" type_short="Verilog">
@@ -32,6 +32,12 @@
         </Source>
         <Source name="../../src/col_fsm.sv" type="Verilog" type_short="Verilog">
             <Options VerilogStandard="System Verilog"/>
+        </Source>
+        <Source name="lab3_ll_pinout.pdc" type="Physical Constraints File" type_short="PDC">
+            <Options/>
+        </Source>
+        <Source name="source/impl_1.xcf" type="Programming Project File" type_short="Programming">
+            <Options/>
         </Source>
     </Implementation>
     <Strategy name="Strategy1" file="lab3_ll_keypad1.sty"/>

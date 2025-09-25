@@ -8,13 +8,16 @@ module lab3_ll_keypad (
 
 		output logic [3:0]	C,
 		//output logic		error_led_p10,
-		output logic 		scanner_error_led,
+		output logic 		read_error_led,
+		output logic		db_error_led,
 		output logic		col_error_led,
 		output logic		mem_error_led,
 		
 		output logic       	clk_div_p44, not_clk_div_p9,
 		output logic [6:0] 	seg );
 		
+	assign db_error_led = 1; // DELETE THIS
+	
 	// Internal module logic
 	logic [3:0] R_out;
 	logic [3:0] R;
@@ -38,7 +41,7 @@ module lab3_ll_keypad (
 		
 		.C  		( C ),  			// output [3:0] 
 		.R_out		( R_out ),			// output [3:0]
-		.scanner_error_led ( scanner_error_led ),
+		.read_error_led ( read_error_led ),
 		.col_error_led	( col_error_led ) );// output
 		
 	

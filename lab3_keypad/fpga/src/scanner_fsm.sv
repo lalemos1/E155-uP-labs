@@ -9,7 +9,7 @@ module scanner_fsm(
 				
 				output logic [3:0] R_out,
 				output logic       col_en, // enable signal for columns fsm
-				output logic       scanner_error_led, // FOR DEBUGGING; MAY REMOVE
+				output logic       read_error_led, // FOR DEBUGGING; MAY REMOVE
 				output logic       db_en,
 				output logic [3:0] db_criterion,
 				output logic [3:0] db_fail_criterion
@@ -87,7 +87,7 @@ module scanner_fsm(
 	// output logic
 	assign R_out	= ( state == ON ) ? R : 4'b0000;
 	assign col_en	= ( state == SCAN_COL );
-	assign scanner_error_led = ( state == ERROR );
+	assign read_error_led = ( state == ERROR );
 	assign db_en	= ( state == DEBOUNCE_HIGH || state == DEBOUNCE_LOW );
 	
 	// Update db_criterion only during READ or DEBOUNCE_LOW

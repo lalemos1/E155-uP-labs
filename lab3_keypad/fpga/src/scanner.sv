@@ -7,7 +7,7 @@ module scanner(
 				
 				output logic [3:0] 	C,
 				output logic [3:0] 	R_out,
-				output logic       	scanner_error_led, // FOR DEBUGGING; MAY REMOVE
+				output logic       	read_error_led, // FOR DEBUGGING; MAY REMOVE
 				output logic		col_error_led
 			  );
 	
@@ -20,7 +20,7 @@ module scanner(
 	logic        db_error;  // output
 	
 	// scanner_fsm logic
-	//logic       scanner_error_led;	// output
+	//logic       read_error_led;	// output
 	
 	// col_fsm logic
 	logic       col_en;			// input
@@ -50,7 +50,7 @@ module scanner(
 		
 		.R_out  			( R_out ),  			// output [3:0] 
 		.col_en 			( col_en ), 			// output
-		.scanner_error_led  ( scanner_error_led ),          // output
+		.read_error_led  ( read_error_led ),          // output
 		.db_en           	( db_en ),            	// output
 		.db_criterion		( db_criterion ),      	// output [3:0]
 		.db_fail_criterion 	( db_fail_criterion )	// output [3:0]
@@ -66,6 +66,6 @@ module scanner(
 		.col_error_led 		( col_error_led )	// output
 	);	
 	
-	assign db_period = 4800000; // target: 10 ms (48MHz / 480000 = 100 Hz)
-	//assign error_led = (col_error_led || scanner_error_led);
+	assign db_period = 480000; // target: 10 ms (48MHz / 480000 = 100 Hz)
+	//assign error_led = (col_error_led || read_error_led);
 endmodule
