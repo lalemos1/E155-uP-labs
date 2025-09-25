@@ -4,6 +4,8 @@
 module digit_mem(
 		input  logic       reset, clk,
 		input  logic [4:0] k,
+		
+		output logic	   mem_error_led,
 		output logic [3:0] dig0,
 		output logic [3:0] dig1 );
 		
@@ -16,7 +18,7 @@ module digit_mem(
 		
 		// state logic
 		typedef enum logic [2:0]
-			{RESET, IDLE, NEXT_DIG, ON}
+			{RESET, IDLE, NEXT_DIG, ON, ERROR}
 			statetype;
 		statetype state, next_state;
 		
@@ -39,6 +41,8 @@ module digit_mem(
 								if ( k_in != dig0 ) next_state = IDLE; // should it be k_in == 4'b0000 instead of dig0? Might cause bug.
 								else 				next_state = ON;
 							end
+				ERROR:		next_state = ERROR;
+				default:	next_state = ERROR;
 			endcase
 		end
 		
@@ -57,6 +61,7 @@ module digit_mem(
 				dig0 <= dig0;
 			end
 		end
+		assign mem_error_led = (state == ERROR);
 		
 		/*
 		// state logic

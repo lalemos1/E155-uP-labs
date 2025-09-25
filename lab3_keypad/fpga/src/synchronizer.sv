@@ -4,28 +4,29 @@
 
 // GOOGLE WAS WARNING ME THAT A MULTI-BIT 2FF SYNCHRONIZER MIGHT NOT WORK
 // I WON'T INCLUDE THIS IN THE PROJECT UNTIL I GET MVP WORKING. I HAVEN'T DEBUGGED THIS
-module synchronizer #(parameter WIDTH = 4) (
+module synchronizer #(parameter WIDTH = 3'd4) (
 				 input  logic             clk, reset,
-				 input  logic [WIDTH-1:0] d_a
-				 output logic             q
+				 input  logic [WIDTH-1:0] d_a,
+				 output logic [WIDTH-1:0]  q
 				 );
 
-	logic [WIDTH-1:0] d_mid;
+	logic [WIDTH-1:0] d_b;
+	logic [WIDTH-1:0] d_c;
 	
-	flopr #( .WIDTH(3'd4) ) flop_a(
-		.clk   ( clk ),   // input
-		.reset ( reset ), // input
-		.d     ( d_a ),   // input [3:0]
-		.q     ( d_mid )  // output [3:0]
-	);
+	always_ff @( posedge clk ) begin
+		if ( ~reset ) 	d_b <= 0;
+		else 			d_b <= d_a;
+	end
 	
-	flopr #( .WIDTH(3'd4) ) flop_b(
-		.clk   ( clk ),   // input
-		.reset ( reset ), // input
-		.d     ( d_mid ), // input [3:0]
-		.q     ( q )      // output [3:0]
-	);
+	always_ff @( posedge clk ) begin
+		if ( ~reset ) 	d_c <= 0;
+		else			d_c <= d_b;
+	end
 	
+	always_ff @( posedge clk ) begin
+		if ( ~reset )	q <= 0;
+		else			q <= d_c;
+	end
 endmodule
 
 

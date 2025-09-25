@@ -2,19 +2,19 @@
 // This module implements a moore machine clock counter
 
 module counter #(
-				parameter SIZE = 7'd32, 
-				parameter WIDTH = 1'b1,
-				parameter MAXVAL = 26'd24000000 // HSOSC frequency
+				parameter DEPTH = 7'd32, 
+				parameter WIDTH = 3'd4,
+				parameter MAXCNT = 26'd24000000 // HSOSC frequency
 				) (
 				input  logic             clk, reset, en,
-				input  logic [SIZE-1:0]  cnt_goal,       // value to count to before setting "tick" high (sets duty cycle of 24MHz clock)
+				input  logic [DEPTH-1:0]  cnt_goal,       // value to count to before setting "tick" high (sets duty cycle of 24MHz clock)
 				input  logic [WIDTH-1:0] in,             // input necessary to iterate counter
 				input  logic [WIDTH-1:0] criterion,      // the value the input must meet
 	
 				output logic             tick            // the "on" period of the counter
 	);
 	
-	logic [SIZE-1:0] count;
+	logic [DEPTH-1:0] count;
 	
 	always_ff @(posedge clk) begin
 		if ( ~reset ) count <= 0; // synchronous reset, active low
@@ -26,7 +26,7 @@ module counter #(
 	end
 	
 	// output
-	assign tick = ( count < MAXVAL ) ? ( count > cnt_goal ) : 0;
+	assign tick = ( count <= MAXCNT ) ? ( count >= cnt_goal ) : 0;
 	
 endmodule
 

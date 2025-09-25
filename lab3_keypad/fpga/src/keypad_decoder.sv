@@ -3,7 +3,7 @@
 module keypad_decoder( 
 						input  logic [3:0] R_out,
 						input  logic [3:0] C,
-						//output logic 	   error_led,
+						//output logic 	   kd_error_led,
 					    output logic [4:0] k);
 					  
 	// Using a Jameco 152063 4x4 matrix keypad
@@ -26,7 +26,7 @@ module keypad_decoder(
 	// ENTER - D   - 4 & 8 - R3 & C3
 	// 				 9 GND
 	
-	always_comb begin
+	always_comb begin // BUG FOUND!!!!! A BUTTON REGISTERS TWICE IF YOU HOLD DOWN ONE BUTTON THEN PRESS ANOTHER ON THE SAME COLUMN
 		case ( R_out )
 			4'b0000:					k = 5'b10000; // no output (5th bit for no output)
 			// R0

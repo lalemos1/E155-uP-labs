@@ -5,64 +5,11 @@ Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
 Top level modules:
 	counter
 
-} {} {}} C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab3_keypad/fpga/src/two_dig_display.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab3_keypad/fpga/src/two_dig_display.sv
-Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
--- Compiling module two_dig_display
--- Compiling module clk_divider
--- Compiling module seven_seg_display
--- Compiling module adder4
--- Compiling module mux2
-
-Top level modules:
-	two_dig_display
-
-} {} {}} C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab3_keypad/fpga/src/lab3_ll_keypad.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab3_keypad/fpga/src/lab3_ll_keypad.sv
-Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
--- Compiling module lab3_ll_keypad
-
-Top level modules:
-	lab3_ll_keypad
-
-} {} {}} C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab3_keypad/fpga/src/scanner.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab3_keypad/fpga/src/scanner.sv
-Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
--- Compiling module scanner
-
-Top level modules:
-	scanner
-
-} {} {}} C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab3_keypad/fpga/src/scanner_fsm.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab3_keypad/fpga/src/scanner_fsm.sv
-Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
--- Compiling module scanner_fsm
-
-Top level modules:
-	scanner_fsm
-
-} {} {}} C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab3_keypad/fpga/src/keypad_decoder.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab3_keypad/fpga/src/keypad_decoder.sv
-Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
--- Compiling module keypad_decoder
-
-Top level modules:
-	keypad_decoder
-
-} {} {}} C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab3_keypad/fpga/src/digit_mem.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab3_keypad/fpga/src/digit_mem.sv
-Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
--- Compiling module digit_mem
-
-Top level modules:
-	digit_mem
-
 } {} {}} C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab3_keypad/fpga/src/debouncer.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab3_keypad/fpga/src/debouncer.sv
 Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
 -- Compiling module debouncer
 
 Top level modules:
 	debouncer
-
-} {} {}} C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab3_keypad/fpga/src/col_fsm.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab3_keypad/fpga/src/col_fsm.sv
-Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
--- Compiling module col_fsm
-
-Top level modules:
-	col_fsm
 
 } {} {}}

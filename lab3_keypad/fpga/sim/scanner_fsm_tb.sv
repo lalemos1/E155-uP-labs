@@ -31,7 +31,6 @@ module scanner_fsm_tb;
 		.db_fail_criterion 	( db_fail_criterion )	// output [3:0]
 	);
 	
-	assign R = 4'b0001;
 	assign db_steady = 0;
 	assign db_error = 0;
 	
@@ -45,6 +44,7 @@ module scanner_fsm_tb;
 	initial
 		begin
 		reset = 0; #12; reset = 1;
+		R = 4'b0001;
 		end
 	
 endmodule

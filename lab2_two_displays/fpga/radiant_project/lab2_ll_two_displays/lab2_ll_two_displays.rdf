@@ -2,15 +2,9 @@
 <RadiantProject version="4.2" radiant="2024.2.0.3.0" title="lab2_ll_two_displays" device="iCE40UP5K-SG48I" performance_grade="High-Performance_1.2V" family_int="ice40tp" device_int="itpa08" package_int="SG48" operation_int="IND" speed_int="6" default_implementation="impl_1">
     <Options/>
     <Implementation title="impl_1" dir="impl_1" description="impl_1" synthesis="lse" default_strategy="Strategy1">
-        <Options def_top="lab2_ll_two_displays" top="lab2_ll_two_displays"/>
+        <Options def_top="lab2_ll_two_displays"/>
         <Source name="../../src/lab2_ll_two_displays.sv" type="Verilog" type_short="Verilog">
             <Options VerilogStandard="System Verilog" top_module="lab2_ll_two_displays"/>
-        </Source>
-        <Source name="../../src/seven_seg_display.sv" type="Verilog" type_short="Verilog">
-            <Options VerilogStandard="System Verilog"/>
-        </Source>
-        <Source name="../../src/mux2.sv" type="Verilog" type_short="Verilog">
-            <Options VerilogStandard="System Verilog"/>
         </Source>
         <Source name="../../src/adder4.sv" type="Verilog" type_short="Verilog">
             <Options VerilogStandard="System Verilog"/>
@@ -18,10 +12,19 @@
         <Source name="../../src/clk_divider.sv" type="Verilog" type_short="Verilog">
             <Options VerilogStandard="System Verilog"/>
         </Source>
+        <Source name="../../src/mux2.sv" type="Verilog" type_short="Verilog">
+            <Options VerilogStandard="System Verilog"/>
+        </Source>
+        <Source name="../../src/seven_seg_display.sv" type="Verilog" type_short="Verilog">
+            <Options VerilogStandard="System Verilog"/>
+        </Source>
         <Source name="lab2_ll_pinout.pdc" type="Physical Constraints File" type_short="PDC">
             <Options/>
         </Source>
-        <Source name="source/impl_1.xcf" type="Programming Project File" type_short="Programming">
+        <Source name="lab2_ll_pinout2.pdc" type="Physical Constraints File" type_short="PDC" excluded="TRUE">
+            <Options/>
+        </Source>
+        <Source name="source/impl_1_1.xcf" type="Programming Project File" type_short="Programming">
             <Options/>
         </Source>
     </Implementation>

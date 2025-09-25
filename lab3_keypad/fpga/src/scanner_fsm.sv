@@ -15,8 +15,27 @@ module scanner_fsm(
 				output logic [3:0] db_fail_criterion
 			  );
 	
+	logic sync_en;
+	logic synced;
+	
+	// Instantiate counter module to delay reading for synchronizer
+	counter #( 
+		.DEPTH   ( 3'd4 ),      // counter bit depth
+		.WIDTH  ( 1'b1 ),       // bus width of in & criterion
+		.MAXCNT ( 4'd10 ) 		
+	) sync_counter (
+		.clk       ( clk ),  	// input
+		.reset     ( reset ),   // input
+		.en        ( sync_en ), // input
+		.cnt_goal  ( 4'd10 ), 	// input [31:0]
+		.in        ( 1'b1 ),    // input
+		.criterion ( 1'b1 ),    // input
+		
+		.tick      ( synced )   // output
+	);
+	
 	// state logic
-	typedef enum logic [3:0] 
+	typedef enum logic [4:0] 
 		{RESET, SCAN_COL, SYNC_BUFFER, READ, DEBOUNCE_HIGH, ON, DEBOUNCE_LOW, ERROR} 
 		statetype;
 	statetype state, next_state;
@@ -25,21 +44,17 @@ module scanner_fsm(
 	always_ff @(posedge clk) begin
 		if ( ~reset ) state <= RESET; // synchronous reset, active low
 		else 		  state <= next_state;
-			
-		// Update db_criterion only during READ or DEBOUNCE_LOW
-		// I should move this to the output logic section
-		if ( state == READ ) 				db_criterion <= R;
-		else if ( state == DEBOUNCE_LOW ) 	db_criterion <= 4'b0000;
-		else								db_criterion <= db_criterion;
-		//db_criterion <= ( state == READ ) ? R : db_criterion;  // UPDATING DB_CRITERION INSTEAD OF OUTPUT LOGIC
 	end
 	
 	// next state logic
-	always_comb begin
+	always_comb begin // BUG FOUND!!!!! A BUTTON REGISTERS TWICE IF YOU HOLD DOWN ONE BUTTON THEN PRESS ANOTHER ON THE SAME COLUMN
 		case ( state )
 			RESET:          						next_state = SCAN_COL;
-			SCAN_COL:								next_state = SYNC_BUFFER;	
-			SYNC_BUFFER:						  	next_state = READ; // ONLY WAITS ONE TICK -- PROB DOESN'T WAIT LONG ENOUGH FOR SYNCHRONIZER, WHICH WILL CAUSE A BUG IF I ADD IT
+			SCAN_COL:	   							next_state = SYNC_BUFFER;
+			SYNC_BUFFER:   begin
+							if		( synced )		next_state = READ;
+							else					next_state = SYNC_BUFFER;
+						   end
 			READ:          begin
 							case ( R ) 
 								4'b0000: 		  	next_state = SCAN_COL;
@@ -47,12 +62,12 @@ module scanner_fsm(
 								4'b0010: 		  	next_state = DEBOUNCE_HIGH;
 								4'b0100: 		  	next_state = DEBOUNCE_HIGH;
 								4'b1000: 		  	next_state = DEBOUNCE_HIGH;
-								default: 		  	next_state = ERROR; // for simulaneous inputs -- MAY CAUSE A BUG
+								default: 		  	next_state = ERROR; // CHANGE THIS TO SIMUL_ERROR // for simulaneous inputs -- MAY CAUSE A BUG
 							endcase
 						   end
 			DEBOUNCE_HIGH: begin
 							if      ( db_steady ) 	next_state = ON;
-							else if ( db_error )  	next_state = ERROR;
+							else if ( db_error )  	next_state = ERROR; // CHANGE THIS FROM ERROR TO SCAN_COL?
 							else                  	next_state = DEBOUNCE_HIGH; // loop
 						   end
 			ON:      	   begin
@@ -61,7 +76,7 @@ module scanner_fsm(
 						   end
 			DEBOUNCE_LOW:  begin
 							if 		( db_steady ) 	next_state = SCAN_COL;
-							else if ( db_error )  	next_state = ERROR;
+							else if ( db_error )  	next_state = ERROR; // CHANGE THIS FROM ERROR
 							else				  	next_state = DEBOUNCE_LOW; // loop
 						   end
 			ERROR:      							next_state = ERROR;
@@ -70,90 +85,23 @@ module scanner_fsm(
 	end
 	
 	// output logic
-	always_comb begin
-		case ( state )
-			RESET:      begin  
-							R_out			 = 4'b0000;
-							col_en 			 = 0;
-							scanner_error_led= 0;
-							db_en 			 = 0;
-							//db_criterion      = 4'b0000; // actually updated in state register
-							db_fail_criterion = 4'b0000;
-						end
-			SCAN_COL:	begin  
-							col_en 			 = 1;
-							
-							R_out			 = 4'b0000;
-							scanner_error_led= 0;
-							db_en 			 = 0;
-							//db_criterion      = 4'b0000; // actually updated in state register
-							db_fail_criterion = 4'b0000;
-						end	
-			SYNC_BUFFER: begin  
-							col_en 			 = 0;
-							
-							R_out			 = 4'b0000;
-							scanner_error_led= 0;
-							db_en 			 = 0;
-							//db_criterion      = 4'b0000; // actually updated in state register
-							db_fail_criterion = 4'b0000;
-						end
-			READ:	begin  
-						/* case ( R )  // db_criterion actually updated in state register
-							4'b0001:	db_criterion = 4'b0001;
-							4'b0010: 	db_criterion = 4'b0010;
-							4'b0100: 	db_criterion = 4'b0100;
-							4'b1000: 	db_criterion = 4'b1000;
-							default: 	db_criterion = 4'b1111; // for simulaneous inputs, intended to cause a debouncer error -- MAY CAUSE A BUG
-						endcase */
-							R_out			  = 4'b0000;
-							col_en 			  = 0;
-							scanner_error_led = 0;
-							db_en 			  = 0;
-							db_fail_criterion = 4'b0000;
-						end
-			DEBOUNCE_HIGH: begin
-							db_en             = 1;  // idk if i want this here or before the state transition to debounce_high
-							db_fail_criterion = 4'b0000; // this too <--^^
-						  
-							R_out			  = 4'b0000; // MIGHT WANNA UPDATE R_OUT HERE INSTEAD OF "ON"
-							col_en 			  = 0;
-							scanner_error_led = 0;
-						end
-			ON:      	begin
-							db_en = 0;
-							R_out = R;
-							
-							col_en 			  = 0;
-							scanner_error_led = 0;
-							db_fail_criterion = 4'b0000;
-						end
-			DEBOUNCE_LOW: begin
-							db_en             = 1;
-							R_out             = 4'b0000; // idk if i want this here or in "SCAN_COL" (after debouncing)
-							db_fail_criterion = 4'b0001; // I can't figure out how to implement this for all R != 4'b0000; MIGHT CAUSE A BUG
-							
-							col_en 			 = 0;
-							scanner_error_led= 0;
-						end
-			ERROR:	begin  
-						scanner_error_led = 1;
-						
-						R_out			 = 4'b0000;
-						col_en 			 = 0;
-						db_en 			 = 0;
-						db_fail_criterion = 4'b0000;
-					end			  
-			default: begin  
-						scanner_error_led = 1;
-						
-						R_out			 = 4'b0000;
-						col_en 			 = 0;
-						db_en 			 = 0;
-						db_fail_criterion = 4'b0000;
-					end
-		endcase
+	assign R_out	= ( state == ON ) ? R : 4'b0000;
+	assign col_en	= ( state == SCAN_COL );
+	assign scanner_error_led = ( state == ERROR );
+	assign db_en	= ( state == DEBOUNCE_HIGH || state == DEBOUNCE_LOW );
+	
+	// Update db_criterion only during READ or DEBOUNCE_LOW
+	always_ff @( posedge clk ) begin
+		if ( state == READ ) 				db_criterion <= R; 		// I should move this to the output logic section
+		else if ( state == DEBOUNCE_LOW ) 	db_criterion <= 4'b0000;
+		else								db_criterion <= db_criterion;
 	end
+	
+	assign db_fail_criterion = ( state == DEBOUNCE_LOW ) ? 4'b0001 : 4'b0000; // idk how to properly implement db_fail_criterion = ~4'b0000 (4'b0001 for now -- MAY CAUSE A BUG)
+	assign sync_en 	= ( state == SYNC_BUFFER );
+	
+	
+	
 endmodule
 /*
 // state logic

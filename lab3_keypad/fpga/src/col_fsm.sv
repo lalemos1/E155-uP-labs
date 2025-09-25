@@ -38,7 +38,7 @@ module col_fsm(
 		else next_state = state;
 	end
 	
-	// next state logic
+	// output logic
 	always_comb begin
 		// output logic independent of en
 		case ( state )

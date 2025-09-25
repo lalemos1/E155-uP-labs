@@ -23,7 +23,7 @@ module two_dig_display(
 	);
 	
 	// Set clk divisor to target clk_div_p44 @ 80 Hz
-	assign divisor = 32'd300000;  // divisor = 48,000,000 Hz / 2 (b/c posedge) / 80 Hz = 300,000
+	assign divisor = 32'd150000;  // divisor = 24,000,000 Hz / 2 (b/c moore machine) / 80 Hz = 150,000
 	
 	// Create inverse clock for time multiplexing
 	assign not_clk_div_p9 = ~clk_div_p44;

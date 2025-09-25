@@ -2,12 +2,13 @@
 // This module scans the keypad for inputs one column at a time and debounces valid inputs
 
 module scanner(
-				input logic        reset, clk,
-				input logic  [3:0] R,
+				input logic        	reset, clk,
+				input logic  [3:0] 	R,
 				
-				output logic [3:0] C,
-				output logic [3:0] R_out,
-				output logic       error_led // FOR DEBUGGING; MAY REMOVE
+				output logic [3:0] 	C,
+				output logic [3:0] 	R_out,
+				output logic       	scanner_error_led, // FOR DEBUGGING; MAY REMOVE
+				output logic		col_error_led
 			  );
 	
 	// debouncer logic
@@ -19,11 +20,11 @@ module scanner(
 	logic        db_error;  // output
 	
 	// scanner_fsm logic
-	logic       scanner_error_led;	// output
+	//logic       scanner_error_led;	// output
 	
 	// col_fsm logic
 	logic       col_en;			// input
-	logic       col_error_led;	// output
+	//logic       col_error_led;	// output
 	
 	// Instantiate debouncer
 	debouncer #( .WIDTH(3'd4) ) db(
@@ -65,6 +66,6 @@ module scanner(
 		.col_error_led 		( col_error_led )	// output
 	);	
 	
-	assign db_period = 240000; // target: 10 ms (24MHz / 240000 = 100 Hz)
-	assign error_led = (col_error_led || scanner_error_led);
+	assign db_period = 4800000; // target: 10 ms (48MHz / 480000 = 100 Hz)
+	//assign error_led = (col_error_led || scanner_error_led);
 endmodule
