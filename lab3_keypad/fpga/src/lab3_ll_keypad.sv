@@ -7,16 +7,17 @@ module lab3_ll_keypad (
 		input  logic       	reset_p34, // P34 is connected to a pushbutton on the dev board
 
 		output logic [3:0]	C,
-		//output logic		error_led_p10,
+		output logic		on_led,
+		output logic		db_lo_error_led,
+		output logic		db_hi_error_led,
+		output logic		dbing_led,
 		output logic 		read_error_led,
-		output logic		db_error_led,
+		//output logic		db_error_led,
 		output logic		col_error_led,
 		output logic		mem_error_led,
 		
 		output logic       	clk_div_p44, not_clk_div_p9,
 		output logic [6:0] 	seg );
-		
-	assign db_error_led = 1; // DELETE THIS
 	
 	// Internal module logic
 	logic [3:0] R_out;
@@ -37,13 +38,18 @@ module lab3_ll_keypad (
 	scanner scanner (
 		.clk        ( clk ),        	// input
 		.reset      ( reset_p34 ),  	// input
-		.R			( R ),			// input [3:0] DIRECTLY CONNECTING R_IN WHILE THERE'S NO SYNCHRONIZER
+		.R			( R ),			// input [3:0]
 		
 		.C  		( C ),  			// output [3:0] 
 		.R_out		( R_out ),			// output [3:0]
-		.read_error_led ( read_error_led ),
-		.col_error_led	( col_error_led ) );// output
-		
+		.on_led		( on_led ),			// output
+		.read_error_led ( read_error_led ), // output
+		.db_lo_error_led	( db_lo_error_led ), // output
+		.db_hi_error_led	( db_hi_error_led ), // output
+		.dbing_led			( dbing_led	), 		 // output
+		//.db_error_led	( db_error_led ),	// output
+		.col_error_led	( col_error_led ) ); // output
+
 	
 	// Instantiate keypad_decoder
 	keypad_decoder keypad_decoder(

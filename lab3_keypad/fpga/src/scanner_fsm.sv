@@ -2,21 +2,28 @@
 // This module implements the moore machine scanner FSM
 
 module scanner_fsm(
-				input logic        reset, clk,
-				input logic  [3:0] R,
-				input  logic       db_steady,
-				input  logic       db_error,
+				input logic        	reset, clk,
+				input logic  [3:0] 	R,
+				input  logic       	db_steady,
+				input  logic       	db_error,
 				
-				output logic [3:0] R_out,
-				output logic       col_en, // enable signal for columns fsm
-				output logic       read_error_led, // FOR DEBUGGING; MAY REMOVE
-				output logic       db_en,
-				output logic [3:0] db_criterion,
-				output logic [3:0] db_fail_criterion
+				output logic [3:0] 	R_out,
+				output logic       	col_en, // enable signal for columns fsm
+				output logic	   	on_led,
+				output logic       	read_error_led, // FOR DEBUGGING; MAY REMOVE
+				output logic		db_lo_error_led, // output
+				output logic		db_hi_error_led, // output
+				output logic		dbing_led,		// output
+				//output logic	   	db_error_led,
+				output logic       	db_en,
+				output logic [3:0] 	db_criterion,
+				output logic [3:0] 	db_fail_criterion
 			  );
 	
-	logic sync_en;
-	logic synced;
+	// Internal logic
+	logic 		sync_en;
+	logic 		synced;
+	logic [3:0]	R_db;
 	
 	// Instantiate counter module to delay reading for synchronizer
 	counter #( 
@@ -36,7 +43,7 @@ module scanner_fsm(
 	
 	// state logic
 	typedef enum logic [4:0] 
-		{RESET, SCAN_COL, SYNC_BUFFER, READ, DEBOUNCE_HIGH, ON, DEBOUNCE_LOW, ERROR} 
+		{RESET, SCAN_COL, SYNC_BUFFER, READ, DEBOUNCE_HIGH, ON, DEBOUNCE_LOW, READ_ERROR, DB_LO_ERROR, DB_HI_ERROR, STATE_ERROR} 
 		statetype;
 	statetype state, next_state;
 	
@@ -47,7 +54,7 @@ module scanner_fsm(
 	end
 	
 	// next state logic
-	always_comb begin // BUG FOUND!!!!! A BUTTON REGISTERS TWICE IF YOU HOLD DOWN ONE BUTTON THEN PRESS ANOTHER ON THE SAME COLUMN
+	always_comb begin
 		case ( state )
 			RESET:          						next_state = SCAN_COL;
 			SCAN_COL:	   							next_state = SYNC_BUFFER;
@@ -62,12 +69,12 @@ module scanner_fsm(
 								4'b0010: 		  	next_state = DEBOUNCE_HIGH;
 								4'b0100: 		  	next_state = DEBOUNCE_HIGH;
 								4'b1000: 		  	next_state = DEBOUNCE_HIGH;
-								default: 		  	next_state = ERROR; // CHANGE THIS TO SIMUL_ERROR // for simulaneous inputs -- MAY CAUSE A BUG
+								default: 		  	next_state = READ_ERROR;  // for simulaneous inputs
 							endcase
 						   end
 			DEBOUNCE_HIGH: begin
 							if      ( db_steady ) 	next_state = ON;
-							else if ( db_error )  	next_state = ERROR; // CHANGE THIS FROM ERROR TO SCAN_COL?
+							else if ( db_error )  	next_state = DB_HI_ERROR; // CHANGED THIS FROM ERROR. MAYBE TO SCAN_COL?
 							else                  	next_state = DEBOUNCE_HIGH; // loop
 						   end
 			ON:      	   begin
@@ -76,29 +83,59 @@ module scanner_fsm(
 						   end
 			DEBOUNCE_LOW:  begin
 							if 		( db_steady ) 	next_state = SCAN_COL;
-							else if ( db_error )  	next_state = ERROR; // CHANGE THIS FROM ERROR
+							else if ( db_error )  	next_state = DB_LO_ERROR; // CHANGED THIS FROM ERROR
 							else				  	next_state = DEBOUNCE_LOW; // loop
 						   end
-			ERROR:      							next_state = ERROR;
-			default:  							  	next_state = ERROR;
+			READ_ERROR:      						next_state = SCAN_COL; // bad input, go back to scanning
+			DB_HI_ERROR:							next_state = SCAN_COL; // failed to debounce, go back to scanning
+			DB_LO_ERROR:							next_state = SCAN_COL; // failed to debounce, go back to scanning
+			STATE_ERROR:							next_state = SCAN_COL;
+			default:  							  	next_state = STATE_ERROR;
 		endcase
 	end
 	
-	// output logic
-	assign R_out	= ( state == ON ) ? R : 4'b0000;
-	assign col_en	= ( state == SCAN_COL );
-	assign read_error_led = ( state == ERROR );
-	assign db_en	= ( state == DEBOUNCE_HIGH || state == DEBOUNCE_LOW );
+	//// output logic ////
+	// Update R_on only from the R value which was debounced
+	always_ff @( posedge clk ) begin
+		if		( state == RESET )			R_db <= 4'b0000;
+		else if ( state == DEBOUNCE_HIGH ) 	R_db <= R;
+		else								R_db <= R_db;
+	end
+	assign R_out			= ( state == ON ) ? R_db : 4'b0000;
+	assign col_en			= ( state == SCAN_COL );
+	assign on_led 			= ( state == ON );
+	//assign read_error_led	= ( state == READ_ERROR );
+	assign dbing_led		= db_en;
+	//assign db_hi_error_led	= ( state == DB_HI_ERROR );
+	//assign db_lo_error_led	= ( state == DB_LO_ERROR );
+	//assign db_error_led 	= ( state == DB_ERROR );
+	assign db_en			= ( state == DEBOUNCE_HIGH || state == DEBOUNCE_LOW );
+	assign db_fail_criterion = ( state == DEBOUNCE_LOW ) ? 4'b0001 : 4'b0000; // idk how to properly implement db_fail_criterion = ~4'b0000 (4'b0001 for now -- MAY CAUSE A BUG)
+	assign sync_en 			= ( state == SYNC_BUFFER );
 	
 	// Update db_criterion only during READ or DEBOUNCE_LOW
 	always_ff @( posedge clk ) begin
-		if ( state == READ ) 				db_criterion <= R; 		// I should move this to the output logic section
+		if		( state == RESET )			db_criterion <= 4'b0000;
+		else if ( state == READ ) 			db_criterion <= R; 		// I should move this to the output logic section
 		else if ( state == DEBOUNCE_LOW ) 	db_criterion <= 4'b0000;
 		else								db_criterion <= db_criterion;
 	end
 	
-	assign db_fail_criterion = ( state == DEBOUNCE_LOW ) ? 4'b0001 : 4'b0000; // idk how to properly implement db_fail_criterion = ~4'b0000 (4'b0001 for now -- MAY CAUSE A BUG)
-	assign sync_en 	= ( state == SYNC_BUFFER );
+	// Debugging: update error LEDs if they catch an error even once
+	always_ff @( posedge clk ) begin
+		if 		( state == RESET ) 			db_hi_error_led <= 0;
+		else if ( state == DB_HI_ERROR )	db_hi_error_led <= 1;
+		else								db_hi_error_led <= db_hi_error_led;
+			
+		if 		( state == RESET ) 			db_lo_error_led <= 0;
+		else if ( state == DB_LO_ERROR )	db_lo_error_led <= 1;
+		else								db_lo_error_led <= db_lo_error_led;
+		
+		if 		( state == RESET ) 			read_error_led <= 0;
+		else if ( state == DB_LO_ERROR )	read_error_led <= 1;
+		else								read_error_led <= read_error_led;
+	end
+	
 	
 	
 	

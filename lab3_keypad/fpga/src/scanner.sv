@@ -7,7 +7,12 @@ module scanner(
 				
 				output logic [3:0] 	C,
 				output logic [3:0] 	R_out,
+				output logic		on_led,
 				output logic       	read_error_led, // FOR DEBUGGING; MAY REMOVE
+				output logic		db_lo_error_led,
+				output logic		db_hi_error_led,
+				output logic		dbing_led,
+				//output logic		db_error_led,
 				output logic		col_error_led
 			  );
 	
@@ -16,15 +21,12 @@ module scanner(
 	logic [3:0]  db_criterion; // input
 	logic [3:0]  db_fail_criterion; // input
 	logic [31:0] db_period; // input
+	logic [31:0] db_error_period; // input
 	logic        db_steady; // output
 	logic        db_error;  // output
 	
-	// scanner_fsm logic
-	//logic       read_error_led;	// output
-	
 	// col_fsm logic
 	logic       col_en;			// input
-	//logic       col_error_led;	// output
 	
 	// Instantiate debouncer
 	debouncer #( .WIDTH(3'd4) ) db(
@@ -50,7 +52,12 @@ module scanner(
 		
 		.R_out  			( R_out ),  			// output [3:0] 
 		.col_en 			( col_en ), 			// output
-		.read_error_led  ( read_error_led ),          // output
+		.on_led				( on_led ),				//output
+		.read_error_led  	( read_error_led ),   	// output
+		.db_lo_error_led	( db_lo_error_led ), // output
+		.db_hi_error_led	( db_hi_error_led ), // output
+		.dbing_led			( dbing_led	),		 // output
+		//.db_error_led		( db_error_led ),		// output
 		.db_en           	( db_en ),            	// output
 		.db_criterion		( db_criterion ),      	// output [3:0]
 		.db_fail_criterion 	( db_fail_criterion )	// output [3:0]
@@ -66,6 +73,6 @@ module scanner(
 		.col_error_led 		( col_error_led )	// output
 	);	
 	
-	assign db_period = 480000; // target: 10 ms (48MHz / 480000 = 100 Hz)
+	assign db_period = 120000; // target: 10 ms (48MHz / 480000 = 100 Hz)
 	//assign error_led = (col_error_led || read_error_led);
 endmodule

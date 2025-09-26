@@ -7,7 +7,7 @@ module two_dig_display(
 							input   logic       reset_p34,         // P34 is connected to a pushbutton on the dev board
 				
 							output  logic       clk_div_p44, not_clk_div_p9,
-							output  logic [4:0] led_cnt,
+							//output  logic [4:0] led_cnt,
 							output  logic [6:0] seg,
 							output	logic		clk
 							);
