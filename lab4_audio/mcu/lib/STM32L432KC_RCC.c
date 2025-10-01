@@ -36,7 +36,7 @@ void configurePLL() {
     RCC->PLLCFGR |= (1 << 24);
 
     // Enable PLL
-    RCC->CR |= (1 << 24);
+    RCC->CR |= (1 << 24);x
     
     // Wait until PLL is locked
     while ((RCC->CR >> 25 & 1) != 1);
