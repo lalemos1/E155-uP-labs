@@ -5,9 +5,10 @@
 // 9/16/24
 
 // Includes for libraries
-#include "STM32L432KC_RCC.h"
-#include "STM32L432KC_GPIO.h"
-#include "STM32L432KC_FLASH.h"
+#include "../lib/STM32L432KC_RCC.h"
+#include "../lib/STM32L432KC_GPIO.h"
+#include "../lib/STM32L432KC_FLASH.h"
+#include "../lib/STM32L432KC_TIM.h"
 
 // Define macros for constants
 #define LED_PIN           3
@@ -29,6 +30,8 @@ int main(void) {
     // Setup the PLL and switch clock source to the PLL
     configureClock();
 
+    initTIM(TIM16); // Enable timer 16 as the delay counter
+
     // Turn on clock to GPIOB
     RCC->AHB2ENR |= (1 << 1);
 
@@ -37,7 +40,8 @@ int main(void) {
 
     // Blink LED
     while(1) {
-        ms_delay(DELAY_DURATION_MS);
+        //ms_delay(DELAY_DURATION_MS);
+        delay_millis(TIM16, DELAY_DURATION_MS);
         togglePin(LED_PIN);
     }
     return 0;

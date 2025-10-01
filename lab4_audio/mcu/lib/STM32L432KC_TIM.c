@@ -4,7 +4,8 @@
 #include "STM32L432KC_TIM.h"
 #include "STM32L432KC_RCC.h"
 
-const uint32_t TIM_DIV = 159; // timer peripheral clock divisor
+const uint32_t TIM_DIV = 7999; // timer peripheral clock divisor
+const uint32_t PPL_CLK_FREQ = 80000000; // system clock frequency when connected to the PLL
 
 // Relevant registers for TIMx
 // CR1 to en, SMCR to disable slave, SR for update flag, EGR to force update, CCMR1 to set PWM mode, PSC to set TIMx prescaler, 
@@ -40,24 +41,24 @@ void initTIM(TIM_TypeDef* TIMx) {
     // RCR to set overflows:update ratio, EGR to force update, CR1 to en
     /////////////////////////////
 
-    // Make sure slave mode is disabled. disable via SMS=000 (i think)
-    TIMx->SMCR ;
+    // Make sure slave mode is disabled. Disable via SMS=0b0000
+    // I THINK I MIGHT ACTUALLY WANT THIS ON? allows for resetting the register I think via a trigger signal
+    TIMx->SMCR &= 0b000;      // SMS[2:0] = 0b000
+    TIMx->SMCR &= ~(1 << 16); // SMS[3] = 0
 
-    // Set prescaler to give f_TIMx_CNT = 500kHz (f_CK_CNT = 80MHz / PSC + 1)
+    // Set prescaler to give f_TIMx_CNT = 10kHz (f_CK_CNT = 80MHz / PSC + 1)
     TIMx->PSC &= 0;       // clear all bits
-    TIMx->PSC |= TIM_DIV; // write 159
+    TIMx->PSC |= 7999; // write 8000
 
     // Set overflows:update ratio = 1 (update every overflow)
-    TIMx->RCR ;
+    //TIMx->RCR ; // I think this is unnecessary since overflows:update ratio = 1 at reset
     // read the manual again--there was the weird thing about setting automatic reloading in CR1 i think
 
     // Init CNT=0 and PSC_CNT = 0 by causing an event generation (setting UG=1 in the TIMx_EGR register)
     TIMx->EGR |= 1;
 
     // Enable counter by setting CEN = 1 in the CR1 register
-    TIMx->CR1 ;
-    // Most important: CEN bit. Set ARPE bit in upcounting or center-aligned for PWM. UDIS bit disabled update event. 
-    // I think i should just set all CR1 bits manually during init
+    TIMx->CR1 |= 1;
 }
 
 /*
@@ -65,7 +66,10 @@ void initTIM(TIM_TypeDef* TIMx) {
 
 */ /*
 void initPWM(TIM_TypeDef* TIMx) {
-    
+        // Set prescaler to give f_TIMx_CNT = 500kHz (f_CK_CNT = 80MHz / PSC + 1)
+    TIMx->PSC &= 0;       // clear all bits
+    TIMx->PSC |= TIM_DIV; // write 159
+
 }
 */
 
@@ -74,10 +78,28 @@ void initPWM(TIM_TypeDef* TIMx) {
 
 */
 void delay_millis(TIM_TypeDef* TIMx, uint32_t ms) {
-    // main writes are ARR, EGR, SR, CNT
+    uint32_t TIM_clk_freq;
+    uint32_t delay_cnt;
+    uint32_t update_flag;
 
+    TIM_clk_freq = PPL_CLK_FREQ / (TIM_DIV + 1);
+    delay_cnt = ms * 0.001 * TIM_clk_freq;
+    //// needs to throw an error if delay_cnt > 65536
+
+    // main writes are ARR, EGR, SR, CNT (apparently)
+    // Set counter max value
+    TIMx->ARR &= 0; // clear all bits
+    TIMx->ARR |= delay_cnt;
+    
     // for now we'll use a while loop to implement the delay, but in lab 5 we'll replace it w/ interrupts
+    // Do nothing until the update interupt flag goes high because the counter overflowed
+    while ( ~(TIMx->SR & 1) ); // for debugging could add an error counter that breaks the while after long enough    
 }
+// Relevant registers for TIMx
+// SR for update flag, EGR to force update (and to allow setting CCxE), CCMR1 to set PWM mode, PSC to set TIMx prescaler, 
+// ARR to set PWM freq, RCR to set overflows:update ratio, CCR1 to set PWM duty cycle
+
+////////// CEN UDIS bit disableS update event--useful for playback? 
 
 
 /*

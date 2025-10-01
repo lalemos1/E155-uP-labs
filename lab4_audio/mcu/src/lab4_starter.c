@@ -114,7 +114,9 @@ const int notes[][2] = {
 {440,	500},
 {  0,	0}};
 
+/*
 int main(void) {
 	
 	
 }
+*/
