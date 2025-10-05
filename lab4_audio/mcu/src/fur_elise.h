@@ -3,7 +3,7 @@
 // Updated Fall 2024
 
 // Pitch in Hz, duration in ms
-const int notes[][2] = {
+const int fur_elise[][2] = {
 {659,	125},
 {623,	125},
 {659,	125},

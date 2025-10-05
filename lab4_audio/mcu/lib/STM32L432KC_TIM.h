@@ -8,24 +8,24 @@
 
 ////////////////////////////////////////////////////
 
-#define TIM15_BASE (0x40014400UL) // base address for TIM15
-#define TIM16_BASE (0x40014000UL) // base address for TIM16
+#define TIM15_BASE (0x40014000UL) // base address for TIM15
+#define TIM16_BASE (0x40014400UL) // base address for TIM16
 
 typedef struct
-{ // POSSIBLE BUG: IDK HOW THE OFFSETS ARE BEING ENCODED AND IT THEREFORE MIGHT BE A PROBLEM THAT I SKIPPED SOME OF THE TIM REGISTERS
+{
     volatile uint32_t CR1;  // Counter register 1         (offset 0x00). Most important: CEN bit. Set ARPE bit to prevent ARR updating until after an update event. UDIS bit disables update event. 
     volatile uint32_t CR2;  // Counter register 2         (offset 0x04). _____idk what for. Not important?
     volatile uint32_t SMCR; // Slave mode control reg     (offset 0x08). disable via SMS=000 (i think)
     volatile uint32_t DIER; // DMA interrupt/en register  (offset 0x0C). ______idk what for. Not important?--can generate an OCx DMA request or interrupt if configured
     volatile uint32_t SR;   // Status register            (offset 0x10). important. UIF bit is the update interrupt flag, high when repetition counter is overflows and equals zero (depending on URS bit). Useful for PWM??
     volatile uint32_t EGR;  // Event generation register  (offset 0x14). setting UG bit forces an update event. necessary during init, before enabling the counter
-    volatile uint32_t CCMR1;// Capture compare mode reg   (offset 0x18). Set PWM mode with OCxM bits for each OCx channel ('110' or '111'). Must also set corresponding preload register in OCxPE bit
+    volatile uint64_t CCMR1;// Capture compare mode reg   (offset 0x18). Set PWM mode with OC1M bits for each OC1 channel ('110' or '111'). Must also set corresponding preload register in OCxPE bit
     volatile uint32_t CCER; // CC Enable register         (offset 0x20). for OCx polarity (if necessary). I think polarity means active hi vs lo?
     volatile uint32_t CNT;  // Counter register           (offset 0x24). count value of the timer
     volatile uint32_t PSC;  // Prescaler register         (offset 0x28). From 1 to 65536. Probs very important for changing freq.
     volatile uint32_t ARR;  // Auto-reload reg            (offset 0x2C). sets counter max value up to 65536. sets PWM freq in PWM mode. rw accesses the preload register if preload enabled in CR1. important 
     volatile uint32_t RCR;  // Repetition counter reg     (offset 0x30). after N overflows, update event (data moves from the preload registers to the shadow registers)
-    volatile uint32_t CCR1; // Capture compare reg 1      (offset 0x34). determines duty cycle in PWM mode by setting OCxREF high while CNT < CCRx. I think PWM mode 2 flips the inequality? the OCxPE bit enables the preload register--can only update CCR every overflow
+    volatile uint32_t CCR1; // Capture compare reg 1      (offset 0x34). determines duty cycle in PWM mode by setting OCxREF high while CNT < CCRx. I think PWM mode 2 flips the inequality? the OCxPE bit enables the preload register causes CCR update only every overflow
     volatile uint32_t CCR2; // Capture compare reg 2      (offset 0x38). _____idk what for. Not important?
     volatile uint32_t BDTR; // Break and dead time register (offset 0x44). not important.
     volatile uint32_t DCR;  // DMA control register         (offset 0x48). not important.
@@ -42,6 +42,7 @@ typedef struct
 
 void initTIM(TIM_TypeDef* TIMx);
 void delay_millis(TIM_TypeDef* TIMx, uint32_t ms);
+void play_note(TIM_TypeDef* TIMp, TIM_TypeDef* TIMd, uint32_t ms, uint32_t hz, int pin_out);
 
 // something about the update bit depending on configuration
 

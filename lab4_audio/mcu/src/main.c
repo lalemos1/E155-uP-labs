@@ -9,19 +9,14 @@
 #include "../lib/STM32L432KC_GPIO.h"
 #include "../lib/STM32L432KC_FLASH.h"
 #include "../lib/STM32L432KC_TIM.h"
+#include "../src/fur_elise.h"
 
 // Define macros for constants
-#define LED_PIN           3
-#define DELAY_DURATION_MS    2000
+#define MUSIC_PIN           6 // PA6
+#define DELAY_DURATION_MS    100
+volatile uint32_t duration_ms;
+volatile uint32_t pitch;
 
-// Function for dummy delay by executing nops
-void ms_delay(int ms) {
-   while (ms-- > 0) {
-      volatile int x=1000;
-      while (x-- > 0)
-         __asm("nop");
-   }
-}
 
 int main(void) {
     // Configure flash to add waitstates to avoid timing errors
@@ -30,19 +25,38 @@ int main(void) {
     // Setup the PLL and switch clock source to the PLL
     configureClock();
 
-    initTIM(TIM16); // Enable timer 16 as the delay counter
+    initTIM(TIM15); // Initialize timer 15 for pitch counting
+    initTIM(TIM16); // Initialize timer 15 for duration counting
 
-    // Turn on clock to GPIOB
+    // Turn on clock for GPIOB
     RCC->AHB2ENR |= (1 << 1);
 
-    // Set LED_PIN as output
-    pinMode(LED_PIN, GPIO_OUTPUT);
-
+    // Set MUSIC_PIN as output
+    pinMode(MUSIC_PIN, GPIO_OUTPUT);
+    
+    int len_song = sizeof(fur_elise)/sizeof(fur_elise[0]);
+    
+    /*
     // Blink LED
     while(1) {
-        //ms_delay(DELAY_DURATION_MS);
-        delay_millis(TIM16, DELAY_DURATION_MS);
-        togglePin(LED_PIN);
-    }
+        delay_millis(TIM15, DELAY_DURATION_MS);
+        togglePin(MUSIC_PIN);
+    } 
+    */
+    
+    
+    for(int i = 0; i < len_song; i++) {
+        pitch = fur_elise[i][0];
+        duration_ms = fur_elise[i][1];
+        
+        // For debugging:
+        // len_song = 1;
+        //pitch = 100; //hz
+        //duration_ms = 7000; // known bug: duration can't go above 6 seconds
+
+        if   (pitch == 0) delay_millis(TIM15, duration_ms);
+        else              play_note(TIM15, TIM16, duration_ms, pitch, MUSIC_PIN);
+    } 
     return 0;
+    
 }

@@ -8,3 +8,4 @@ lab4_audio/mcu/SEGGER_proj/Output/Debug/Obj/lab4_ll_audio/lab4_starter.o
 *.ind
 *.elf
 *.map
+*.jlink
