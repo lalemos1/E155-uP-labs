@@ -1,0 +1,15 @@
+C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab3_keypad/fpga/sim/keypad_decoder_tb.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab3_keypad/fpga/sim/keypad_decoder_tb.sv
+Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+-- Compiling module keybad_decoder_tb
+
+Top level modules:
+	keybad_decoder_tb
+
+} {} {}} C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab3_keypad/fpga/src/keypad_decoder.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab3_keypad/fpga/src/keypad_decoder.sv
+Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+-- Compiling module keypad_decoder
+
+Top level modules:
+	keypad_decoder
+
+} {} {}}

@@ -1,0 +1,15 @@
+C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab3_keypad/fpga/src/scanner.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab3_keypad/fpga/src/scanner.sv
+Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+-- Compiling module scanner
+
+Top level modules:
+	scanner
+
+} {} {}} C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab3_keypad/fpga/src/scanner_fsm.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/llemos/Documents/GitHub/E155-uP-labs/lab3_keypad/fpga/src/scanner_fsm.sv
+Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+-- Compiling module scanner_fsm
+
+Top level modules:
+	scanner_fsm
+
+} {} {}}

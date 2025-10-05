@@ -27,9 +27,9 @@ module debouncer #(parameter WIDTH = 3'd4) (
 	
 	// Instantiate counter module to ensure steady state
 	counter #( 
-		.SIZE   ( 7'd32 ),       // counter bus size
+		.DEPTH   ( 7'd32 ),       // counter bus size
 		.WIDTH  ( WIDTH ),        // bus width of signals
-		.MAXVAL ( 27'd24000000 ) // frequency of HSOSC
+		.MAXCNT ( 27'd24000000 ) // frequency of HSOSC
 	) steady_counter (
 		.clk       ( clk ),             // input
 		.reset     ( reset ),           // input
@@ -43,9 +43,9 @@ module debouncer #(parameter WIDTH = 3'd4) (
 	
 	// Instantiate error counter if debouncing fails
 	counter #( 
-		.SIZE   ( 7'd32 ),       // counter bus size
+		.DEPTH   ( 7'd32 ),       // counter bus size
 		.WIDTH  ( WIDTH ),        // bus width of signals
-		.MAXVAL ( 27'd24000000 ) // frequency of HSOSC
+		.MAXCNT ( 27'd24000000 ) // frequency of HSOSC
 	) error_counter (
 		.clk       ( clk ),             // input
 		.reset     ( reset ),           // input
