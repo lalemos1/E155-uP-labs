@@ -2,10 +2,12 @@
 *.build_status
 *.xml
 *.tcr
-lab4_audio/mcu/SEGGER_proj/Output/Debug/Obj/lab4_ll_audio/lab4_starter.o
 *.o
 *.d
 *.ind
 *.elf
 *.map
 *.jlink
+*.DS_Store
+*.emSession
+*.ini
