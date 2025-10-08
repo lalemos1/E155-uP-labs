@@ -14,9 +14,12 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #define LED_PIN    PB3
-//#define BUTTON_PIN PA4 
+#define DELAY_TIM  TIM2
+
 #define ENCODER_A_PIN PB0
 #define ENCODER_B_PIN PB1
-#define DELAY_TIM  TIM2
+#define PPR 408 // pulses per rotation
+#define SCAN_PER 200 // ms
+#define SCAN_FREQ 1000/SCAN_PER // Hz
 
 #endif // MAIN_H
