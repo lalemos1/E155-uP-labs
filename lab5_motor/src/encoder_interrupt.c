@@ -2,6 +2,7 @@
 // Lucas Lemos
 // llemos@hmc.edu
 // 10/7/2025
+// Configures the encoder interrupts and computes the angular velocity and direction
 
 #include "../src/main.h"
 
@@ -19,7 +20,6 @@ void initPB0irq(void) {
     /////////// Configure interrupt for falling edge of GPIO pin for button ///////////
     EXTI->IMR1 |= (1 << gpioPinOffset(ENCODER_A_PIN));  // Configure the mask bit
     EXTI->RTSR1 |= (1 << gpioPinOffset(ENCODER_A_PIN)); // Enable rising edge trigger
-    //TODO: fix bug: interrupts sometimes triggering when removing button/jumper (b/c of bounce?)
     EXTI->FTSR1 &= ~(1 << gpioPinOffset(ENCODER_A_PIN));// Disable falling edge trigger
     // Turn on EXTI interrupt in NVIC_ISER
     NVIC->ISER[0] |= (1 << EXTI0_IRQn); // EXTI0 for PB0 // EXTI0_IRQn = 6
@@ -34,7 +34,6 @@ void initPB1irq(void) {
     /////////// Configure interrupt for falling edge of GPIO pin for button ///////////
     EXTI->IMR1 |= (1 << gpioPinOffset(ENCODER_B_PIN)); // Configure the mask bit
     EXTI->RTSR1 |= (1 << gpioPinOffset(ENCODER_B_PIN));// Enable rising edge trigger
-    //TODO: fix bug: interrupts sometimes triggering when removing button/jumper (b/c of bounce?)
     EXTI->FTSR1 &= ~(1 << gpioPinOffset(ENCODER_B_PIN));// Disable falling edge trigger
     // Turn on EXTI interrupt in NVIC_ISER
     NVIC->ISER[0] |= (1 << EXTI1_IRQn); // EXTI9_5 for PB0 // EXTI1_IRQn = 7
