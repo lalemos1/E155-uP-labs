@@ -11,9 +11,20 @@ Date: 9/14/19
 #include <stdio.h>
 #include "main.h"
 
+//TODO: pin definitions
+
 /////////////////////////////////////////////////////////////////
 // Provided Constants and Functions
 /////////////////////////////////////////////////////////////////
+
+// For debugging: Function used by printf to send characters to the laptop
+int _write(int file, char *ptr, int len) {
+  int i = 0;
+  for (i = 0; i < len; i++) {
+    ITM_SendChar((*ptr++));
+  }
+  return len;
+}
 
 //Defining the web page in two chunks: everything before the current time, and everything after the current time
 char* webpageStart = "<!DOCTYPE html><html><head><title>E155 Web Server Demo Webpage</title>\
@@ -58,14 +69,22 @@ int main(void) {
   gpioEnable(GPIO_PORT_B);
   gpioEnable(GPIO_PORT_C);
 
-  pinMode(PB3, GPIO_OUTPUT);
+  pinMode(LED_PIN, GPIO_OUTPUT);
   
   RCC->APB2ENR |= (RCC_APB2ENR_TIM15EN);
   initTIM(TIM15);
   
   USART_TypeDef * USART = initUSART(USART1_ID, 125000);
 
-  // TODO: Add SPI initialization code
+  // Init SPI
+  int br = 0b101; // sets baud rate divisior = 2
+  int cpol = 0;   // Choosing clock polarity idles low
+  int cpha = 1;   // Clock phase must sample on falling edge for temp sensor peripheral 
+  initSPI(br, cpol, cpha);
+
+  signed volatile char temp;
+
+  //TODO: warning--SPI can make the website not work sometimes
 
   while(1) {
     /* Wait for ESP8266 to send a request.
@@ -83,11 +102,15 @@ int main(void) {
       while(!(USART->ISR & USART_ISR_RXNE));
       request[charIndex++] = readChar(USART);
     }
+    
+    // Read temp
+    temp = readTemp();
+    printf("DEBUG: temp = %d\n", temp);
 
-    // TODO: Add SPI code here for reading temperature
+    char tempStr[20];
+    sprintf(tempStr, "%d degC", temp);
   
-    // Update string with current LED state
-  
+    //Update string with current LED state
     int led_status = updateLEDStatus(request);
 
     char ledStatusStr[20];
@@ -107,7 +130,14 @@ int main(void) {
     sendString(USART, ledStatusStr);
     sendString(USART, "</p>");
 
+    sendString(USART, "<h2>Temperature</h2>");
+
+    sendString(USART, "</p>");
+    sendString(USART, tempStr);
+    sendString(USART, "</p>");
+
   
     sendString(USART, webpageEnd);
   }
 }
+
