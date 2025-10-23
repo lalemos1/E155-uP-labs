@@ -1,7 +1,7 @@
 // STM32L432KC_SPI.h
-// TODO: <YOUR NAME>
-// TODO: <YOUR EMAIL>
-// TODO: <DATE>
+// Lucas Lemos
+// llemos@hmc.edu
+// 10/20/2025
 // TODO: <SHORT DESCRIPTION OF WHAT THIS FILE DOES>
 
 #ifndef STM32L4_SPI_H
@@ -9,6 +9,12 @@
 
 #include <stdint.h>
 #include <stm32l432xx.h>
+
+// Define SPI1 pins
+#define SPI_SCLK PB3 // brown. D2 on logic analyzer (for debugging)
+#define SPI_MOSI PB5 // blue.  D3
+#define SPI_MISO PB4 // green. D4
+#define SPI_NSS  PB0 // white. D7 // this is active low but our peripheral is active-high!!
 
 ///////////////////////////////////////////////////////////////////////////////
 // Function prototypes
@@ -24,6 +30,7 @@ void initSPI(int br, int cpol, int cpha);
 
 /* Transmits a character (1 byte) over SPI and returns the received character.
  *    -- send: the character to send over SPI
+ *    -- TIMx: delay timer
  *    -- return: the character received over SPI */
 char spiSendReceive(char send);
 

@@ -3,3 +3,5 @@
 // TODO: <YOUR EMAIL>
 // TODO: <DATE>
 // TODO: <SHORT DESCRIPTION OF WHAT THIS FILE DOES>
+
+char readTemp(void);

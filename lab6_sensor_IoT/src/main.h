@@ -10,7 +10,7 @@
 
 #include "C:\Users\lucas\Documents\GitHub\E155-uP-labs\lab6_sensor_IoT\lib\STM32L432KC.h"
 
-#define LED_PIN PB3 // LED pin for blinking on Port B pin 3
+#define LED_PIN PB7
 #define BUFF_LEN 32
 
 #endif // MAIN_H
