@@ -1,23 +1,14 @@
 // DS1722.c
-// TODO: <YOUR NAME>
-// TODO: <YOUR EMAIL>
-// TODO: <DATE>
-// TODO: <SHORT DESCRIPTION OF WHAT THIS FILE DOES>
+// Lucas Lemos
+// llemos@hmc.edu
+// 10/20/2025
+// Functions for interfacing with the DS1722 temperature sensor
+
 
 #include "STM32L432KC_GPIO.h"
 #include "STM32L432KC_SPI.h"
-#include <stdio.h> // for debugging
 
-//// For debugging: Function used by printf to send characters to the laptop
-//int _write(int file, char *ptr, int len) {
-//  int i = 0;
-//  for (i = 0; i < len; i++) {
-//    ITM_SendChar((*ptr++));
-//  }
-//  return len;
-//}
-
-//TODO: function for reading temperature which uses SPISendReceive and decodes the 2's complement celsius value from 1-2 packets
+// Function for reading temperature which uses SPISendReceive and returns the temperature in celsius
 char readTemp(void) {
     //volatile signed char MSB1 = 0;
     //volatile signed char MSB2 = 0;

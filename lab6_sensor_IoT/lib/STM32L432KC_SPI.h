@@ -2,7 +2,7 @@
 // Lucas Lemos
 // llemos@hmc.edu
 // 10/20/2025
-// TODO: <SHORT DESCRIPTION OF WHAT THIS FILE DOES>
+// Function prototypes and pin definitions for the SPI driver
 
 #ifndef STM32L4_SPI_H
 #define STM32L4_SPI_H
