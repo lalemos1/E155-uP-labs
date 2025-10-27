@@ -11,3 +11,9 @@
 *.DS_Store
 *.emSession
 *.ini
+
+# KiCad files
+*#
+*.kicad_prl
+*.zip
+*.kicad_sch-bak
