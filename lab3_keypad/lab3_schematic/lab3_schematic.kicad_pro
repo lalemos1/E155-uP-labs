@@ -250,7 +250,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "lab4_audio_schematic.kicad_pro",
+    "filename": "lab3_schematic.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -410,7 +410,7 @@
   },
   "sheets": [
     [
-      "089bba29-d822-452b-a4d8-5c52d4dd88d2",
+      "aff73466-6d25-4bf8-8660-f2f0cf351857",
       "Root"
     ]
   ],

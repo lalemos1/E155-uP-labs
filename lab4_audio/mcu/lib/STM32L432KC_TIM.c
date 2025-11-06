@@ -36,32 +36,6 @@ void initTIM(TIM_TypeDef* TIMx) {
     // SMCR to disable slave, PSC to set TIMx prescaler, 
     // RCR to set overflows:update ratio, EGR to force update, CR1 to en
     /////////////////////////////
-    
-    // for debugging
-    //TIMx->CR1 |= 1;
-    //TIMx->CR1 |= (1 << 3);
-    //TIMx->CR2 |= 1;
-    /*
-    TIMx->SMCR |= 0b101;
-    TIMx->DIER |= 0b11;
-    TIMx->DIER &= 0;
-    uint32_t *temp = (uint32_t*) 0x40014010UL;
-    temp |= 1;
-
-    TIMx->SR |= 1;
-    TIMx->SR |= (1 << 5);
-    TIMx->EGR |= 1;
-    TIMx->EGR |= (1 << 5);
-    TIMx->CCMR1 |= (1 << 1);
-    TIMx->CCER |= (1 << 1);
-    TIMx->CNT &= 0;
-    TIMx->PSC |= 0b11;
-    TIMx->ARR |= 1;
-    TIMx->RCR |= 1;
-    TIMx->CCR1 |= 1;
-    TIMx->CCR2 |= 1;
-    TIMx->BDTR |= 1;
-    */
 
     // Make sure slave mode is disabled. Disable via SMS=0b0000
     // I THINK I MIGHT ACTUALLY WANT THIS ON? allows for resetting the register I think via a trigger signal
@@ -78,9 +52,6 @@ void initTIM(TIM_TypeDef* TIMx) {
     // Enable counter by setting CEN = 1 in the CR1 register
     TIMx->CR1 |= 1;
 }
-// Relevant registers for TIMx
-// CR1 to en, SMCR to disable slave, SR for update flag, EGR to force update, CCMR1 to set PWM mode, PSC to set TIMx prescaler, 
-// ARR to set PWM freq, RCR to set overflows:update ratio, CCR1 to set PWM duty cycle
 
 
 /*
@@ -172,5 +143,3 @@ void play_note(TIM_TypeDef* TIMp, TIM_TypeDef* TIMd, uint32_t ms, uint32_t hz, i
     //togglePin(MUSIC_PIN);
     // clear UEV flag
 }
-
-////////// CEN reg UDIS bit disables update event--useful for playback? 

@@ -1,8 +1,8 @@
 // main.c
-// GPIO blink LED with clock configuration
-// Josh Brake
-// jbrake@hmc.edu
-// 9/16/24
+// Plays a PWM song with timer peripherals
+// Lucas Lemos
+// llemos@hmc.edu
+// 10/29/25
 
 // Includes for libraries
 #include "../lib/STM32L432KC_RCC.h"

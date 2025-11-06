@@ -26,7 +26,7 @@ module keypad_decoder(
 	// ENTER - D   - 4 & 8 - R3 & C3
 	// 				 9 GND
 	
-	always_comb begin // BUG FOUND!!!!! A BUTTON REGISTERS TWICE IF YOU HOLD DOWN ONE BUTTON THEN PRESS ANOTHER ON THE SAME COLUMN
+	always_comb begin
 		case ( R_out )
 			4'b0000:					k = 5'b10000; // no output (5th bit for no output)
 			// R0

@@ -1,8 +1,8 @@
 /*
 File: Lab_6_JHB.c
-Author: Josh Brake
-Email: jbrake@hmc.edu
-Date: 9/14/19
+Author: Josh Brake and Lucas Lemos
+Email: jbrake@hmc.edu and llemos@hmc.edu
+Date: 9/14/19 and 10/20/2025
 */
 
 
@@ -10,8 +10,6 @@ Date: 9/14/19
 #include <stdlib.h>
 #include <stdio.h>
 #include "main.h"
-
-//TODO: pin definitions
 
 /////////////////////////////////////////////////////////////////
 // Provided Constants and Functions
@@ -84,8 +82,6 @@ int main(void) {
 
   signed volatile char temp;
 
-  //TODO: warning--SPI can make the website not work sometimes
-
   while(1) {
     /* Wait for ESP8266 to send a request.
     Requests take the form of '/REQ:<tag>\n', with TAG begin <= 10 characters.
@@ -108,7 +104,7 @@ int main(void) {
     printf("DEBUG: temp = %d\n", temp);
 
     char tempStr[20];
-    sprintf(tempStr, "%d degC", temp);
+    sprintf(tempStr, "%d ˚C", temp);
   
     //Update string with current LED state
     int led_status = updateLEDStatus(request);

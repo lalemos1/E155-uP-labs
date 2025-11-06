@@ -7,6 +7,7 @@
 
 #include "STM32L432KC_GPIO.h"
 #include "STM32L432KC_SPI.h"
+#include <stdio.h> // for debugging
 
 // Function for reading temperature which uses SPISendReceive and returns the temperature in celsius
 char readTemp(void) {
